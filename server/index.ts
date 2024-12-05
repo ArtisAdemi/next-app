@@ -2,6 +2,7 @@ import express from 'express';
 import next from 'next';
 import { connectToDatabase } from './db';
 import dotenv from 'dotenv';
+import userRoutes from './routes/users';
 
 // Load environment variables
 dotenv.config();
@@ -18,10 +19,11 @@ app.prepare().then(async () => {
     try {
         const server = express();
 
-        // API routes
-        server.get('/api/hello', (req, res) => {
-            res.json({ message: 'Hello from the backend!' });
-        });
+        // Add body parser middleware
+        server.use(express.json());
+
+        // Use user routes
+        server.use('/api/users', userRoutes);
 
         // Handle all other routes with Next.js
         server.all('*', (req, res) => {
