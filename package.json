@@ -7,10 +7,14 @@
     "dev": "tsx watch server/index.ts",
     "build": "next build",
     "start": "NODE_ENV=production tsx server/index.ts",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate": "tsx server/migrations/index.ts"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express": "^4.21.1",
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.8.3",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106"
@@ -26,6 +30,7 @@
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@types/mongoose": "^5.11.97"
   }
 }
