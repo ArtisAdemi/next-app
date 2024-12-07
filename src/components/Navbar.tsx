@@ -1,29 +1,52 @@
+"use client";
 import Link from 'next/link';
+import { useState } from 'react';
+import bgImage from '../../public/images/background-hero.jpg';
 
 export default function Navbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     return (
-        <nav className="bg-gray-800 text-white px-[8%] md:px-[16%]">
-            <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-16">
-                    <Link href="/" className="font-bold text-xl">
-                        Logo
-                    </Link>
-                    <div className="flex space-x-4">
-                        <Link href="/" className="hover:text-gray-300">
-                            Home
+        <>
+            <nav className="text-white">
+                <div className="mt-3 -mb-8 px-[8%]">
+                    <div className="flex items-center justify-between h-16">
+                        <Link href="/" className="font-bold text-xl">
+                            Logo
                         </Link>
-                        <Link href="/about" className="hover:text-gray-300">
-                            About
-                        </Link>
-                        <Link href="/services" className="hover:text-gray-300">
-                            Services
-                        </Link>
-                        <Link href="/contact" className="hover:text-gray-300">
-                            Contact
-                        </Link>
+                        <div className="flex space-x-4">
+                            <button
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                className="flex flex-col space-y-1.5 z-50"
+                            >
+                                <span className="block w-6 h-0.5 bg-white"></span>
+                                <span className="block w-6 h-0.5 bg-white"></span>
+                                <span className="block w-6 h-0.5 bg-white"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+
+            {/* Full screen menu overlay */}
+            {isMenuOpen && (
+                <div className='fixed inset-0 bg-black z-40'>
+                    <img className='w-full h-screen object-cover absolute' src={bgImage.src} alt="" />
+                    <div className="h-full flex flex-col items-center justify-center space-y-8 text-white text-2xl relative z-10">
+                        <Link href="/" className='text-[#545454] hover:text-white duration-300 text-8xl' onClick={() => setIsMenuOpen(false)}>Home</Link>
+                        <Link href="/about" className='text-[#545454] hover:text-white duration-300 text-8xl' onClick={() => setIsMenuOpen(false)}>About</Link>
+                        <Link href="/contact" className='text-[#545454] hover:text-white duration-300 text-8xl' onClick={() => setIsMenuOpen(false)}>Contact</Link>
+                    </div>
+                    <div className="absolute z-10 bottom-12 right-32">
+                        <p className='font-bold text-3xl text-white'>Contact Us</p>
+                        <div className='flex flex-col text-[#545454] space-y-4 mt-4'>
+                            <p className='hover:text-white duration-300 cursor-pointer'>3022 Main Street Detroid Michigan</p>
+                            <p className='hover:text-white duration-300 cursor-pointer'>palushajepoxyflooring@gmail.com</p>
+                            <p className='hover:text-white duration-300 cursor-pointer'>+1 234 567 8900</p>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }

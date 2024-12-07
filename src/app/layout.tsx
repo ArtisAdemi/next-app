@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <main className="container mx-auto px-4 py-8">
+        {/* <Navbar /> */}
+        <main className="">
           {children}
         </main>
       </body>
