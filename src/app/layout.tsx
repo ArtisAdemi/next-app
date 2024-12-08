@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto_Flex } from "next/font/google";
 import "./globals.css";
 import Navbar from "@components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Roboto_Flex({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "My Next.js App",
+  title: "Palushaj Epoxy Flooring",
   description: "Created with Next.js",
 };
 
