@@ -3,7 +3,7 @@ import bgImage from '../../../public/images/background-hero.jpg'
 import hero from '../../../public/images/hero.jpg'
 import { IoCheckmark } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
-import Navbar from '../Navbar'
+import Navbar from '../globals/Navbar'
 
 const Hero = () => {
     return (

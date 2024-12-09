@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import bgImage from '../../public/images/background-hero.jpg';
+import bgImage from '../../../public/images/background-hero.jpg';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineCancel } from "react-icons/md";
 
