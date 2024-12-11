@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto_Flex } from "next/font/google";
 import "./globals.css";
-import Navbar from "@components/Navbar";
 
 const inter = Roboto_Flex({ subsets: ["latin"] });
 
@@ -19,9 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {/* <Navbar /> */}
-        <main className="">
-          {children}
-        </main>
+        <main className="">{children}</main>
       </body>
     </html>
   );
