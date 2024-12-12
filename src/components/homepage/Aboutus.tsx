@@ -1,33 +1,34 @@
-import Image from "next/image";
+import hero from "../../../public/images/hero.jpg";
 
 export const Aboutus = () => {
   return (
-    <div className="flex  w-full py-28">
-      <div className="w-2/4 relative  h-96">
-        <Image
-          src="/images/img1.jpg" // Path to your image in the public folder
-          alt="About Us Image"
-          layout="fill"
-          objectFit="cover"
-          className="  shadow-lg"
-        />
+    <div className="flex flex-col lg:flex-row items-center gap-12 px-[4%] py-28 ">
+      <div className="relative w-full lg:w-2/4">
+        <div className=" overflow-hidden rounded-xl shadow-lg h-[400px] lg:h-[500px]">
+          <img
+            className="object-cover w-full h-full"
+            src={hero.src}
+            alt="About Us"
+          />
+        </div>
       </div>
-      <div className="w-2/4 flex flex-col justify-center items-start  px-8 md:px-16">
-        {/* Title */}
-        <h1 className="text-4xl md:text-5xl text-[#171717] font-semibold mb-4">
-          About Us
+      <div className="lg:w-1/2 flex flex-col justify-center">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-[#4682B4] mb-6">
+          Who We Are
         </h1>
-
-        {/* Description */}
-        <p className="text-lg font-light md:text-md text-[#171717] max-w-lg mb-6">
-          We are passionate about creating innovative designs and experiences
-          that transform spaces. Our team works with precision and creativity to
-          bring your vision to life.
+        <p className="text-lg text-[#4682B4] leading-relaxed mb-6">
+          Welcome to our world of innovation and dedication! Our mission is to
+          craft impactful digital experiences, blending creativity with
+          technology. We focus on creating solutions that not only meet but
+          exceed expectations, delivering value that stands the test of time.
         </p>
-
-        {/* Button */}
-        <button className=" bg-[#FF8C00] font-semibold  px-6 py-3 rounded-md  text-white">
-          Contact Us
+        <p className="text-lg text-[#4682B4] leading-relaxed mb-6">
+          With a team of passionate professionals, we specialize in web design,
+          development, and tailored solutions for businesses of all sizes. Your
+          vision, our expertise—together, we create something remarkable.
+        </p>
+        <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg w-1/4 transition-all duration-300">
+          Learn More
         </button>
       </div>
     </div>
