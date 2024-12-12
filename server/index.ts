@@ -2,7 +2,7 @@ import express from 'express';
 import next from 'next';
 import { connectToDatabase } from './db';
 import dotenv from 'dotenv';
-import userRoutes from './routes/users';
+// import userRoutes from './routes/users';
 
 // Load environment variables
 dotenv.config();
@@ -21,9 +21,11 @@ app.prepare().then(async () => {
 
         // Add body parser middleware
         server.use(express.json());
-
+        server.use('/api/hello', (req, res) => {
+            res.send('Hello World');
+        });
         // Use user routes
-        server.use('/api/users', userRoutes);
+        // server.use('/api/users', userRoutes);
 
         // Handle all other routes with Next.js
         server.all('*', (req, res) => {

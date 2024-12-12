@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import bgImage from '../../../public/images/background-hero.jpg';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineCancel } from "react-icons/md";
+import Image from 'next/image';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,7 +48,7 @@ export default function Navbar() {
             {/* Full screen menu overlay */}
             <div className={`fixed inset-0 bg-black z-40 transition-transform duration-300 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}>
-                <img className='w-full h-screen object-cover absolute' src={bgImage.src} alt="" />
+                <Image width={1000} height={1000} className='w-full h-screen object-cover absolute' src={bgImage.src} alt="" />
                 <div>
                     <Link href="/" className="font-bold text-xl absolute top-8 left-8 z-20">
                         Logo
