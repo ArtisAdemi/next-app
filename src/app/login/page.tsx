@@ -1,7 +1,9 @@
 "use client";
+// import { NextResponse } from "next/server";
 import React, { useState } from "react";
-import Link from "next/link";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useRouter } from 'next/navigation';
+import { loginAction } from '../actions/auth';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,8 @@ const Login = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
 
   const validateForm = () => {
     let isValid = true;
@@ -49,16 +53,30 @@ const Login = () => {
     if (validateForm()) {
       setIsLoading(true);
       try {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        console.log("Form submitted:", formData);
+        const response = await loginAction(formData);
+        console.log("res in login page", response);
+        if (response?.success) {
+          console.log("res in login page, if success", response);
+          router.push('/admin/dashboard');
+        } else {
+          setErrors({
+            email: '',
+            password: response?.message || 'Login failed'
+          });
+        }
       } catch (error) {
-        console.error("Login error:", error);
+        console.error('Login error:', error);
+        setErrors({
+          email: '',
+          password: 'An error occurred during login'
+        });
       } finally {
         setIsLoading(false);
       }
     }
   };
+
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -74,6 +92,8 @@ const Login = () => {
       }));
     }
   };
+
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -98,11 +118,10 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-4 py-2 rounded-lg border ${
-                errors.email
-                  ? "border-red-500"
-                  : "border-black/[.08] dark:border-white/[.145]"
-              } bg-background focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full px-4 py-2 rounded-lg border ${errors.email
+                ? "border-red-500"
+                : "border-black/[.08] dark:border-white/[.145]"
+                } bg-background focus:outline-none focus:ring-2 focus:ring-blue-500`}
               placeholder="your@email.com"
               autoComplete="email"
               disabled={isLoading}
@@ -126,11 +145,10 @@ const Login = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 rounded-lg border ${
-                  errors.password
-                    ? "border-red-500"
-                    : "border-black/[.08] dark:border-white/[.145]"
-                } bg-background focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={`w-full px-4 py-2 rounded-lg border ${errors.password
+                  ? "border-red-500"
+                  : "border-black/[.08] dark:border-white/[.145]"
+                  } bg-background focus:outline-none focus:ring-2 focus:ring-blue-500`}
                 placeholder="Enter your password"
                 autoComplete="current-password"
                 disabled={isLoading}
