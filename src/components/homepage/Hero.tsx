@@ -10,12 +10,14 @@ const Hero = () => {
   return (
     <div className="flex flex-col lg:flex-row lg:justify-between">
       <div className="w-full lg:w-[45%] relative">
-        <Image
-          className="w-full h-screen object-cover"
-          fill
-          src={bgImage.src}
-          alt=""
-        />
+        <div className="w-full h-screen">
+          <Image
+            className="object-cover"
+            fill
+            src={bgImage.src}
+            alt=""
+          />
+        </div>
         <div className="absolute inset-0 flex flex-col">
           <Navbar />
           <div className="px-4 lg:px-8 py-56 flex-1 flex flex-col justify-between">
@@ -55,12 +57,14 @@ const Hero = () => {
         </div>
       </div>
       <div className="w-full lg:w-[55%] relative">
-        <Image
-          className="w-full h-screen object-cover"
-          fill
-          src={hero.src}
-          alt=""
-        />
+        <div className="w-full h-screen">
+          <Image
+            className=" object-cover"
+            fill
+            src={hero.src}
+            alt=""
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
         <div className="absolute bottom-8 right-8">
           <button className="text-white px-6 py-3 font-semibold hover:underline hover:duration-300">
