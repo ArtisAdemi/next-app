@@ -1,5 +1,3 @@
-import hero from "../../../public/images/hero.jpg";
-
 export const OurServices = () => {
   return (
     <div className="px-[4%] py-20 bg-[#D3D3D3]">

@@ -4,13 +4,15 @@ import hero from "../../../public/images/hero.jpg";
 import { IoCheckmark } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
 import Navbar from "../globals/Navbar";
+import Image from "next/image";
 
 const Hero = () => {
   return (
     <div className="flex flex-col lg:flex-row lg:justify-between">
       <div className="w-full lg:w-[45%] relative">
-        <img
+        <Image
           className="w-full h-screen object-cover"
+          fill
           src={bgImage.src}
           alt=""
         />
@@ -53,7 +55,12 @@ const Hero = () => {
         </div>
       </div>
       <div className="w-full lg:w-[55%] relative">
-        <img className="w-full h-screen object-cover" src={hero.src} alt="" />
+        <Image
+          className="w-full h-screen object-cover"
+          fill
+          src={hero.src}
+          alt=""
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
         <div className="absolute bottom-8 right-8">
           <button className="text-white px-6 py-3 font-semibold hover:underline hover:duration-300">
