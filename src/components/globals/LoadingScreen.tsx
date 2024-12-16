@@ -30,7 +30,7 @@ export default function LoadingScreen() {
     const wordTimer = setInterval(animateWord, 300); // Reduced from 3000 to 1000ms
 
     return () => clearInterval(wordTimer);
-  }, []); // Keep empty dependency array
+  }, [words.length]); // Keep empty dependency array
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
