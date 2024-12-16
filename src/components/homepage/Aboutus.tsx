@@ -7,7 +7,7 @@ export const Aboutus = () => {
       <div className="relative w-full lg:w-2/4">
         <div className=" overflow-hidden rounded-xl shadow-lg h-[400px] lg:h-[500px]">
           <Image
-            className="object-cover w-full h-full"
+            className="object-cover"
             fill
             src={hero.src}
             alt="About Us"
