@@ -9,6 +9,7 @@ export const Aboutus = () => {
           <Image
             className="object-cover"
             fill
+            quality={100}
             src={hero.src}
             alt="About Us"
           />
