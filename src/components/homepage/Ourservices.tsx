@@ -27,7 +27,7 @@ export const OurServices: React.FC = () => {
 
       {/* Services Grid */}
       <div className="grid grid-cols-4 md:grid-cols-4 gap-4">
-        {services.map((service: any) => (
+        {services.map((service) => (
           <div
             key={service?.slug}
             className="flex flex-col justify-start items-start bg-white shadow-md rounded-lg p-4 cursor-pointer"
