@@ -2,14 +2,15 @@
 import React, { useEffect, useState } from "react";
 import servicesData from "../../../public/services.json"; // Adjust the import path as necessary
 import { useRouter } from "next/navigation"; // Import useRouter
+import { Service } from "public/serviceTypes";
 
 export const OurServices: React.FC = () => {
-  const [services, setServices] = useState<any>([]);
+  const [services, setServices] = useState<Service[]>([]);
   const router = useRouter(); // Initialize useRouter
 
   useEffect(() => {
     // Fetch services from the JSON data
-    setServices(servicesData.services);
+    setServices(servicesData.services as Service[]);
   }, []);
 
   const handleServiceClick = (slug: string) => {
@@ -38,6 +39,7 @@ export const OurServices: React.FC = () => {
             <h2 className="text-lg font-semibold text-gray-800 mb-1 text-center">
               {service?.title}
             </h2>
+            {service.maintenance?.intro && <p>{service.maintenance.intro}</p>}
             <p className="text-sm text-gray-600 text-start">
               {service?.description}
             </p>
