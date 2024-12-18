@@ -1,116 +1,111 @@
-import Image from "next/image";
-import bgImage from "../../../public/images/background-hero.jpg";
-import hero from "../../../public/images/hero.jpg";
-
 export const OurServices = () => {
   return (
-    <div className="px-[4%] py-20 bg-[#D3D3D3]">
+    <div className="px-[4%] py-28 bg-white">
       {/* Section Title */}
-      <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-8 text-center">
-        We provide various best services to transform your ideas
+      <h1 className="text-4xl md:text-5xl font-extrabold  mb-12">
+        Our Services
       </h1>
 
-      <div className="grid grid-cols-1 gap-8 ">
-        {/* Service 1 */}
-        <div className="flex flex-col md:flex-row items-start bg-[#333333] text-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transform hover:scale-105 transition-all">
-          <div className="w-full md:w-1/3">
-            <img className="h-[400px] w-full p-10" src={hero.src} alt="" />
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-8">
+        {/* Service Card 1 */}
+        <div className="p-8 bg-white shadow-md rounded-lg hover:shadow-lg border transition-shadow">
+          <div className="flex items-center justify-center h-16 w-16 bg-[#EAEAEA] rounded-full mb-6">
+            <svg
+              className="h-8 w-8 text-black"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
           </div>
-          <div className="p-12 w-full md:w-2/3 flex flex-col justify-between">
-            <div>
-              <h2 className="text-4xl font-bold mb-4">EPOXY</h2>
-              <p className="text-lg mb-4">
-                Epoxy Flooring: Durable, Stylish, and Built to Last Epoxy
-                flooring is the ultimate solution for those seeking a durable,
-                versatile, and visually stunning surface for their space.
-                Created by combining resin and hardener, epoxy forms a strong
-                bond with concrete, resulting in a sleek, resilient finish
-                perfect for residential, commercial, and industrial
-                applications.
-              </p>
-            </div>
-            <div className="mt-auto flex justify-end">
-              <button className="flex items-center justify-center w-24 h-24 mt-20 rounded-full bg-white text-black shadow-md hover:bg-gray-300 transition-all">
-                →
-              </button>
-            </div>
-          </div>
+          <h2 className="text-xl font-semibold mb-4">Project Planning</h2>
+          <p className="text-gray-600">
+            Comprehensive strategies to bring your ideas to life with precision
+            and efficiency.
+          </p>
         </div>
-        <div className="flex flex-col md:flex-row items-start bg-[#333333] text-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transform hover:scale-105 transition-all">
-          <div className="w-full md:w-1/3">
-            <img className="h-[400px] w-full p-10" src={hero.src} alt="" />
+
+        {/* Service Card 2 */}
+        <div className="p-8 bg-white border shadow-md rounded-lg hover:shadow-lg transition-shadow">
+          <div className="flex items-center justify-center h-16 w-16 bg-[#EAEAEA] rounded-full mb-6">
+            <svg
+              className="h-8 w-8 text-black"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M16.88 3.549a9.953 9.953 0 00-4.09-1.12M12 7V3m0 4a10.002 10.002 0 0110 10h-4m-6 4h-2a10.002 10.002 0 01-9.33-13.09"
+              />
+            </svg>
           </div>
-          <div className="p-12 w-full md:w-2/3 flex flex-col justify-between">
-            <div>
-              <h2 className="text-4xl font-bold mb-4">CONCRETE POLISHING</h2>
-              <p className="text-lg mb-4">
-                Epoxy Flooring: Durable, Stylish, and Built to Last Epoxy
-                flooring is the ultimate solution for those seeking a durable,
-                versatile, and visually stunning surface for their space.
-                Created by combining resin and hardener, epoxy forms a strong
-                bond with concrete, resulting in a sleek, resilient finish
-                perfect for residential, commercial, and industrial
-                applications.
-              </p>
-            </div>
-            <div className="mt-auto flex justify-end">
-              <button className="flex items-center justify-center w-24 h-24 mt-20 rounded-full bg-white text-black shadow-md hover:bg-gray-300 transition-all">
-                →
-              </button>
-            </div>
-          </div>
+          <h2 className="text-xl font-semibold mb-4">Project Management</h2>
+          <p className="text-gray-600">
+            Expert oversight from inception to completion ensuring seamless
+            execution.
+          </p>
         </div>
-        <div className="flex flex-col md:flex-row items-start bg-[#333333] text-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transform hover:scale-105 transition-all">
-          <div className="w-full md:w-1/3">
-            <img className="h-[400px] w-full p-10" src={hero.src} alt="" />
+
+        {/* Service Card 3 */}
+        <div className="p-8 bg-white shadow-md border rounded-lg hover:shadow-lg transition-shadow">
+          <div className="flex items-center justify-center h-16 w-16 bg-[#EAEAEA] rounded-full mb-6">
+            <svg
+              className="h-8 w-8 text-black"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 8c1.657 0 3-1.343 3-3m0 6c-1.657 0-3-1.343-3-3m-6 6c0-1.657 1.343-3 3-3m6 3c1.657 0 3-1.343 3-3"
+              />
+            </svg>
           </div>
-          <div className="p-12 w-full md:w-2/3 flex flex-col justify-between">
-            <div>
-              <h2 className="text-4xl font-bold mb-4">
-                COMMERCIAL/INDUSTRIAL PAINTING
-              </h2>
-              <p className="text-lg mb-4">
-                Epoxy Flooring: Durable, Stylish, and Built to Last Epoxy
-                flooring is the ultimate solution for those seeking a durable,
-                versatile, and visually stunning surface for their space.
-                Created by combining resin and hardener, epoxy forms a strong
-                bond with concrete, resulting in a sleek, resilient finish
-                perfect for residential, commercial, and industrial
-                applications.
-              </p>
-            </div>
-            <div className="mt-auto flex justify-end">
-              <button className="flex items-center justify-center w-24 h-24 mt-20 rounded-full bg-white text-black shadow-md hover:bg-gray-300 transition-all">
-                →
-              </button>
-            </div>
-          </div>
+          <h2 className="text-xl font-semibold mb-4">Interior Design</h2>
+          <p className="text-gray-600">
+            Transforming spaces into aesthetically pleasing and functional
+            environments.
+          </p>
         </div>
-        <div className="flex flex-col md:flex-row items-start bg-[#333333] text-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transform hover:scale-105 transition-all">
-          <div className="w-full md:w-1/3">
-            <img className="h-[400px] w-full p-10" src={hero.src} alt="" />
+
+        {/* Service Card 4 */}
+        <div className="p-8 bg-white shadow-md border rounded-lg hover:shadow-lg transition-shadow">
+          <div className="flex items-center justify-center h-16 w-16 bg-[#EAEAEA] rounded-full mb-6">
+            <svg
+              className="h-8 w-8 text-black"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M3 10h11M9 21H4a1 1 0 01-1-1v-5a1 1 0 011-1h5v5m10-5h-5v5a1 1 0 001 1h4a1 1 0 001-1v-5z"
+              />
+            </svg>
           </div>
-          <div className="p-12 w-full md:w-2/3 flex flex-col justify-between">
-            <div>
-              <h2 className="text-4xl font-bold mb-4">
-                TAR, GLUE AND GROUT REMOVAL
-              </h2>
-              <p className="text-lg mb-4">
-                Epoxy Flooring: Durable, Stylish, and Built to Last Epoxy
-                flooring is the ultimate solution for those seeking a durable,
-                versatile, and visually stunning surface for their space.
-                Created by combining resin and hardener, epoxy forms a strong
-                bond with concrete, resulting in a sleek, resilient finish
-                perfect for residential, commercial, and industrial
-                applications.
-              </p>
-            </div>
-            <div className="mt-auto flex justify-end">
-              <button className="flex items-center justify-center w-24 h-24 mt-20 rounded-full bg-white text-black shadow-md hover:bg-gray-300 transition-all">
-                →
-              </button>
-            </div>
-          </div>
+          <h2 className="text-xl font-semibold mb-4">Exterior Design</h2>
+          <p className="text-gray-600">
+            Crafting elegant outdoor spaces that harmonize with nature and
+            architecture.
+          </p>
         </div>
       </div>
     </div>
