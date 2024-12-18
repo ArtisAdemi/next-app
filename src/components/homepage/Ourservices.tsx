@@ -1,4 +1,23 @@
-export const OurServices = () => {
+"use client";
+import React, { useEffect, useState } from "react";
+import servicesData from "../../../public/services.json"; // Adjust the import path as necessary
+import { useRouter } from "next/navigation"; // Import useRouter
+import { Service } from "public/serviceTypes";
+
+export const OurServices: React.FC = () => {
+  const [services, setServices] = useState<Service[]>([]);
+  const router = useRouter(); // Initialize useRouter
+
+  useEffect(() => {
+    // Fetch services from the JSON data
+    setServices(servicesData.services as Service[]);
+  }, []);
+
+  const handleServiceClick = (slug: string) => {
+    // Redirect to the single service page using the slug
+    router.push(`/services/${slug}`);
+  };
+
   return (
     <div className="px-[4%] py-28 bg-white">
       {/* Section Title */}
@@ -7,106 +26,25 @@ export const OurServices = () => {
       </h1>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-8">
-        {/* Service Card 1 */}
-        <div className="p-8 bg-white shadow-md rounded-lg hover:shadow-lg border transition-shadow">
-          <div className="flex items-center justify-center h-16 w-16 bg-[#EAEAEA] rounded-full mb-6">
-            <svg
-              className="h-8 w-8 text-black"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
+      <div className="grid grid-cols-4 md:grid-cols-4 gap-4">
+        {services.map((service) => (
+          <div
+            key={service?.slug}
+            className="flex flex-col justify-start items-start bg-white shadow-md rounded-lg p-4 cursor-pointer"
+            onClick={() => handleServiceClick(service?.slug)}
+          >
+            <div className="p-4 text-white rounded-full flex items-center justify-center mb-3">
+              <span className="text-4xl">🛠️</span>
+            </div>
+            <h2 className="text-lg font-semibold text-gray-800 mb-1 text-center">
+              {service?.title}
+            </h2>
+            {service.maintenance?.intro && <p>{service.maintenance.intro}</p>}
+            <p className="text-sm text-gray-600 text-start">
+              {service?.description}
+            </p>
           </div>
-          <h2 className="text-xl font-semibold mb-4">Project Planning</h2>
-          <p className="text-gray-600">
-            Comprehensive strategies to bring your ideas to life with precision
-            and efficiency.
-          </p>
-        </div>
-
-        {/* Service Card 2 */}
-        <div className="p-8 bg-white border shadow-md rounded-lg hover:shadow-lg transition-shadow">
-          <div className="flex items-center justify-center h-16 w-16 bg-[#EAEAEA] rounded-full mb-6">
-            <svg
-              className="h-8 w-8 text-black"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M16.88 3.549a9.953 9.953 0 00-4.09-1.12M12 7V3m0 4a10.002 10.002 0 0110 10h-4m-6 4h-2a10.002 10.002 0 01-9.33-13.09"
-              />
-            </svg>
-          </div>
-          <h2 className="text-xl font-semibold mb-4">Project Management</h2>
-          <p className="text-gray-600">
-            Expert oversight from inception to completion ensuring seamless
-            execution.
-          </p>
-        </div>
-
-        {/* Service Card 3 */}
-        <div className="p-8 bg-white shadow-md border rounded-lg hover:shadow-lg transition-shadow">
-          <div className="flex items-center justify-center h-16 w-16 bg-[#EAEAEA] rounded-full mb-6">
-            <svg
-              className="h-8 w-8 text-black"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 8c1.657 0 3-1.343 3-3m0 6c-1.657 0-3-1.343-3-3m-6 6c0-1.657 1.343-3 3-3m6 3c1.657 0 3-1.343 3-3"
-              />
-            </svg>
-          </div>
-          <h2 className="text-xl font-semibold mb-4">Interior Design</h2>
-          <p className="text-gray-600">
-            Transforming spaces into aesthetically pleasing and functional
-            environments.
-          </p>
-        </div>
-
-        {/* Service Card 4 */}
-        <div className="p-8 bg-white shadow-md border rounded-lg hover:shadow-lg transition-shadow">
-          <div className="flex items-center justify-center h-16 w-16 bg-[#EAEAEA] rounded-full mb-6">
-            <svg
-              className="h-8 w-8 text-black"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 10h11M9 21H4a1 1 0 01-1-1v-5a1 1 0 011-1h5v5m10-5h-5v5a1 1 0 001 1h4a1 1 0 001-1v-5z"
-              />
-            </svg>
-          </div>
-          <h2 className="text-xl font-semibold mb-4">Exterior Design</h2>
-          <p className="text-gray-600">
-            Crafting elegant outdoor spaces that harmonize with nature and
-            architecture.
-          </p>
-        </div>
+        ))}
       </div>
     </div>
   );

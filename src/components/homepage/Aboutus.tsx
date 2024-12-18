@@ -1,12 +1,15 @@
 import hero from "../../../public/images/hero.jpg";
+import Image from "next/image";
 
 export const About = () => {
   return (
     <div className="flex flex-col lg:flex-row items-center gap-12 px-[4%] py-28 ">
       <div className="relative w-full lg:w-2/4">
         <div className=" overflow-hidden rounded-xl shadow-lg h-[400px] lg:h-[500px]">
-          <img
-            className="object-cover w-full h-full"
+          <Image
+            className="object-cover"
+            fill
+            quality={100}
             src={hero.src}
             alt="About Us"
           />
