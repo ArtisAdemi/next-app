@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import bgImage from "../../../public/images/background-hero.jpg";
+import logo from "../../../public/Logo-black-bg.svg";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineCancel } from "react-icons/md";
 import Image from "next/image";
@@ -25,9 +26,9 @@ export default function Navbar() {
     <>
       <nav className="text-white">
         <div className="mt-3 -mb-8 px-[8%]">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="font-bold text-xl">
-              Logo
+          <div className="flex items-center justify-between py-4">
+            <Link href="/" className="font-bold text-xl  top-8 left-8 z-20">
+              <Image src={logo.src} width={50} height={50} alt="" />
             </Link>
             <div className="flex space-x-4">
               <button
@@ -64,7 +65,7 @@ export default function Navbar() {
             href="/"
             className="font-bold text-xl absolute top-8 left-8 z-20"
           >
-            Logo
+            <Image src={logo.src} width={50} height={50} alt="" />
           </Link>
         </div>
         <div className="h-full flex flex-col items-center justify-center space-y-8 text-white text-2xl relative z-10">
@@ -83,11 +84,11 @@ export default function Navbar() {
             About
           </Link>
           <Link
-            href="/contact"
+            href="/bookings"
             className="text-[#545454] hover:text-white duration-300 text-8xl"
             onClick={() => setIsMenuOpen(false)}
           >
-            Contact
+            Book Now
           </Link>
         </div>
         <div className="absolute z-10 bottom-12 right-32">

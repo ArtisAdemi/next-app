@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import logo from "../../../public/Logo-black-bg.svg";
 
 export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
@@ -34,6 +36,7 @@ export default function LoadingScreen() {
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
+      <Image src={logo.src} alt="logo" width={200} height={200} />
       <div className="relative">
         <div className="text-white text-9xl mb-32 tracking-wider">
           {words[currentWordIndex]}
