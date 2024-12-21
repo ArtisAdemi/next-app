@@ -14,6 +14,7 @@ const Hero = () => {
           <Image
             className="object-cover"
             fill
+            quality={100}
             src={bgImage.src}
             alt=""
           />
@@ -62,6 +63,7 @@ const Hero = () => {
             className=" object-cover"
             fill
             src={hero.src}
+            quality={100}
             alt=""
           />
         </div>

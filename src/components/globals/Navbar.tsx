@@ -47,13 +47,15 @@ export default function Navbar() {
 
       {/* Full screen menu overlay */}
       <div
-        className={`fixed inset-0 bg-black z-40 transition-transform duration-300 transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+        className={`fixed inset-0 bg-black z-40 transition-transform duration-300 transform ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
         <Image
           width={1000}
           height={1000}
           className="w-full h-screen object-cover absolute"
+          quality={100}
           src={bgImage.src}
           alt=""
         />
