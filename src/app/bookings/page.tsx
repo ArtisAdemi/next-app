@@ -1,10 +1,58 @@
+"use client";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+import { useState, useTransition } from "react";
+import { createBookingAction } from "../actions/bookings";
+
 export default function Bookings() {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const [errors, setErrors] = useState<{
+    email?: string;
+    name?: string;
+    address?: string;
+    phoneNumber?: string;
+    message?: string;
+  }>({});
+
+  const handleSubmit = async (formData: FormData) => {
+    startTransition(async () => {
+      try {
+        const response = await createBookingAction({
+          email: formData.get("email") as string,
+          phoneNumber: formData.get("phoneNumber") as string,
+          address: formData.get("address") as string,
+          name: formData.get("name") as string,
+          message: formData.get("message") as string,
+        });
+        if (response?.success) {
+          Swal.fire("Success", "Booking created successfully", "success");
+          router.push("/");
+        } else {
+          setErrors({
+            email: response?.message || "Email is required",
+            name: response?.message || "Name is required",
+            address: response?.message || "Address is required",
+            phoneNumber: response?.message || "Phone number is required",
+            message: response?.message || "Message is required",
+          });
+        }
+      } catch (error) {
+        Swal.fire("Error", "Failed to create booking", "error");
+        console.error("Create booking error:", error);
+      }
+    });
+  };
+
   return (
     <div className="grid bg-gray-900 grid-rows-[1fr] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 items-center sm:items-start max-w-2xl w-full">
         <h1 className="text-5xl font-bold text-white text-center">Book Now</h1>
 
-        <form className="w-full space-y-6 bg-gray-800 p-6 rounded-lg shadow-lg">
+        <form
+          action={handleSubmit}
+          className="w-full space-y-6 bg-gray-800 p-6 rounded-lg shadow-lg"
+        >
           <div>
             <label
               htmlFor="name"
@@ -15,6 +63,7 @@ export default function Bookings() {
             <input
               type="text"
               id="name"
+              name="name"
               className="w-full px-4 py-3 rounded-lg border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Your name"
             />
@@ -30,8 +79,24 @@ export default function Bookings() {
             <input
               type="email"
               id="email"
+              name="email"
               className="w-full px-4 py-3 rounded-lg border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="your@email.com"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="phoneNumber"
+              className="block text-sm font-medium text-gray-300 mb-2"
+            >
+              Phone Number
+            </label>
+            <input
+              type="text"
+              id="phoneNumber"
+              name="phoneNumber"
+              className="w-full px-4 py-3 rounded-lg border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Your Phone Number"
             />
           </div>
           <div>
@@ -44,6 +109,7 @@ export default function Bookings() {
             <input
               type="text"
               id="address"
+              name="address"
               className="w-full px-4 py-3 rounded-lg border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Your Address"
             />
@@ -58,6 +124,7 @@ export default function Bookings() {
             </label>
             <textarea
               id="message"
+              name="message"
               rows={4}
               className="w-full px-4 py-3 rounded-lg border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Your message..."
@@ -68,7 +135,7 @@ export default function Bookings() {
             type="submit"
             className="w-full rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-blue-600 text-white gap-2 hover:bg-blue-700 text-sm sm:text-base h-12"
           >
-            Send Message
+            {isPending ? "Submitting..." : "Submit"}
           </button>
         </form>
 
