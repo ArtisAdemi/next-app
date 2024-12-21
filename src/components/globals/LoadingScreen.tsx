@@ -35,10 +35,16 @@ export default function LoadingScreen() {
   }, [words.length]); // Keep empty dependency array
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
-      <Image src={logo.src} alt="logo" width={200} height={200} />
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black p-4">
+      <Image
+        src={logo.src}
+        alt="logo"
+        width={150}
+        height={150}
+        className="mb-4"
+      />
       <div className="relative">
-        <div className="text-white text-9xl mb-32 tracking-wider">
+        <div className="text-white text-6xl sm:text-9xl mb-16 tracking-wider text-center">
           {words[currentWordIndex]}
         </div>
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
@@ -46,13 +52,13 @@ export default function LoadingScreen() {
         </div>
       </div>
 
-      <div className="text-white text-4xl font-bold mb-12 tracking-widest">
+      <div className="text-white text-2xl sm:text-4xl font-bold mb-8 tracking-widest text-center">
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
           Palushaj Epoxy Flooring
         </span>
       </div>
 
-      <div className="relative w-80 h-1 bg-gray-800 rounded-full overflow-hidden">
+      <div className="relative w-full max-w-xs h-1 bg-gray-800 rounded-full overflow-hidden">
         <div
           className="h-full bg-gradient-to-r from-white via-gray-200 to-white transition-all duration-300 ease-out"
           style={{ width: `${progress}%` }}

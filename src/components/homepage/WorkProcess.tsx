@@ -44,7 +44,7 @@ export const WorkProcess = () => {
               onClick={() => setActiveTab(step.id)}
             >
               <div
-                className={`flex items-center justify-center shadow-2xl w-40 h-40 border border-[#C0C0C0] rounded-full ${
+                className={`flex items-center justify-center shadow-2xl w-20 h-20 lg:w-40 lg:h-40 border border-[#C0C0C0] rounded-full ${
                   activeTab === step.id ? "bg-[#D3D3D3]" : "bg-[#333333]"
                 } hover:bg-[#A9A9A9] transition-colors duration-300`}
               >
