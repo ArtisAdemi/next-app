@@ -1,8 +1,59 @@
-'use client'
+'use client';
+import { useEffect, useState } from 'react';
+import { getBookingsAction } from '@/app/actions/bookings';
+
+interface Booking {
+    _id: string;
+    email: string;
+    phoneNumber: string;
+    location: string;
+    message: string;
+    status: string;
+    createdAt: string;
+}
+
 export default function AdminDashboard() {
+    const [bookings, setBookings] = useState<Booking[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        const fetchBookings = async () => {
+            try {
+                const response = await getBookingsAction();
+                if (response.success) {
+                    setBookings(response.data as unknown as Booking[]);
+                } else {
+                    setError(response.message || 'Failed to fetch bookings');
+                }
+            } catch {
+                setError('Failed to fetch bookings');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBookings();
+    }, []);
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>;
+
     return (
-        <div className="grid grid-rows-[1fr] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-            Admin Dashboard
+        <div className="p-8">
+            <h1 className="text-2xl font-bold mb-6">Bookings</h1>
+            <div className="grid gap-4">
+                {bookings.map((booking: Booking) => (
+                    <div key={booking._id} className="border p-4 rounded-lg">
+                        <p><strong>Email:</strong> {booking.email}</p>
+                        <p><strong>Phone:</strong> {booking.phoneNumber}</p>
+                        <p><strong>Location:</strong> {booking.location}</p>
+                        <p><strong>Message:</strong> {booking.message}</p>
+                        <p><strong>Status:</strong> {booking.status}</p>
+                        <p><strong>Created:</strong> {new Date(booking.createdAt).toLocaleString()}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
