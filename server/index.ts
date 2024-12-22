@@ -2,6 +2,7 @@ import express from 'express';
 import next from 'next';
 import { connectToDatabase } from './db';
 import dotenv from 'dotenv';
+// import bookingRoutes from './routes/bookings';
 // import userRoutes from './routes/users';
 
 // Load environment variables
@@ -24,8 +25,10 @@ app.prepare().then(async () => {
         server.use('/api/hello', (req, res) => {
             res.send('Hello World');
         });
-        // Use user routes
+        // // Add user routes
         // server.use('/api/users', userRoutes);
+        // Use booking routes
+        // server.use('/api/bookings', bookingRoutes);
 
         // Handle all other routes with Next.js
         server.all('*', (req, res) => {

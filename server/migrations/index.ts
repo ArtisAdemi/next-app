@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import { CreateUsers } from './migrations/001_create_users';
 import { CreateAdminUser } from './migrations/002_create_admin_user';
+import { CreateBookings } from './migrations/003_create_bookings';
 
 // Load environment variables
 dotenv.config();
@@ -11,7 +12,8 @@ async function migrate() {
         // Array of migrations to run in order
         const migrations = [
             new CreateUsers(),
-            new CreateAdminUser()
+            new CreateAdminUser(),
+            new CreateBookings()
         ];
 
         // Run each migration
