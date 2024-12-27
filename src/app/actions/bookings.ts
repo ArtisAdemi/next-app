@@ -25,7 +25,7 @@ export async function getBookingsAction() {
     const { db } = await connectToDatabase();
     const bookings = await db
       .collection("bookings")
-      .find()
+      .find({ status: "pending" })
       .sort({ createdAt: -1 })
       .toArray();
 
@@ -58,7 +58,10 @@ export async function createBookingAction(formData: {
       createdAt: new Date(),
     });
 
-    return { success: true, data: { bookingId: result.insertedId } };
+    return { 
+      success: true, 
+      data: { bookingId: result.insertedId.toString() } 
+    };
   } catch (error) {
     console.error("Create booking error:", error);
     return { success: false, message: "Internal server error" };
