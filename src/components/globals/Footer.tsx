@@ -6,7 +6,7 @@ export const Footer = () => {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold">YourLogo</h2>
           <p className="text-gray-400">
-            Empowering your business with innovative digital solutions. Let's
+            Empowering your business with innovative digital solutions. Lets
             build the future together.
           </p>
         </div>
