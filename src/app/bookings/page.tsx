@@ -68,6 +68,7 @@ export default function Bookings() {
               placeholder="Your name"
             />
           </div>
+          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
 
           <div>
             <label
@@ -84,6 +85,9 @@ export default function Bookings() {
               placeholder="your@email.com"
             />
           </div>
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email}</p>
+          )}
           <div>
             <label
               htmlFor="phoneNumber"
@@ -99,6 +103,9 @@ export default function Bookings() {
               placeholder="Your Phone Number"
             />
           </div>
+          {errors.phoneNumber && (
+            <p className="text-red-500 text-sm">{errors.phoneNumber}</p>
+          )}
           <div>
             <label
               htmlFor="address"
@@ -114,7 +121,9 @@ export default function Bookings() {
               placeholder="Your Address"
             />
           </div>
-
+          {errors.address && (
+            <p className="text-red-500 text-sm">{errors.address}</p>
+          )}
           <div>
             <label
               htmlFor="message"
@@ -130,6 +139,9 @@ export default function Bookings() {
               placeholder="Your message..."
             ></textarea>
           </div>
+          {errors.message && (
+            <p className="text-red-500 text-sm">{errors.message}</p>
+          )}
 
           <button
             type="submit"
