@@ -4,18 +4,18 @@ import hero from "../../../public/images/hero.jpg";
 
 const WhyUs: React.FC = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-12 px-[4%] py-28 ">
+    <div className="flex flex-col lg:flex-row bg-[#D3D3D3] items-center gap-12 px-[4%] py-28 ">
       <div className="lg:w-1/2 flex flex-col justify-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#4682B4] mb-6">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
           Why Choose Us
         </h1>
-        <p className="text-lg text-[#4682B4] leading-relaxed mb-6">
+        <p className="text-lg leading-relaxed mb-6">
           Welcome to Palushaj Epoxy Coatings, where quality craftsmanship and
           dedication to excellence are the foundation of everything we do.
           Founded in 1998, our family-owned business has proudly served
           residential, commercial, and industrial clients for over two decades.
         </p>
-        <p className="text-lg text-[#4682B4] leading-relaxed mb-6">
+        <p className="text-lg leading-relaxed mb-6">
           Today, we specialize in epoxy flooring, concrete polishing, glue and
           tar removal, and professional painting. Whether transforming
           residential spaces or tackling large-scale industrial projects, we
