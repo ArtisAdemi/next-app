@@ -16,21 +16,20 @@ export const Aboutus = () => {
         </div>
       </div>
       <div className="lg:w-1/2 flex flex-col justify-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#4682B4] mb-6">
-          Who We Are
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
+          Who We Are{" "}
         </h1>
-        <p className="text-lg text-[#4682B4] leading-relaxed mb-6">
-          Welcome to Palushaj Epoxy Coatings, where quality craftsmanship and
-          dedication to excellence are the foundation of everything we do.
-          Founded in 1998, our family-owned business has proudly served
-          residential, commercial, and industrial clients for over two decades.
+        <h1 className="text-xs md:text-2xl font-bold ">
+          Building Your Dream Floors Together{" "}
+        </h1>
+        <p className="text-lg leading-relaxed mb-6">
+          Welcome to your trusted partner in epoxy flooring and concrete
+          polishing. We’re dedicated to bringing your vision to life with
+          precision and expertise, ensuring that each project stands out for its
+          durability and beauty. Let us help you create floors that elevate your
+          space from the ground up.
         </p>
-        <p className="text-lg text-[#4682B4] leading-relaxed mb-6">
-          Today, we specialize in epoxy flooring, concrete polishing, glue and
-          tar removal, and professional painting. Whether transforming
-          residential spaces or tackling large-scale industrial projects, we
-          take pride in exceeding expectations and delivering stunning results.
-        </p>
+
         <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg lg:w-1/4 transition-all duration-300">
           Learn More
         </button>
