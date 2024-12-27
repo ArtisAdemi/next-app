@@ -7,7 +7,7 @@ export default function About() {
   return (
     <div className="">
       {/* Hero Section */}
-      <Hero />
+      <Hero title="blla" description="description" />
       <div className="py-28 px-[4%] ">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center mt-6">
           About Us
