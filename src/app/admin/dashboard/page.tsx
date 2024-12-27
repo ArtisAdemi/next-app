@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { getBookingsAction } from '@/app/actions/bookings';
+import { getBookingsAction, updateBookingStatusAction } from '@/app/actions/bookings';
 
 interface Booking {
     _id: string;
@@ -16,6 +16,7 @@ export default function AdminDashboard() {
     const [bookings, setBookings] = useState<Booking[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [updateLoading, setUpdateLoading] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchBookings = async () => {
@@ -36,6 +37,27 @@ export default function AdminDashboard() {
         fetchBookings();
     }, []);
 
+    const handleStatusChange = async (bookingId: string, newStatus: string) => {
+        setUpdateLoading(bookingId);
+        try {
+            const response = await updateBookingStatusAction(bookingId, newStatus);
+            if (response.success) {
+                setBookings(bookings.map(booking => 
+                    booking._id === bookingId 
+                        ? { ...booking, status: newStatus }
+                        : booking
+                ));
+            } else {
+                throw new Error(response.message || 'Failed to update status');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to update booking status');
+        } finally {
+            setUpdateLoading(null);
+        }
+    };
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
@@ -49,7 +71,23 @@ export default function AdminDashboard() {
                         <p><strong>Phone:</strong> {booking.phoneNumber}</p>
                         <p><strong>Location:</strong> {booking.location}</p>
                         <p><strong>Message:</strong> {booking.message}</p>
-                        <p><strong>Status:</strong> {booking.status}</p>
+                        <div className="flex items-center gap-2">
+                            <strong>Status:</strong>
+                            <select 
+                                value={booking.status}
+                                onChange={(e) => handleStatusChange(booking._id, e.target.value)}
+                                disabled={updateLoading === booking._id}
+                                className="border rounded p-1"
+                            >
+                                <option value="pending">Pending</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                            {updateLoading === booking._id && (
+                                <span className="text-sm text-gray-500">Updating...</span>
+                            )}
+                        </div>
                         <p><strong>Created:</strong> {new Date(booking.createdAt).toLocaleString()}</p>
                     </div>
                 ))}
