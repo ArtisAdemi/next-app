@@ -6,7 +6,12 @@ import { FaRegStar } from "react-icons/fa";
 import Navbar from "../globals/Navbar";
 import Image from "next/image";
 
-const Hero = () => {
+interface HeroProps {
+  title: string;
+  description: string;
+}
+
+const Hero: React.FC<HeroProps> = ({ title, description }) => {
   return (
     <div className="flex flex-col lg:flex-row lg:justify-between">
       <div className="w-full lg:w-[45%] relative">
@@ -23,12 +28,10 @@ const Hero = () => {
           <Navbar />
           <div className="px-4 lg:px-8 py-56 flex-1 flex flex-col justify-between">
             <p className="font-bold px-4 lg:px-32 text-white mb-4 text-center lg:text-left">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis aliquid at earum sed dignissimos veniam natus officiis
-              quam fugit
+              {description}
             </p>
             <h1 className="text-4xl lg:text-6xl font-bold text-white text-center">
-              Palushaj Epoxy Flooring
+              {title}
             </h1>
             <div className="lg:flex px-4 space-y-8 lg:space-y-0 justify-between mt-5">
               <div className="flex items-center space-x-2">

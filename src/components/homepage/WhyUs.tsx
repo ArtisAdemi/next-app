@@ -1,23 +1,13 @@
-import hero from "../../../public/images/hero.jpg";
+import React from "react";
 import Image from "next/image";
+import hero from "../../../public/images/hero.jpg";
 
-export const Aboutus = () => {
+const WhyUs: React.FC = () => {
   return (
     <div className="flex flex-col lg:flex-row items-center gap-12 px-[4%] py-28 ">
-      <div className="relative w-full lg:w-2/4">
-        <div className=" overflow-hidden rounded-xl shadow-lg h-[400px] lg:h-[500px]">
-          <Image
-            className="object-cover"
-            fill
-            quality={100}
-            src={hero.src}
-            alt="About Us"
-          />
-        </div>
-      </div>
       <div className="lg:w-1/2 flex flex-col justify-center">
         <h1 className="text-4xl md:text-5xl font-extrabold text-[#4682B4] mb-6">
-          Who We Are
+          Why Choose Us
         </h1>
         <p className="text-lg text-[#4682B4] leading-relaxed mb-6">
           Welcome to Palushaj Epoxy Coatings, where quality craftsmanship and
@@ -35,6 +25,19 @@ export const Aboutus = () => {
           Learn More
         </button>
       </div>
+      <div className="relative w-full lg:w-2/4">
+        <div className=" overflow-hidden rounded-xl shadow-lg h-[400px] lg:h-[500px]">
+          <Image
+            className="object-cover"
+            fill
+            quality={100}
+            src={hero.src}
+            alt="About Us"
+          />
+        </div>
+      </div>
     </div>
   );
 };
+
+export default WhyUs;
