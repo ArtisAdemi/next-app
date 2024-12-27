@@ -19,9 +19,9 @@ export const OurServices: React.FC = () => {
   };
 
   return (
-    <div className="px-[4%] py-20 bg-[#D3D3D3]">
+    <div className="px-[4%] py-28 bg-white">
       {/* Section Title */}
-      <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-8 text-center">
+      <h1 className="text-4xl md:text-5xl font-extrabold  mb-12">
         Our Services
       </h1>
 
