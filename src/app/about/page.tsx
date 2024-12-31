@@ -1,22 +1,28 @@
-import Hero from "@/components/homepage/Hero";
 import hero from "../../../public/images/hero.jpg";
 import { Footer } from "@/components/globals/Footer";
-import { Cta } from "@/components/globals/Cta";
 
 export default function About() {
   return (
     <div className="">
       {/* Hero Section */}
-      <Hero title="blla" description="description" />
+
       <div className="py-28 px-[4%] ">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center mt-6">
           About Us
         </h1>
         <p className="text-lg  leading-relaxed mb-6 text-center px-60 mt-4 ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-          consectetur dolor, autem animi quas asperiores. Modi blanditiis, est
-          tenetur necessitatibus sunt vel. Delectus voluptas eum numquam in
-          exercitationem sit fugiat!
+          Welcome to Palushaj Epoxy Coatings, where quality craftsmanship and
+          dedication to excellence are the foundation of everything we do.
+        </p>
+        <br />
+        <p className=" text-lg  leading-relaxed mb-6 text-center px-60 ">
+          Founded in 1998, our family-owned business has proudly served
+          residential, commercial, and industrial clients for over two decades.
+          Our journey began in the Balkans, where we grew up valuing hard work,
+          integrity, and perseverance. We started this company with a dream for
+          a better future. It wasn’t easy, but we embraced the challenges,
+          pouring our hearts into building a business that reflects our values
+          and commitment to quality.
         </p>
       </div>
       <div className="flex justify-center py-28 items-center -mt-44 gap-4">
@@ -31,65 +37,77 @@ export default function About() {
           className="object-cover shadow-lg h-[400px] lg:h-[700px] rounded-r-full  "
         />
       </div>
-      <div className="py-28 bg-[#333333] mt-12 px-[4%]">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-white mt-6">
-          Our Mission
-        </h1>
-        <p className="text-lg leading-relaxed text-center px-60 mt-4 text-white mb-8">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-          consectetur dolor, autem animi quas asperiores. Modi blanditiis, est
-          tenetur necessitatibus sunt vel. Delectus voluptas eum numquam in
-          exercitationem sit fugiat!
+      <div>
+        {" "}
+        <p className="text-lg  leading-relaxed mb-6 text-center px-60 mt-4 ">
+          Starting with just a few tools and a lot of determination, we quickly
+          earned a reputation for our meticulous attention to detail,
+          reliability, and customer-focused approach. Today, we specialize in
+          epoxy flooring, concrete polishing, glue and tar removal, and
+          professional painting. Whether transforming residential spaces or
+          tackling large-scale industrial projects, we take pride in exceeding
+          expectations and delivering stunning results. At Palushaj Epoxy
+          Coatings, we treat every project as an opportunity to create something
+          lasting and beautiful. Our team is passionate about what we do and
+          dedicated to bringing your vision to life with precision and care. We
+          believe that no project is too big or small—our goal is to provide
+          top-notch service that leaves a lasting impression.
         </p>
-        <div className="flex justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Innovative Solutions",
-                description:
-                  "Deliver innovative and sustainable solutions for our clients.",
-              },
-              {
-                title: "Empowering Communities",
-                description:
-                  "Empower communities through impactful design and technology.",
-              },
-              {
-                title: "Commitment to Excellence",
-                description:
-                  "Maintain a commitment to quality, integrity, and excellence.",
-              },
-              {
-                title: "Fostering Collaboration",
-                description:
-                  "Foster creativity and collaboration in all aspects of our work.",
-              },
-              {
-                title: "Cutting-Edge Tools",
-                description:
-                  "Embrace cutting-edge tools and methodologies for continuous improvement.",
-              },
-              {
-                title: "Customer Satisfaction",
-                description:
-                  "Ensure customer satisfaction by exceeding expectations consistently.",
-              },
-            ].map((card, index) => (
-              <div
-                key={index}
-                className="border border-gray-300 rounded-lg shadow-md p-6 text-center w-[300px] h-[200px] mx-auto"
-              >
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {card.title}
-                </h3>
-                <p className="text-white">{card.description}</p>
-              </div>
-            ))}
+      </div>
+      <div className="py-28">
+        <img
+          src={hero.src}
+          alt=""
+          className="w-full object-cover shadow-lg h-[400px]"
+        />
+        <p className="text-lg  leading-relaxed  text-center px-60 mt-10 ">
+          At Palushaj Epoxy Coatings, we treat every project as an opportunity
+          to create something lasting and beautiful. Our team is passionate
+          about what we do and dedicated to bringing your vision to life with
+          precision and care. We believe that no project is too big or small—our
+          goal is to provide top-notch service that leaves a lasting impression.
+          <br />
+          <br />
+          As a family business, we understand the value of trust and long-term
+          relationships. That’s why most of our work comes from referrals, a
+          testament to the loyalty and satisfaction of our clients. Now, with a
+          new generation stepping in, we’re blending the experience of the past
+          with innovative ideas for the future to grow and serve our community
+          even better.
+        </p>
+      </div>
+      <div>
+        <div className="px-[4%] py-28 bg-[#D3D3D3] text-black">
+          {/* Title Section */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-start mb-4">
+              Thank you for trusting us with <br /> your projects.
+            </h1>
+            <hr className="border-[#C0C0C0]  mx-auto" />
+          </div>
+
+          {/* Content Row */}
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+            {/* Description */}
+            <p className="text-gray-800 max-w-lg text-center lg:text-left">
+              Whether you’re looking to enhance your home, office, or industrial
+              space, we’re here to help every step of the way. Let’s build
+              something extraordinary together.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 ">
+              <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white text-base px-6 py-3 rounded-lg shadow-lg flex-1 whitespace-nowrap transition-all duration-300">
+                Book Now
+              </button>
+              <button className="border border-[#FF8C00] text-[#FF8C00] hover:bg-[#FF8C00] hover:text-white px-6 py-3 rounded-lg shadow-lg flex-1 whitespace-nowrap transition-all duration-300">
+                Our Services
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <Cta />
       <Footer />
     </div>
   );
