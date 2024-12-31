@@ -5,6 +5,7 @@ import WhyUs from "@/components/homepage/WhyUs";
 import { WorkProcess } from "@/components/homepage/WorkProcess";
 import { Cta } from "@/components/globals/Cta";
 import { Footer } from "@/components/globals/Footer";
+import ProjectGallery from "@/components/globals/ProjectGallery";
 
 export default function Home() {
   return (
@@ -18,6 +19,9 @@ export default function Home() {
         <WhyUs />
         <WorkProcess />
         <OurServices />
+
+        <ProjectGallery />
+
         <Cta />
         <Footer />
       </div>
