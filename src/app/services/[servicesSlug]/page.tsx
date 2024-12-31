@@ -14,8 +14,8 @@ const SingleService = () => {
   }
 
   return (
-    <div className=" bg-gray-100 rounded-lg shadow-lg">
-      <h1 className="text-4xl font-bold text-center mb-4">{service.title}</h1>
+    <div className=" bg-gray-100 rounded-lg py-28 shadow-lg">
+      <h1 className="text-4xl font-bold text-center mb-10">{service.title}</h1>
       <div className="flex flex-wrap  text-black py-28 bg-[#D3D3D3] px-6">
         {/* Left Section */}
         <div className="w-full  sm:w-1/2 flex flex-wrap gap-4">
@@ -38,7 +38,6 @@ const SingleService = () => {
           </button>
         </div>
       </div>
-
       <div className="bg-[#333333] text-white py-28 px-6">
         <div className="flex">
           {/* First column: Benefits and Title */}
@@ -78,7 +77,6 @@ const SingleService = () => {
           <div className="w-2/5 max-h-screen bg-gray-700 rounded-lg"></div>
         </div>
       </div>
-
       {service.maintenance && service.maintenance.intro && (
         <div className="mb-8 py-16 bg-gray-100">
           <h3 className="text-3xl font-bold text-center text-gray-800 mb-10">
@@ -98,20 +96,27 @@ const SingleService = () => {
           </div>
         </div>
       )}
-
       {service.servicesIntro && service.servicesDescription && (
-        <div className="mb-4">
-          <h3 className="text-xl font-semibold">{service.servicesIntro}</h3>
-          <h3 className="text-lg font-semibold">
+        <div className="mb-4 py-28">
+          <h3 className="text-3xl font-bold text-center text-gray-800 mb-3">
+            {service.servicesIntro}
+          </h3>
+          <h3 className="text-lg font-medium text-center">
             {service.servicesDescription}
           </h3>
-          <ul className="list-disc pl-5">
-            {service.services.map((service, index) => (
-              <li key={index} className="text-gray-600">
-                {service.title}: {service.text}
-              </li>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center mt-6 max-w-4xl mx-auto">
+            {service.services.slice(0, 4).map((service, index) => (
+              <div
+                key={index}
+                className="w-96 p-6 bg-white shadow-md rounded-lg text-center "
+              >
+                <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                  {service.title}
+                </h4>
+                <p className="text-gray-600">{service.text}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
       {service.installationIntro && (
@@ -136,43 +141,86 @@ const SingleService = () => {
           </div>
         </div>
       )}
-
       {service.finishesIntro && (
-        <div className="mb-4">
-          <h3 className="text-xl font-semibold">{service.finishesIntro}</h3>
-          <ul className="list-disc pl-5">
+        <div className="mb-4 py-28">
+          <h3 className="text-3xl font-bold text-center text-black mb-10">
+            {service.finishesIntro}
+          </h3>
+          <div className="flex flex-wrap justify-center gap-6">
             {service.finishes.map((finish, index) => (
-              <li key={index} className="text-gray-600">
-                {finish.title}: {finish.text}
-              </li>
+              <div
+                key={index}
+                className="bg-[#333333] border shadow-md rounded-lg p-6 text-white w-72"
+              >
+                <h4 className="font-semibold text-xl mb-2">{finish.title}</h4>
+                <p>{finish.text}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
+      {/* // tar glue // */}
       {service.removalIntro && (
-        <div className="mb-4">
-          <h3 className="text-xl font-semibold">{service.removalIntro}</h3>
-          <ul className="list-disc pl-5">
+        <div className="py-28 bg-black">
+          <h3 className="text-3xl font-bold text-center text-white mb-10">
+            {service.removalIntro}
+          </h3>
+          <div className="flex items-center justify-center gap-8 px-4">
             {service.removalSteps.map((removal, index) => (
-              <li key={index} className="text-gray-600">
-                {removal.step}: {removal.text}
-              </li>
+              <React.Fragment key={index}>
+                <div className="text-center">
+                  <p className="text-white text-xl font-semibold">
+                    {removal.step}
+                  </p>
+                  <p className="text-gray-200 text-base mt-1">{removal.text}</p>
+                </div>
+                {index < service.removalSteps.length - 1 && (
+                  <div className="h-10 w-[1px] bg-gray-300"></div>
+                )}
+              </React.Fragment>
             ))}
-          </ul>
+          </div>
         </div>
       )}
+
       {service.whyUs && (
-        <div className="mb-4">
-          <h3 className="text-xl font-semibold">{service.whyUs}</h3>
-          <ul className="list-disc pl-5">
-            {service.whyUsSteps.map((whyUsStep, index) => (
-              <li key={index} className="text-gray-600">
-                {whyUsStep.step}: {whyUsStep.text}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-4 py-28">
+          <h3 className="text-3xl font-bold text-center">{service.whyUs}</h3>
+          <div className="flex flex-col items-center gap-6 mt-6">
+            {/* First row with 2 items */}
+            <div className="flex gap-6">
+              {service.whyUsSteps.slice(0, 2).map((whyUsStep, index) => (
+                <div
+                  key={index}
+                  className="w-80 h-40 border  p-4  flex flex-col justify-center items-center transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out text-gray-600"
+                >
+                  <h4 className="font-bold text-lg text-center text-black mb-2">
+                    {whyUsStep.step}
+                  </h4>
+                  <p className="text-center">{whyUsStep.text}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Second row with 3 items */}
+            <div className="flex gap-6">
+              {service.whyUsSteps.slice(2, 5).map((whyUsStep, index) => (
+                <div
+                  key={index}
+                  className="w-80 h-40 border  p-4  flex flex-col justify-center items-center transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out text-gray-600"
+                >
+                  <h4 className="font-bold text-lg text-center text-black mb-2">
+                    {whyUsStep.step}
+                  </h4>
+                  <p className="text-center">{whyUsStep.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       )}
+
+      {/* // tar glue // */}
       {service.upgrade && (
         <div
           className=" bg-cover bg-center bg-gray-300 py-28 text-white relative flex items-center justify-center"
@@ -186,7 +234,6 @@ const SingleService = () => {
           </div>
         </div>
       )}
-
       {service.contactText && (
         <div className="px-[4%] py-28 bg-[#D3D3D3] text-black flex items-center justify-between">
           {/* Title Section */}
@@ -201,32 +248,44 @@ const SingleService = () => {
         </div>
       )}
 
+      {/* ///CHECK/// */}
       {service.expertiseIntro && service.expertiseDescription && (
         <div className="mb-4">
-          <h3 className="text-xl font-semibold">{service.finishesIntro}</h3>
+          <h3 className="text-xl font-semibold text-red-900">
+            {service.finishesIntro}
+          </h3>
           <p>{service.expertiseDescription}</p>
           <ul className="list-disc pl-5">
             {service.expertise.map((expertise, index) => (
-              <li key={index} className="text-gray-600">
+              <li key={index} className="text-red-900">
                 {expertise.title}: {expertise.text}
               </li>
             ))}
           </ul>
         </div>
       )}
+      {/* ///CHECK/// */}
       {service.workIntro && (
-        <div className="mt-4">
-          <h3 className="text-xl font-semibold">{service.workIntro}</h3>
-          <p className="text-gray-600">
+        <div className="py-28 px-[4%] bg-[#333333]">
+          <h3 className="text-3xl font-bold text-center text-white">
+            {service.workIntro}
+          </h3>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {service.work.map((work, index) => (
-              <span key={index}>
-                {work.title}: {work.text}
-                <br />
-              </span>
+              <div
+                key={index}
+                className="border p-6 h-full flex flex-col transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out"
+              >
+                <h4 className="text-lg text-white font-semibold">
+                  {work.title}
+                </h4>
+                <p className="text-white mt-2 flex-grow">{work.text}</p>
+              </div>
             ))}
-          </p>
+          </div>
         </div>
       )}
+
       {service.space && (
         <div className="py-28 px-[4%] bg-[#333333]">
           <h3 className="text-3xl font-bold  text-center text-white">
@@ -236,7 +295,7 @@ const SingleService = () => {
             {service.spaceTypes.map((spaceType, index) => (
               <div
                 key={index}
-                className="border p-6 hover:scale-105 rounded-lg shadow-lg h-full flex flex-col transition-transform duration-500 ease-in-out"
+                className="border p-6 h-full flex flex-col transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out"
               >
                 <h4 className="text-lg text-white font-semibold">
                   {spaceType.type}
@@ -247,10 +306,9 @@ const SingleService = () => {
           </div>
         </div>
       )}
-
       {service.typesIntro && (
-        <div className="mt-4">
-          <h3 className="text-xl font-semibold text-center">
+        <div className="mt-4 py-28">
+          <h3 className="text-3xl font-bold  text-center">
             {service.typesIntro}
           </h3>
           <div className="flex flex-col items-center gap-6 mt-6">
@@ -259,9 +317,9 @@ const SingleService = () => {
               {service.types.slice(0, 2).map((type, index) => (
                 <div
                   key={index}
-                  className="w-80 h-40 border rounded-lg p-4 shadow-sm bg-white flex flex-col justify-center items-center text-gray-600"
+                  className="w-80 h-40 border rounded-lg p-4 shadow-sm  flex flex-col justify-center items-center text-gray-600"
                 >
-                  <h4 className="font-bold text-lg text-center mb-2">
+                  <h4 className="font-bold text-lg text-center text-black mb-2">
                     {type.title}
                   </h4>
                   <p className="text-center">{type.text}</p>
@@ -274,9 +332,9 @@ const SingleService = () => {
               {service.types.slice(2, 5).map((type, index) => (
                 <div
                   key={index}
-                  className="w-80 h-40 border rounded-lg p-4 shadow-sm bg-white flex flex-col justify-center items-center text-gray-600"
+                  className="w-80 h-40 border rounded-lg p-4 shadow-sm  flex flex-col justify-center items-center text-gray-600"
                 >
-                  <h4 className="font-bold text-lg text-center mb-2">
+                  <h4 className="font-bold text-lg text-black text-center mb-2">
                     {type.title}
                   </h4>
                   <p className="text-center">{type.text}</p>
