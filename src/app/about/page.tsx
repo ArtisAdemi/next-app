@@ -1,13 +1,11 @@
-import Hero from "@/components/homepage/Hero";
 import hero from "../../../public/images/hero.jpg";
 import { Footer } from "@/components/globals/Footer";
-import { Cta } from "@/components/globals/Cta";
 
 export default function About() {
   return (
     <div className="">
       {/* Hero Section */}
-      <Hero title="blla" description="description" />
+
       <div className="py-28 px-[4%] ">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center mt-6">
           About Us

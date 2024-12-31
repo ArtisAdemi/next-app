@@ -2,7 +2,6 @@
 import React from "react";
 import servicesData from "../../../../public/services.json"; // Adjust the import path as necessary
 import { useParams } from "next/navigation";
-//import Hero from "@/components/homepage/Hero";
 
 const SingleService = () => {
   const { servicesSlug } = useParams();
