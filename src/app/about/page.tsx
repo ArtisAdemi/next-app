@@ -1,11 +1,17 @@
 import { Cta } from "@/components/globals/Cta";
 import hero from "../../../public/images/hero.jpg";
 import { Footer } from "@/components/globals/Footer";
+import Hero from "@/components/homepage/Hero";
 
 export default function About() {
   return (
     <div>
       {/* Hero Section */}
+
+      <Hero
+        title="About Us"
+        description="Your trusted partner for high-quality epoxy coatings and concrete polishing solutions."
+      />
       <div className="py-16 px-6 md:py-28 md:px-[4%]">
         <h1 className="text-3xl md:text-5xl font-extrabold text-center mt-6">
           About Us
