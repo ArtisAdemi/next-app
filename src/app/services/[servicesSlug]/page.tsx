@@ -32,15 +32,15 @@ const SingleService = () => {
           </div>
           <div className="mb-6 text-black">{service.content}</div>
 
-          <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg w-1/4 transition-all duration-300">
+          <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg w-full lg:w-1/4 transition-all duration-300">
             Learn More
           </button>
         </div>
       </div>
       <div className="bg-[#333333] text-white py-28 px-6">
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           {/* First column: Benefits and Title */}
-          <div className="w-3/5">
+          <div className="md:w-3/5">
             {service.why && (
               <h2 className="text-4xl font-semibold mb-4">{service.why}</h2>
             )}
@@ -73,7 +73,7 @@ const SingleService = () => {
           </div>
 
           {/* Second column: Placeholder for Image (40% width) */}
-          <div className="w-2/5 max-h-screen bg-gray-700 rounded-lg"></div>
+          <div className="md:w-2/5 max-h-screen bg-gray-700 rounded-lg"></div>
         </div>
       </div>
       {service.maintenance && service.maintenance.intro && (
@@ -96,18 +96,18 @@ const SingleService = () => {
         </div>
       )}
       {service.servicesIntro && service.servicesDescription && (
-        <div className="mb-4 py-28">
+        <div className="mb-4 px-[4%] py-28">
           <h3 className="text-3xl font-bold text-center text-gray-800 mb-3">
             {service.servicesIntro}
           </h3>
           <h3 className="text-lg font-medium text-center">
             {service.servicesDescription}
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center mt-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center mt-6 w-full lg:max-w-4xl mx-auto">
             {service.services.slice(0, 4).map((service, index) => (
               <div
                 key={index}
-                className="w-96 p-6 bg-white shadow-md rounded-lg text-center "
+                className="w-full lg:w-96 p-6 bg-white shadow-md rounded-lg text-center "
               >
                 <h4 className="text-xl font-semibold text-gray-800 mb-2">
                   {service.title}
@@ -123,7 +123,7 @@ const SingleService = () => {
           <h3 className="text-3xl font-bold text-center text-white mb-10">
             {service.installationIntro}
           </h3>
-          <div className="flex items-center justify-center gap-8 px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 px-4">
             {service.installationSteps.map((step, index) => (
               <React.Fragment key={index}>
                 <div className="text-center">
@@ -164,7 +164,7 @@ const SingleService = () => {
           <h3 className="text-3xl font-bold text-center text-white mb-10">
             {service.removalIntro}
           </h3>
-          <div className="flex items-center justify-center gap-8 px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 px-4">
             {service.removalSteps.map((removal, index) => (
               <React.Fragment key={index}>
                 <div className="text-center">
@@ -187,7 +187,7 @@ const SingleService = () => {
           <h3 className="text-3xl font-bold text-center">{service.whyUs}</h3>
           <div className="flex flex-col items-center gap-6 mt-6">
             {/* First row with 2 items */}
-            <div className="flex gap-6">
+            <div className="flex flex-col lg:flex-row gap-6">
               {service.whyUsSteps.slice(0, 2).map((whyUsStep, index) => (
                 <div
                   key={index}
@@ -202,7 +202,7 @@ const SingleService = () => {
             </div>
 
             {/* Second row with 3 items */}
-            <div className="flex gap-6">
+            <div className="flex flex-col lg:flex-row gap-6">
               {service.whyUsSteps.slice(2, 5).map((whyUsStep, index) => (
                 <div
                   key={index}
@@ -234,9 +234,9 @@ const SingleService = () => {
         </div>
       )}
       {service.contactText && (
-        <div className="px-[4%] py-28 bg-[#D3D3D3] text-black flex items-center justify-between">
+        <div className="px-[4%] py-28 bg-[#D3D3D3] text-black flex gap-y-5 lg:gap-y-0 flex-col lg:flex-row lg:items-center justify-between">
           {/* Title Section */}
-          <h3 className="text-2xl font-extrabold w-1/3">
+          <h3 className="text-2xl font-extrabold text-center lg:text-start lg:w-1/3">
             {service.contactText}
           </h3>
 
@@ -312,7 +312,7 @@ const SingleService = () => {
           </h3>
           <div className="flex flex-col items-center gap-6 mt-6">
             {/* First row with 2 items */}
-            <div className="flex gap-6">
+            <div className="flex flex-col lg:flex-row gap-6">
               {service.types.slice(0, 2).map((type, index) => (
                 <div
                   key={index}
@@ -327,7 +327,7 @@ const SingleService = () => {
             </div>
 
             {/* Second row with 3 items */}
-            <div className="flex gap-6">
+            <div className="flex flex-col lg:flex-row gap-6">
               {service.types.slice(2, 5).map((type, index) => (
                 <div
                   key={index}
