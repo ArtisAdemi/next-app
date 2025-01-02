@@ -6,7 +6,6 @@ import { OurServices } from "@/components/homepage/Ourservices";
 import WhyUs from "@/components/homepage/WhyUs";
 import { WorkProcess } from "@/components/homepage/WorkProcess";
 import { Cta } from "@/components/globals/Cta";
-import { Footer } from "@/components/globals/Footer";
 import ProjectGallery from "@/components/homepage/ProjectGallery";
 
 export default function Home() {
@@ -28,7 +27,6 @@ export default function Home() {
         <ProjectGallery ref={projectGalleryRef} />
 
         <Cta />
-        <Footer />
       </div>
     </div>
   );

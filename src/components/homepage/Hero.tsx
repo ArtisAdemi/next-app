@@ -85,7 +85,7 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
                 }
               }}
             >
-              View Collections
+              View Project Gallery
             </button>
           </div>
         </div>
