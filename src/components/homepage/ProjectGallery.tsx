@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState, forwardRef } from "react";
 
-const ProjectGallery = () => {
+const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
   const projects = [
     {
       id: 1,
@@ -69,7 +69,7 @@ const ProjectGallery = () => {
   };
 
   return (
-    <div className="px-[4%] pb-28">
+    <div ref={ref} className="px-[4%] pb-28">
       <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
         Before and After Comparisons
       </h1>
@@ -111,5 +111,5 @@ const ProjectGallery = () => {
       </div>
     </div>
   );
-};
+});
 export default ProjectGallery;

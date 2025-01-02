@@ -2,6 +2,7 @@
 import React from "react";
 import servicesData from "../../../../public/services.json"; // Adjust the import path as necessary
 import { useParams } from "next/navigation";
+import EpoxyGallery from "@/components/EpoxyGallery";
 
 const SingleService = () => {
   const { servicesSlug } = useParams();
@@ -148,6 +149,11 @@ const SingleService = () => {
               </div>
             ))}
           </div>
+        </div>
+      )}
+      {servicesSlug === "epoxy-flooring" && (
+        <div>
+          <EpoxyGallery />
         </div>
       )}
       {service.installationIntro && (
