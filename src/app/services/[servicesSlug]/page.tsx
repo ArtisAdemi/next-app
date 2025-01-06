@@ -249,20 +249,29 @@ const SingleService = () => {
 
       {/* ///CHECK/// */}
       {service.expertiseIntro && service.expertiseDescription && (
-        <div className="mb-4">
-          <h3 className="text-xl font-semibold text-red-900">
+        <div className="mb-4 text-center py-28 bg-gradient-to-b from-gray-100 via-white to-gray-100">
+          <h3 className="text-2xl font-bold text-black mb-6">
             {service.finishesIntro}
           </h3>
-          <p>{service.expertiseDescription}</p>
-          <ul className="list-disc pl-5">
+          <p className="mb-8 text-gray-700 text-lg max-w-2xl mx-auto">
+            {service.expertiseDescription}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-6 max-w-4xl mx-auto">
             {service.expertise.map((expertise, index) => (
-              <li key={index} className="text-red-900">
-                {expertise.title}: {expertise.text}
-              </li>
+              <div
+                key={index}
+                className="bg-white border rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 p-6"
+              >
+                <h4 className="text-lg font-semibold text-black mb-2">
+                  {expertise.title}
+                </h4>
+                <p className="text-gray-600">{expertise.text}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
+
       {/* ///CHECK/// */}
       {service.workIntro && (
         <div className="py-28 px-[4%] bg-[#333333]">

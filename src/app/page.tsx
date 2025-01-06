@@ -6,6 +6,8 @@ import { WorkProcess } from "@/components/homepage/WorkProcess";
 import { Cta } from "@/components/globals/Cta";
 import { Footer } from "@/components/globals/Footer";
 import ProjectGallery from "@/components/globals/ProjectGallery";
+import Faq from "@/components/homepage/Faq";
+import Secondcta from "@/components/homepage/Secondcta";
 
 export default function Home() {
   return (
@@ -21,8 +23,10 @@ export default function Home() {
         <OurServices />
 
         <ProjectGallery />
+        <Secondcta />
 
         <Cta />
+        <Faq />
         <Footer />
       </div>
     </div>
