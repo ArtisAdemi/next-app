@@ -30,7 +30,7 @@ export const About = () => {
           development, and tailored solutions for businesses of all sizes. Your
           vision, our expertise—together, we create something remarkable.
         </p>
-        <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg w-1/4 transition-all duration-300">
+        <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg lg:w-1/4 transition-all duration-300">
           Learn More
         </button>
       </div>

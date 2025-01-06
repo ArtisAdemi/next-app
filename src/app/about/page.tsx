@@ -1,21 +1,26 @@
+import { Cta } from "@/components/globals/Cta";
 import hero from "../../../public/images/hero.jpg";
 import { Footer } from "@/components/globals/Footer";
+import Hero from "@/components/homepage/Hero";
 
 export default function About() {
   return (
-    <div className="">
+    <div>
       {/* Hero Section */}
 
-      <div className="py-28 px-[4%] ">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center mt-6">
+      <Hero
+        title="About Us"
+        description="Your trusted partner for high-quality epoxy coatings and concrete polishing solutions."
+      />
+      <div className="py-16 px-6 md:py-28 md:px-[4%]">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-center mt-6">
           About Us
         </h1>
-        <p className="text-lg  leading-relaxed mb-6 text-center px-60 mt-4 ">
+        <p className="text-base md:text-lg leading-relaxed mb-6 text-center mt-4 max-w-4xl mx-auto">
           Welcome to Palushaj Epoxy Coatings, where quality craftsmanship and
           dedication to excellence are the foundation of everything we do.
         </p>
-        <br />
-        <p className=" text-lg  leading-relaxed mb-6 text-center px-60 ">
+        <p className="text-base md:text-lg leading-relaxed mb-6 text-center mt-4 max-w-4xl mx-auto">
           Founded in 1998, our family-owned business has proudly served
           residential, commercial, and industrial clients for over two decades.
           Our journey began in the Balkans, where we grew up valuing hard work,
@@ -25,47 +30,48 @@ export default function About() {
           and commitment to quality.
         </p>
       </div>
-      <div className="flex justify-center py-28 items-center -mt-44 gap-4">
+
+      {/* Image Section */}
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4 px-6 md:px-0 py-10 md:py-28">
         <img
           src={hero.src}
-          alt=""
-          className="object-cover shadow-lg h-[600px] lg:h-[600px] rounded-l-full  "
+          alt="Hero Image"
+          className="object-cover shadow-lg h-60 md:h-[600px] rounded-l-full w-full md:w-auto"
         />
         <img
           src={hero.src}
-          alt=""
-          className="object-cover shadow-lg h-[400px] lg:h-[700px] rounded-r-full  "
+          alt="Hero Image"
+          className="object-cover shadow-lg h-60 md:h-[600px] rounded-r-full w-full md:w-auto"
         />
       </div>
-      <div>
-        {" "}
-        <p className="text-lg  leading-relaxed mb-6 text-center px-60 mt-4 ">
+
+      {/* Text Section */}
+      <div className="px-6 md:px-[4%]">
+        <p className="text-base md:text-lg leading-relaxed mb-6 text-center mt-4 max-w-4xl mx-auto">
           Starting with just a few tools and a lot of determination, we quickly
           earned a reputation for our meticulous attention to detail,
           reliability, and customer-focused approach. Today, we specialize in
           epoxy flooring, concrete polishing, glue and tar removal, and
           professional painting. Whether transforming residential spaces or
           tackling large-scale industrial projects, we take pride in exceeding
-          expectations and delivering stunning results. At Palushaj Epoxy
-          Coatings, we treat every project as an opportunity to create something
-          lasting and beautiful. Our team is passionate about what we do and
-          dedicated to bringing your vision to life with precision and care. We
-          believe that no project is too big or small—our goal is to provide
-          top-notch service that leaves a lasting impression.
+          expectations and delivering stunning results.
         </p>
       </div>
-      <div className="py-28">
+
+      {/* Full-Width Image */}
+      <div className="py-10 md:py-28 px-6 md:px-0">
         <img
           src={hero.src}
-          alt=""
-          className="w-full object-cover shadow-lg h-[400px]"
+          alt="Full-Width Image"
+          className="w-full object-cover shadow-lg h-60 md:h-[400px]"
         />
-        <p className="text-lg  leading-relaxed  text-center px-60 mt-10 ">
+        <p className="text-base md:text-lg leading-relaxed text-center mt-6 max-w-4xl mx-auto">
           At Palushaj Epoxy Coatings, we treat every project as an opportunity
           to create something lasting and beautiful. Our team is passionate
           about what we do and dedicated to bringing your vision to life with
-          precision and care. We believe that no project is too big or small—our
-          goal is to provide top-notch service that leaves a lasting impression.
+          precision and care. We believe that no project is too big or small—
+          our goal is to provide top-notch service that leaves a lasting
+          impression.
           <br />
           <br />
           As a family business, we understand the value of trust and long-term
@@ -76,38 +82,13 @@ export default function About() {
           even better.
         </p>
       </div>
-      <div>
-        <div className="px-[4%] py-28 bg-[#D3D3D3] text-black">
-          {/* Title Section */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-start mb-4">
-              Thank you for trusting us with <br /> your projects.
-            </h1>
-            <hr className="border-[#C0C0C0]  mx-auto" />
-          </div>
 
-          {/* Content Row */}
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
-            {/* Description */}
-            <p className="text-gray-800 max-w-lg text-center lg:text-left">
-              Whether you’re looking to enhance your home, office, or industrial
-              space, we’re here to help every step of the way. Let’s build
-              something extraordinary together.
-            </p>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 ">
-              <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white text-base px-6 py-3 rounded-lg shadow-lg flex-1 whitespace-nowrap transition-all duration-300">
-                Book Now
-              </button>
-              <button className="border border-[#FF8C00] text-[#FF8C00] hover:bg-[#FF8C00] hover:text-white px-6 py-3 rounded-lg shadow-lg flex-1 whitespace-nowrap transition-all duration-300">
-                Our Services
-              </button>
-            </div>
-          </div>
-        </div>
+      {/* Call-to-Action */}
+      <div className="">
+        <Cta />
       </div>
 
+      {/* Footer */}
       <Footer />
     </div>
   );

@@ -32,15 +32,15 @@ const SingleService = () => {
           </div>
           <div className="mb-6 text-black">{service.content}</div>
 
-          <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg w-1/4 transition-all duration-300">
+          <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg w-full lg:w-1/4 transition-all duration-300">
             Learn More
           </button>
         </div>
       </div>
       <div className="bg-[#333333] text-white py-28 px-6">
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           {/* First column: Benefits and Title */}
-          <div className="w-3/5">
+          <div className="md:w-3/5">
             {service.why && (
               <h2 className="text-4xl font-semibold mb-4">{service.why}</h2>
             )}
@@ -73,46 +73,78 @@ const SingleService = () => {
           </div>
 
           {/* Second column: Placeholder for Image (40% width) */}
-          <div className="w-2/5 max-h-screen bg-gray-700 rounded-lg"></div>
+          <div className="md:w-2/5 max-h-screen bg-gray-700 rounded-lg"></div>
         </div>
       </div>
-      {service.maintenance && service.maintenance.intro && (
-        <div className="mb-8 py-16 bg-gray-100">
-          <h3 className="text-3xl font-bold text-center text-gray-800 mb-10">
-            {service.maintenance.intro}
+      {/* ///CHECK/// */}
+      {service.expertiseIntro && service.expertiseDescription && (
+        <div className="mb-4">
+          <h3 className="text-xl font-semibold text-red-900">
+            {service.finishesIntro}
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4 sm:px-8 lg:px-16">
-            {service.maintenance.steps.map((step, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg border border-gray-200 shadow-lg flex items-center justify-center text-center"
-              >
-                <p className="text-gray-600 text-base leading-relaxed">
-                  {step}
-                </p>
-              </div>
+          <p>{service.expertiseDescription}</p>
+          <ul className="list-disc pl-5">
+            {service.expertise.map((expertise, index) => (
+              <li key={index} className="text-red-900">
+                {expertise.title}: {expertise.text}
+              </li>
             ))}
+          </ul>
+        </div>
+      )}
+      {service.typesIntro && (
+        <div className="mt-4 py-28">
+          <h3 className="text-3xl font-bold  text-center">
+            {service.typesIntro}
+          </h3>
+          <div className="flex flex-col items-center gap-6 mt-6">
+            {/* First row with 2 items */}
+            <div className="flex flex-col lg:flex-row gap-6">
+              {service.types.slice(0, 2).map((type, index) => (
+                <div
+                  key={index}
+                  className="w-80 h-40 border rounded-lg p-4 shadow-sm  flex flex-col justify-center items-center text-gray-600"
+                >
+                  <h4 className="font-bold text-lg text-center text-black mb-2">
+                    {type.title}
+                  </h4>
+                  <p className="text-center">{type.text}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Second row with 3 items */}
+            <div className="flex flex-col lg:flex-row gap-6">
+              {service.types.slice(2, 5).map((type, index) => (
+                <div
+                  key={index}
+                  className="w-80 h-40 border rounded-lg p-4 shadow-sm  flex flex-col justify-center items-center text-gray-600"
+                >
+                  <h4 className="font-bold text-lg text-black text-center mb-2">
+                    {type.title}
+                  </h4>
+                  <p className="text-center">{type.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
-      {service.servicesIntro && service.servicesDescription && (
-        <div className="mb-4 py-28">
-          <h3 className="text-3xl font-bold text-center text-gray-800 mb-3">
-            {service.servicesIntro}
+      {service.space && (
+        <div className="py-28 px-[4%] bg-[#333333]">
+          <h3 className="text-3xl font-bold  text-center text-white">
+            {service.space}
           </h3>
-          <h3 className="text-lg font-medium text-center">
-            {service.servicesDescription}
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center mt-6 max-w-4xl mx-auto">
-            {service.services.slice(0, 4).map((service, index) => (
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.spaceTypes.map((spaceType, index) => (
               <div
                 key={index}
-                className="w-96 p-6 bg-white shadow-md rounded-lg text-center "
+                className="border p-6 h-full flex flex-col transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out"
               >
-                <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                  {service.title}
+                <h4 className="text-lg text-white font-semibold">
+                  {spaceType.type}
                 </h4>
-                <p className="text-gray-600">{service.text}</p>
+                <p className="text-white mt-2 flex-grow">{spaceType.text}</p>
               </div>
             ))}
           </div>
@@ -123,7 +155,7 @@ const SingleService = () => {
           <h3 className="text-3xl font-bold text-center text-white mb-10">
             {service.installationIntro}
           </h3>
-          <div className="flex items-center justify-center gap-8 px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 px-4">
             {service.installationSteps.map((step, index) => (
               <React.Fragment key={index}>
                 <div className="text-center">
@@ -140,6 +172,49 @@ const SingleService = () => {
           </div>
         </div>
       )}
+      {service.maintenance && service.maintenance.intro && (
+        <div className="mb-8 py-16 bg-gray-100">
+          <h3 className="text-3xl font-bold text-center text-gray-800 mb-10">
+            {service.maintenance.intro}
+          </h3>
+          <div className="justify-center flex flex-col lg:flex-row gap-8 ">
+            {service.maintenance.steps.map((step, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-lg border border-gray-200 shadow-lg flex items-center justify-center text-center"
+              >
+                <p className="text-gray-600 text-base leading-relaxed">
+                  {step}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {service.servicesIntro && service.servicesDescription && (
+        <div className="mb-4 px-[4%] py-28">
+          <h3 className="text-3xl font-bold text-center text-gray-800 mb-3">
+            {service.servicesIntro}
+          </h3>
+          <h3 className="text-lg font-medium text-center">
+            {service.servicesDescription}
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center mt-6 w-full lg:max-w-4xl mx-auto">
+            {service.services.slice(0, 4).map((service, index) => (
+              <div
+                key={index}
+                className="w-full lg:w-96 p-6 bg-white shadow-md rounded-lg text-center "
+              >
+                <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                  {service.title}
+                </h4>
+                <p className="text-gray-600">{service.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {service.finishesIntro && (
         <div className="mb-4 py-28">
           <h3 className="text-3xl font-bold text-center text-black mb-10">
@@ -164,7 +239,7 @@ const SingleService = () => {
           <h3 className="text-3xl font-bold text-center text-white mb-10">
             {service.removalIntro}
           </h3>
-          <div className="flex items-center justify-center gap-8 px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 px-4">
             {service.removalSteps.map((removal, index) => (
               <React.Fragment key={index}>
                 <div className="text-center">
@@ -187,7 +262,7 @@ const SingleService = () => {
           <h3 className="text-3xl font-bold text-center">{service.whyUs}</h3>
           <div className="flex flex-col items-center gap-6 mt-6">
             {/* First row with 2 items */}
-            <div className="flex gap-6">
+            <div className="flex flex-col lg:flex-row gap-6">
               {service.whyUsSteps.slice(0, 2).map((whyUsStep, index) => (
                 <div
                   key={index}
@@ -202,7 +277,7 @@ const SingleService = () => {
             </div>
 
             {/* Second row with 3 items */}
-            <div className="flex gap-6">
+            <div className="flex flex-col lg:flex-row gap-6">
               {service.whyUsSteps.slice(2, 5).map((whyUsStep, index) => (
                 <div
                   key={index}
@@ -231,19 +306,12 @@ const SingleService = () => {
             <h3 className="text-4xl font-bold mb-4">{service.upgrade.intro}</h3>
             <p className="text-lg">{service.upgrade.text}</p>
           </div>
-        </div>
-      )}
-      {service.contactText && (
-        <div className="px-[4%] py-28 bg-[#D3D3D3] text-black flex items-center justify-between">
-          {/* Title Section */}
-          <h3 className="text-2xl font-extrabold w-1/3">
-            {service.contactText}
-          </h3>
 
-          {/* Button Section */}
-          <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white text-base px-6 py-3 rounded-lg shadow-lg transition-all duration-300">
-            Contact Us
-          </button>
+          {/* <div>
+            <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white text-base px-6 py-3 rounded-lg shadow-lg transition-all duration-300">
+              Contact Us
+            </button>
+          </div> */}
         </div>
       )}
 
@@ -293,63 +361,17 @@ const SingleService = () => {
           </div>
         </div>
       )}
-
-      {service.space && (
-        <div className="py-28 px-[4%] bg-[#333333]">
-          <h3 className="text-3xl font-bold  text-center text-white">
-            {service.space}
+      {service.contactText && (
+        <div className="px-[4%] py-28 bg-[#D3D3D3] text-black flex gap-y-5 lg:gap-y-0 flex-col lg:flex-row lg:items-center justify-between">
+          {/* Title Section */}
+          <h3 className="text-2xl font-extrabold text-center lg:text-start lg:w-1/3">
+            {service.contactText}
           </h3>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {service.spaceTypes.map((spaceType, index) => (
-              <div
-                key={index}
-                className="border p-6 h-full flex flex-col transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out"
-              >
-                <h4 className="text-lg text-white font-semibold">
-                  {spaceType.type}
-                </h4>
-                <p className="text-white mt-2 flex-grow">{spaceType.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      {service.typesIntro && (
-        <div className="mt-4 py-28">
-          <h3 className="text-3xl font-bold  text-center">
-            {service.typesIntro}
-          </h3>
-          <div className="flex flex-col items-center gap-6 mt-6">
-            {/* First row with 2 items */}
-            <div className="flex gap-6">
-              {service.types.slice(0, 2).map((type, index) => (
-                <div
-                  key={index}
-                  className="w-80 h-40 border rounded-lg p-4 shadow-sm  flex flex-col justify-center items-center text-gray-600"
-                >
-                  <h4 className="font-bold text-lg text-center text-black mb-2">
-                    {type.title}
-                  </h4>
-                  <p className="text-center">{type.text}</p>
-                </div>
-              ))}
-            </div>
 
-            {/* Second row with 3 items */}
-            <div className="flex gap-6">
-              {service.types.slice(2, 5).map((type, index) => (
-                <div
-                  key={index}
-                  className="w-80 h-40 border rounded-lg p-4 shadow-sm  flex flex-col justify-center items-center text-gray-600"
-                >
-                  <h4 className="font-bold text-lg text-black text-center mb-2">
-                    {type.title}
-                  </h4>
-                  <p className="text-center">{type.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* Button Section */}
+          <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white text-base px-6 py-3 rounded-lg shadow-lg transition-all duration-300">
+            Contact Us
+          </button>
         </div>
       )}
     </div>

@@ -77,6 +77,13 @@ export default function Navbar() {
             Home
           </Link>
           <Link
+            href="/services"
+            className="text-[#545454] hover:text-white duration-300 text-6xl md:text-8xl"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Services
+          </Link>
+          <Link
             href="/about"
             className="text-[#545454] hover:text-white duration-300 text-6xl md:text-8xl"
             onClick={() => setIsMenuOpen(false)}
@@ -97,13 +104,13 @@ export default function Navbar() {
           </p>
           <div className="flex flex-col text-[#545454] space-y-4 mt-4">
             <p className="hover:text-white duration-300 cursor-pointer">
-              3022 Main Street Detroit Michigan
+              Shelby Twp, MI
             </p>
             <p className="hover:text-white duration-300 cursor-pointer">
-              palushajepoxyflooring@gmail.com
+              palushajepoxy@gmail.com
             </p>
             <p className="hover:text-white duration-300 cursor-pointer">
-              +1 234 567 8900
+              +1 586-453-3121
             </p>
           </div>
         </div>
