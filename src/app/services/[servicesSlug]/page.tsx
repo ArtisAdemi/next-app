@@ -133,24 +133,6 @@ const SingleService = () => {
         </div>
       )}
       {service.space && (
-        // <div className="py-28 px-[4%] bg-[#333333]">
-        //   <h3 className="text-3xl font-bold  text-center text-white">
-        //     {service.space}
-        //   </h3>
-        //   <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        //     {service.spaceTypes.map((spaceType, index) => (
-        //       <div
-        //         key={index}
-        //         className="border p-6 h-full flex flex-col transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out"
-        //       >
-        //         <h4 className="text-lg text-white font-semibold">
-        //           {spaceType.type}
-        //         </h4>
-        //         <p className="text-white mt-2 flex-grow">{spaceType.text}</p>
-        //       </div>
-        //     ))}
-        //   </div>
-        // </div>
         <div className="w-full bg-white px-[4%] gap-x-16  py-28">
           <div className="mb-16 ">
             <h5 className="font-semibold text-xl text-[#FF8C00]">
