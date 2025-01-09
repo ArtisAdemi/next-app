@@ -7,6 +7,8 @@ import WhyUs from "@/components/homepage/WhyUs";
 import { WorkProcess } from "@/components/homepage/WorkProcess";
 import { Cta } from "@/components/globals/Cta";
 import ProjectGallery from "@/components/homepage/ProjectGallery";
+import Faq from "@/components/homepage/Faq";
+import Secondcta from "@/components/homepage/Secondcta";
 
 export default function Home() {
   const projectGalleryRef = useRef<HTMLDivElement>(null);
@@ -23,8 +25,11 @@ export default function Home() {
         <WhyUs />
         <WorkProcess />
         <OurServices />
+        <Secondcta />
 
         <ProjectGallery ref={projectGalleryRef} />
+
+        <Faq />
 
         <Cta />
       </div>

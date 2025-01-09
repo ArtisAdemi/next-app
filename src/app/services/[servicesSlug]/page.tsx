@@ -312,6 +312,37 @@ const SingleService = () => {
             <h3 className="text-4xl font-bold mb-4">{service.upgrade.intro}</h3>
             <p className="text-lg">{service.upgrade.text}</p>
           </div>
+
+          {/* <div>
+            <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white text-base px-6 py-3 rounded-lg shadow-lg transition-all duration-300">
+              Contact Us
+            </button>
+          </div> */}
+        </div>
+      )}
+
+      {/* ///CHECK/// */}
+      {service.expertiseIntro && service.expertiseDescription && (
+        <div className="mb-4 text-center py-28 bg-gradient-to-b from-gray-100 via-white to-gray-100">
+          <h3 className="text-2xl font-bold text-black mb-6">
+            {service.finishesIntro}
+          </h3>
+          <p className="mb-8 text-gray-700 text-lg max-w-2xl mx-auto">
+            {service.expertiseDescription}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-6 max-w-4xl mx-auto">
+            {service.expertise.map((expertise, index) => (
+              <div
+                key={index}
+                className="bg-white border rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 p-6"
+              >
+                <h4 className="text-lg font-semibold text-black mb-2">
+                  {expertise.title}
+                </h4>
+                <p className="text-gray-600">{expertise.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
