@@ -1,9 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import Space from "../globals/Space";
 
 export const WorkProcess = () => {
-  const [activeTab, setActiveTab] = useState(1); // Default first tab selected
-
   const steps = [
     {
       id: 1, // Make sure this is the first tab
@@ -29,35 +28,33 @@ export const WorkProcess = () => {
   ];
 
   return (
-    <div className="w-full py-28 text-white bg-[#333333]">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl md:text-5xl text-white font-semibold mb-12 text-center">
-          Construction We Serve
-        </h1>
-        <div className="flex justify-center gap-8">
+    <div className="w-full flex gap-x-16 lg:pl-[4%] py-28">
+      <h5 className="font-semibold text-xl text-[#FF8C00]">Construction</h5>
+      <div>
+        <div className="mb-16">
+          <h1 className="text-5xl font-bold text-black leading-tight">
+            CONSTRUCTION WE SERVE
+          </h1>
+        </div>
+
+        <div className="flex">
           {steps.map((step) => (
             <div
               key={step.id}
-              className={`cursor-pointer flex flex-col items-center ${
-                activeTab === step.id ? "text-white" : "text-white"
-              }`}
-              onClick={() => setActiveTab(step.id)}
+              className={`p-6 cursor-pointer flex-1 h-[350px] text-${
+                step.id === 1 ? "white" : step.id === 2 ? "white" : "black"
+              } bg-[${
+                step.id === 1
+                  ? "#272727"
+                  : step.id === 2
+                  ? "#949494"
+                  : "#EEEEEE"
+              }]`}
             >
-              <div
-                className={`flex items-center justify-center shadow-2xl w-20 h-20 lg:w-40 lg:h-40 border border-[#C0C0C0] rounded-full ${
-                  activeTab === step.id ? "bg-[#D3D3D3]" : "bg-[#333333]"
-                } hover:bg-[#A9A9A9] transition-colors duration-300`}
-              >
-                <span className="text-3xl">{step.icon}</span>
-              </div>
-              <h2 className="text-lg font-medium mt-4">{step.title}</h2>
+              <span className="text-6xl">{step.icon}</span>
+              <Space title={step.title} description={step.description} />
             </div>
           ))}
-        </div>
-        <div className="mt-12 text-center">
-          <p className="text-lg text-white max-w-3xl mx-auto">
-            {steps.find((step) => step.id === activeTab)?.description}
-          </p>
         </div>
       </div>
     </div>
