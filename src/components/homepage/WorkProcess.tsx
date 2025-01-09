@@ -28,15 +28,14 @@ export const WorkProcess = () => {
   ];
 
   return (
-    <div className="w-full flex gap-x-16 lg:pl-[4%] py-28">
-      <h5 className="font-semibold text-xl text-[#FF8C00]">Construction</h5>
-      <div>
-        <div className="mb-16">
-          <h1 className="text-5xl font-bold text-black leading-tight">
-            CONSTRUCTION WE SERVE
-          </h1>
-        </div>
-
+    <div className="w-full gap-x-16  py-28">
+      <div className="mb-16 pl-[4%]">
+        <h5 className="font-semibold text-xl text-[#FF8C00]">Construction</h5>
+        <h1 className="text-5xl font-bold text-black leading-tight">
+          WE SERVE
+        </h1>
+      </div>
+      <div className="pl-[12%]">
         <div className="flex">
           {steps.map((step) => (
             <div
