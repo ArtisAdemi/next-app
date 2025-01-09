@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import bgImage from "../../../public/images/background-hero.jpg";
-import logo from "../../../public/Logo-black-bg.svg";
+import logo from "../../../public/logoo.svg";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineCancel } from "react-icons/md";
 import Image from "next/image";
@@ -28,7 +28,7 @@ export default function Navbar() {
         <div className="mt-3 -mb-8 px-[8%]">
           <div className="flex items-center justify-between py-4">
             <Link href="/" className="font-bold text-xl top-8 left-8 z-20">
-              <Image src={logo.src} width={50} height={50} alt="" />
+              <Image src={logo.src} width={100} height={100} alt="" />
             </Link>
             <div className="flex space-x-4">
               <button

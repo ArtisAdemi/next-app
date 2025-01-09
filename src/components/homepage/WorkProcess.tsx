@@ -41,15 +41,17 @@ export const WorkProcess = () => {
           {steps.map((step) => (
             <div
               key={step.id}
-              className={`p-6 cursor-pointer flex-1 h-[350px] text-${
-                step.id === 1 ? "white" : step.id === 2 ? "white" : "black"
-              } bg-[${
-                step.id === 1
-                  ? "#272727"
-                  : step.id === 2
-                  ? "#949494"
-                  : "#EEEEEE"
-              }]`}
+              className={`p-6 cursor-pointer flex-1 h-[350px]`}
+              style={{
+                backgroundColor:
+                  step.id === 1
+                    ? "#272727"
+                    : step.id === 2
+                    ? "#949494"
+                    : "#EEEEEE",
+                color:
+                  step.id === 1 ? "white" : step.id === 2 ? "white" : "black",
+              }}
             >
               <span className="text-6xl">{step.icon}</span>
               <Space title={step.title} description={step.description} />
