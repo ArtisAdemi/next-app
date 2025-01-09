@@ -1,5 +1,3 @@
-import { Footer } from "@/components/globals/Footer";
-
 export default function Services() {
   return (
     <main className="container mx-auto px-4 py-8">

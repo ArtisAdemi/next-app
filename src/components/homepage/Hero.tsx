@@ -94,4 +94,7 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
   }
 );
 
+// Add display name for the component
+Hero.displayName = "Hero";
+
 export default Hero;

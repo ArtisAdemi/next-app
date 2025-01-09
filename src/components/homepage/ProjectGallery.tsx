@@ -149,4 +149,6 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
   );
 });
 
+ProjectGallery.displayName = "Hero";
+
 export default ProjectGallery;
