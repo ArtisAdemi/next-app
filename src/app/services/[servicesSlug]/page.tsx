@@ -2,6 +2,7 @@
 import React from "react";
 import servicesData from "../../../../public/services.json"; // Adjust the import path as necessary
 import { useParams } from "next/navigation";
+import EpoxyGallery from "@/components/EpoxyGallery";
 
 const SingleService = () => {
   const { servicesSlug } = useParams();
@@ -13,7 +14,7 @@ const SingleService = () => {
   }
 
   return (
-    <div className=" bg-gray-100 rounded-lg py-28 shadow-lg">
+    <div className=" bg-gray-100 rounded-lg shadow-lg">
       <h1 className="text-4xl font-bold text-center mb-10">{service.title}</h1>
       <div className="flex flex-wrap  text-black py-28 bg-[#D3D3D3] px-6">
         {/* Left Section */}
@@ -148,6 +149,11 @@ const SingleService = () => {
               </div>
             ))}
           </div>
+        </div>
+      )}
+      {servicesSlug === "epoxy-flooring" && (
+        <div>
+          <EpoxyGallery />
         </div>
       )}
       {service.installationIntro && (

@@ -21,8 +21,12 @@ const WhyUs: React.FC = () => {
           residential spaces or tackling large-scale industrial projects, we
           take pride in exceeding expectations and delivering stunning results.
         </p>
-        <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg lg:w-1/4 transition-all duration-300">
+        <button className="group relative px-6 py-3 text-white bg-[#FF8C00] lg:w-1/4 rounded-md font-semibold transition-transform duration-300 hover:scale-105">
           Learn More
+          {/* Bottom line */}
+          <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
+          {/* Right line */}
+          <span className="absolute top-0 -right-2 w-0.5 h-full bg-orange-400 transition-transform duration-300 origin-top scale-y-0 group-hover:scale-y-100 group-hover:delay-150"></span>
         </button>
       </div>
       <div className="relative w-full lg:w-2/4">

@@ -45,8 +45,8 @@ export default function Bookings() {
   };
 
   return (
-    <div className="grid bg-gray-900 grid-rows-[1fr] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-8 items-center sm:items-start max-w-2xl w-full">
+    <div className="grid bg-gray-900 grid-rows-[1fr] items-center justify-items-center min-h-screen ">
+      <main className="flex flex-col items-center sm:items-start max-w-2xl w-full py-20  gap-8 ">
         <h1 className="text-5xl font-bold text-white text-center">Book Now</h1>
 
         <form
