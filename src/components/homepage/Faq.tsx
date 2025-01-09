@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import hero from "../../../public/images/hero.jpg";
+import Image from "next/image";
 const Faq: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -30,10 +31,10 @@ const Faq: React.FC = () => {
   ];
 
   return (
-    <div className="py-28 bg-gray-50 px-[2%]">
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 px-6 items-center">
+    <div className="bg-gray-100 flex flex-col items-center w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center justify-items-center pl-[4%]">
         {/* Left Side: Title and FAQ */}
-        <div>
+        <div className="">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
             Relax, we’re always here for you!
           </h2>
@@ -72,7 +73,7 @@ const Faq: React.FC = () => {
                   </span>
                 </button>
                 {activeIndex === index && (
-                  <div className="px-6 pb-5 text-gray-700 text-md leading-relaxed">
+                  <div className="px-6 pb-5  text-gray-700 text-md leading-relaxed">
                     {faq.answer}
                   </div>
                 )}
@@ -82,13 +83,18 @@ const Faq: React.FC = () => {
         </div>
 
         {/* Right Side: Image */}
-        <div className="relative">
-          <div className="absolute inset-0 bg-gray-600 opacity-20 rounded-xl blur-lg"></div>
-          <img
-            src={hero.src}
-            alt="Team working"
-            className="relative rounded-xl ] shadow-lg"
-          />
+        <div className="w-full overflow-hidden">
+          <div
+            className="clip-image"
+            style={{ clipPath: "polygon(5% 0, 100% 0, 100% 100%, 0 100%)" }}
+          >
+            <Image
+              alt="image"
+              src={hero}
+              quality={100}
+              className="w-[100%] max-h-[800px] object-cover"
+            />
+          </div>
         </div>
       </div>
     </div>
