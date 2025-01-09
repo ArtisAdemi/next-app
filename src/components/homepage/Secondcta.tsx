@@ -2,10 +2,7 @@ import React from "react";
 
 const Secondcta: React.FC = () => {
   return (
-    <div
-      className="relative w-full h-[500px] bg-cover bg-center"
-      style={{ backgroundImage: "url('/path-to-your-image.jpg')" }}
-    >
+    <div className="relative w-full h-[500px] bg-cover bg-center">
       {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
