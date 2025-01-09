@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import servicesData from "../../../public/services.json"; // Adjust the import path as necessary
 import { useRouter } from "next/navigation"; // Import useRouter
 import { Service } from "public/serviceTypes";
+import hero from "../../../public/images/hero.jpg";
+import Image from "next/image";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 export const OurServices: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -19,32 +22,41 @@ export const OurServices: React.FC = () => {
   };
 
   return (
-    <div className="px-[4%] py-28 bg-white">
+    <div className="pl-[4%] pr-[12%] py-28 bg-white">
       {/* Section Title */}
-      <h1 className="text-4xl md:text-5xl font-extrabold  mb-12">
-        Our Services
-      </h1>
+      <div className=" mb-12">
+        <h5 className="font-semibold mb-4 text-xl text-[#FF8C00]">Services</h5>
+        <h1 className="text-5xl font-bold text-black leading-tight">
+          Explore our specialized services <br /> designed to meet your needs.
+        </h1>
+      </div>
 
-      {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        {services.map((service) => (
-          <div
-            key={service?.slug}
-            className="flex flex-col justify-start items-start bg-white shadow-md rounded-lg p-4 cursor-pointer"
-            onClick={() => handleServiceClick(service?.slug)}
-          >
-            <div className="p-4 text-white rounded-full flex items-center justify-center mb-3">
-              <span className="text-4xl">🛠️</span>
+      <div className="flex justify-between">
+        <div className="w-full">
+          {/* <img className="w-[80%] h-[600px]" src={hero.src} alt="" /> */}
+          <Image
+            alt="blla"
+            src={hero}
+            quality={100}
+            className="w-[80%] h-[600px]"
+          />
+        </div>
+        {/* Services List */}
+        <div className="w-[55%] flex flex-col justify-evenly">
+          {services.map((service, index) => (
+            <div
+              key={service?.slug}
+              className="flex justify-between items-center bg-white border-b-2 hover:border-b-4 hover:border-[#FF8C00] pb-6 cursor-pointer hover:-translate-y-1 duration-300 mb-2"
+              onClick={() => handleServiceClick(service?.slug)}
+            >
+              <span className="text-2xl font-semibold text-black">
+                {String(index + 1).padStart(2, "0")}{" "}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {service?.title}
+              </span>
+              <IoIosArrowRoundForward size={40} color="#FF8C00" />
             </div>
-            <h2 className="text-lg font-semibold text-gray-800 mb-1 text-center">
-              {service?.title}
-            </h2>
-            {service.maintenance?.intro && <p>{service.maintenance.intro}</p>}
-            <p className="text-sm text-gray-600 text-start">
-              {service?.description}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
