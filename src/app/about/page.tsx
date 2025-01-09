@@ -1,6 +1,6 @@
+"use client";
 import { Cta } from "@/components/globals/Cta";
 import hero from "../../../public/images/hero.jpg";
-import { Footer } from "@/components/globals/Footer";
 import Hero from "@/components/homepage/Hero";
 
 export default function About() {
@@ -8,6 +8,7 @@ export default function About() {
     <div>
       {/* Hero Section */}
 
+      {/* With this Hero section, it is mandatory to have use client, else it will not work */}
       <Hero
         title="About Us"
         description="Your trusted partner for high-quality epoxy coatings and concrete polishing solutions."
@@ -87,9 +88,6 @@ export default function About() {
       <div className="">
         <Cta />
       </div>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
