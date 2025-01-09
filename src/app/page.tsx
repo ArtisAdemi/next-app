@@ -18,7 +18,7 @@ export default function Home() {
       <div>
         <Hero
           ref={projectGalleryRef}
-          title="Welcome to Palushaj Epoxy Coatings"
+          title="Palushi Epoxy Coatings"
           description="Your trusted partner for high-quality epoxy coatings and concrete polishing solutions."
         />
         <About />

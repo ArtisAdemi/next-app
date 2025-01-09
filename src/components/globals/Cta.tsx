@@ -2,38 +2,42 @@ import Link from "next/link";
 
 export const Cta = () => {
   return (
-    <div className="px-[4%] py-28 bg-[#D3D3D3] text-black">
-      {/* Title Section */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-5xl font-extrabold lg:text-start mb-4">
-          Let’s work together. <br /> Contact us today.
-        </h1>
-        <hr className="border-[#C0C0C0]  mx-auto" />
-      </div>
-
-      {/* Content Row */}
-      <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-8">
-        {/* Description */}
-        <p className="text-gray-800 max-w-lg text-center lg:text-left">
-          Whether you’re looking to enhance your home, office, or industrial
-          space, we’re here to help every step of the way. Let’s build something
-          extraordinary together.
-        </p>
-
-        {/* Buttons */}
-        <div className="flex gap-4 ">
-          <Link
-            href="/bookings"
-            className="bg-[#FF8C00] hover:bg-[#FF8C00] text-center text-white text-base px-6 py-3 rounded-lg shadow-lg flex-1 whitespace-nowrap transition-all duration-300"
-          >
-            Book Now
+    <div className="px-[4%] py-28 bg-white text-black">
+      <div className="flex flex-col lg:flex-row justify-evenly items-center bg-gray-100 lg:items-start shadow-md rounded-lg py-20 gap-12">
+        {/* Left Section: Title, Description, Button */}
+        <div className="lg:max-w-lg">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
+            Let’s work together
+          </h1>
+          <p className="text-gray-600 mb-6">
+            Cras at pellentesque eros. Nullam vitae sapien et felis eleifend
+            luctus. Nam ac dui cursus, efficitur ante sed, tempor sapien.
+            Praesent nec mattis enim. Mauris a laoreet purus.
+          </p>
+          <Link href={"/bookings"}>
+            <button className="group relative px-6 py-4  text-white bg-[#FF8C00] lg:w-1/3  font-semibold transition-transform duration-300 hover:scale-105">
+              Book Now
+              {/* Bottom line */}
+              <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
+              {/* Right line */}
+              <span className="absolute top-0 -right-2 w-0.5 h-full bg-orange-400 transition-transform duration-300 origin-top scale-y-0 group-hover:scale-y-100 group-hover:delay-150"></span>
+            </button>
           </Link>
-          <Link
-            href="/services"
-            className="border border-[#FF8C00] text-[#FF8C00] text-center hover:bg-[#FF8C00] hover:text-white px-6 py-3 rounded-lg shadow-lg flex-1 whitespace-nowrap transition-all duration-300"
-          >
-            Our Services
-          </Link>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-6  lg:gap-8">
+          <div className="bg-[#272727] transition-transform duration-500 hover:scale-105 ease-in-out p-6 rounded-lg text-center">
+            <p className="text-white text-2xl font-bold">23+</p>
+            <p className="text-gray-100">Years of Experience</p>
+          </div>
+          <div className="bg-[#949494] p-6 rounded-lg text-center transition-transform duration-500 hover:scale-105 ease-in-out">
+            <p className="text-white text-2xl font-bold">183+</p>
+            <p className="text-gray-100">Happy Clients</p>
+          </div>
+          <div className="bg-[#EEEEEE] p-6 w-[400px]  rounded-lg text-center transition-transform duration-500 hover:scale-105 ease-in-out">
+            <p className="text-black text-2xl font-bold">315+</p>
+            <p className="text-black">Completed Projects</p>
+          </div>
         </div>
       </div>
     </div>

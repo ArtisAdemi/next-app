@@ -66,26 +66,12 @@ export const Footer = () => {
         {/* Social Media */}
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Follow Us</h3>
-          <div className="flex space-x-4">
-            <a href="#" className="hover:text-gray-400 transition-colors">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className="hover:text-gray-400 transition-colors">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="hover:text-gray-400 transition-colors">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" className="hover:text-gray-400 transition-colors">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-          </div>
         </div>
       </div>
 
       {/* Bottom Section */}
       <div className="mt-12 -mb-24 text-center text-white border-t border-gray-600 pt-6">
-        <p>© {new Date().getFullYear()} YourCompany. All Rights Reserved.</p>
+        <p>© {new Date().getFullYear()} Influxo. All Rights Reserved.</p>
       </div>
     </footer>
   );

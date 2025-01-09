@@ -28,13 +28,13 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
           <div className="absolute inset-0 flex flex-col">
             <Navbar />
             <div className="px-4 lg:px-8 py-56 flex-1 flex flex-col justify-between">
-              <p className="font-bold px-4 lg:px-32 text-white mb-4 text-center lg:text-left">
+              <p className="font-md px-4 lg:px-32 lg:text-lg text-white  text-center lg:text-left">
                 {description}
               </p>
               <h1 className="text-4xl lg:text-6xl font-bold text-white text-center">
                 {title}
               </h1>
-              <div className="lg:flex px-4 space-y-8 lg:space-y-0 justify-between mt-5">
+              <div className="lg:flex px-[4%] pl-[10%] space-y-8 lg:space-y-0 justify-between ">
                 <div className="flex items-center space-x-2">
                   <div className="rounded-full p-4 bg-[#2B2B2B]">
                     <IoCheckmark color="#C0C0C0" size={40} />
@@ -78,7 +78,7 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
           <div className="absolute bottom-8 right-8">
             <button
-              className="text-white px-6 py-3 font-semibold hover:underline hover:duration-300"
+              className="text-white text-xl px-6 py-3 font-semibold hover:underline hover:duration-300"
               onClick={() => {
                 if (typeof ref === "object" && ref?.current) {
                   ref.current.scrollIntoView({ behavior: "smooth" });
