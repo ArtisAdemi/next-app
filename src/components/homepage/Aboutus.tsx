@@ -20,7 +20,7 @@ export const About = () => {
             ground up.
           </span>
         </p>
-        <button className="group relative px-6 py-3 mt-4 text-white bg-[#FF8C00] lg:w-1/4  font-semibold transition-transform duration-300 hover:scale-105">
+        <button className="group relative px-6 py-4 mt-4 text-white bg-[#FF8C00] lg:w-1/3  font-semibold transition-transform duration-300 hover:scale-105">
           Learn More
           {/* Bottom line */}
           <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
@@ -29,24 +29,25 @@ export const About = () => {
         </button>
       </div>
       <div className="flex gap-6">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-row gap-4 justify-end">
           <img
             src={hero.src}
             alt="Image 1"
-            className="rounded-lg shadow-md object-cover w-80"
+            className="rounded-lg shadow-md object-cover w-[50%]"
           />
-          <img
-            src={hero.src}
-            alt="Image 2"
-            className="rounded-lg shadow-md object-cover w-80 h-48"
-          />
+          <div className=" flex flex-col gap-4">
+            <img
+              src={hero.src}
+              alt="Image 2"
+              className="rounded-lg shadow-md object-cover w-96 "
+            />
+            <img
+              src={hero.src}
+              alt="Image 2"
+              className="rounded-lg shadow-md object-cover w-[100%] h-56"
+            />
+          </div>
         </div>
-
-        <img
-          src={hero.src}
-          alt="Image 3"
-          className="rounded-lg shadow-md object-cover w-96  "
-        />
       </div>
     </div>
   );
