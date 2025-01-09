@@ -6,8 +6,9 @@ export const Footer = () => {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold">YourLogo</h2>
           <p className="text-gray-400">
-            Empowering your business with innovative digital solutions. Lets
-            build the future together.
+            Founded in 1998, our family-owned business has proudly served
+            residential, commercial, and industrial clients for over two
+            decades.
           </p>
         </div>
 
@@ -18,7 +19,15 @@ export const Footer = () => {
             <li>
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors" 
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors"
               >
                 About Us
               </a>
@@ -31,20 +40,13 @@ export const Footer = () => {
                 Services
               </a>
             </li>
+
             <li>
               <a
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                Blog
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Contact
+                Book Now
               </a>
             </li>
           </ul>
@@ -71,7 +73,7 @@ export const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-12 -mb-24 text-center text-gray-500 border-t border-gray-600 pt-6">
+      <div className="mt-12 -mb-24 text-center text-white border-t border-gray-600 pt-6">
         <p>© {new Date().getFullYear()} YourCompany. All Rights Reserved.</p>
       </div>
     </footer>
