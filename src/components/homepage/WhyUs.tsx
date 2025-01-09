@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+
 import hero from "../../../public/images/hero.jpg";
 
 const WhyUs: React.FC = () => {
