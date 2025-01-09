@@ -25,7 +25,7 @@ export async function getBookingsAction() {
     const { db } = await connectToDatabase();
     const bookings = await db
       .collection("bookings")
-      .find({ status: "pending" })
+      .find()
       .sort({ createdAt: -1 })
       .toArray();
 
