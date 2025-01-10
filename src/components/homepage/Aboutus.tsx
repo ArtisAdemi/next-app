@@ -8,12 +8,12 @@ export const About = () => {
         <h1 className="text-5xl font-bold text-black leading-tight">
           Building Your <br /> Dream Floors Together.
         </h1>
-        <p className="text-xl font-md text-black leading-7 mt-4">
+        <p className="text-xl font-md text-black leading-7 w-2/3 mt-4">
           {" "}
           Welcome to your trusted partner in epoxy flooring and concrete
           polishing. <br /> We’re dedicated to bringing your vision to life with
-          precision and expertise, <br /> ensuring that each project stands out
-          for its durability and beauty. <br /> <br />{" "}
+          precision and expertise, ensuring that each project stands out for its
+          durability and beauty. <br /> <br />{" "}
           <span className="font-semibold text-black">
             {" "}
             Let us help you create floors that elevate your space from the
