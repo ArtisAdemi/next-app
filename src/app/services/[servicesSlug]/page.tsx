@@ -4,6 +4,7 @@ import servicesData from "../../../../public/services.json"; // Adjust the impor
 import { useParams } from "next/navigation";
 import EpoxyGallery from "@/components/EpoxyGallery";
 import Space from "@/components/globals/Space";
+import Navbar from "@/components/globals/Navbar";
 
 const SingleService = () => {
   const { servicesSlug } = useParams();
@@ -16,8 +17,12 @@ const SingleService = () => {
 
   return (
     <div className=" bg-gray-100 rounded-lg shadow-lg">
-      <h1 className="text-4xl font-bold text-center mb-10">{service.title}</h1>
-      <div className="flex flex-wrap  text-black py-28 bg-[#D3D3D3] px-6">
+      <div className="bg-[#333333] mb-20">
+        <Navbar />
+      </div>
+      <h1 className="text-4xl font-bold px-[4%]  ">{service.title}</h1>
+
+      <div className="flex flex-wrap  text-black py-28  bg-[#D3D3D3] px-[4%]">
         {/* Left Section */}
         <div className="w-full  sm:w-1/2 flex flex-wrap gap-4">
           <div className="w-full sm:w-[48%] h-80 bg-gray-600"></div>
