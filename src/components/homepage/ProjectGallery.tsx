@@ -82,13 +82,13 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
         </h1>
       </div>
 
-      <div className="flex gap-x-10 mt-12">
-        <div className="flex flex-col justify-between flex-wrap gap-y-6 ">
+      <div className="flex flex-col lg:flex-row gap-x-10 mt-12">
+        <div className="flex lg:flex-col justify-between lg:flex-wrap gap-x-2 lg:gap-x-0 gap-y-6 mb-6 lg:mb-0">
           {/* Display Thumbnails */}
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="project-comparison relative w-[150px] xl:w-[120px] border rounded-lg border-black h-[150px] xl:h-[120px] cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-in-out"
+              className="project-comparison relative w-[80px] xl:w-[120px] h-[80px] xl:h-[120px] border rounded-lg border-black  cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-in-out"
               onClick={() => setSelectedProjectIndex(index)}
             >
               <Image

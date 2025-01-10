@@ -31,8 +31,8 @@ const Faq: React.FC = () => {
   ];
 
   return (
-    <div className="bg-gray-100 flex flex-col items-center w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center justify-items-center pl-[4%]">
+    <div className="bg-gray-100 flex flex-col items-center py-28 lg:py-0 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center justify-items-center pr-[4%] lg:pr-0 pl-[4%]">
         {/* Left Side: Title and FAQ */}
         <div className="">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
@@ -83,7 +83,7 @@ const Faq: React.FC = () => {
         </div>
 
         {/* Right Side: Image */}
-        <div className="w-full overflow-hidden">
+        <div className="w-full hidden lg:block overflow-hidden">
           <div
             className="clip-image"
             style={{ clipPath: "polygon(5% 0, 100% 0, 100% 100%, 0 100%)" }}
