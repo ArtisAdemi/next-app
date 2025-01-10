@@ -7,12 +7,11 @@ export const Cta = () => {
         {/* Left Section: Title, Description, Button */}
         <div className="lg:max-w-lg">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Let’s work together
+            Contact us today
           </h1>
           <p className="text-gray-600 mb-6">
-            Cras at pellentesque eros. Nullam vitae sapien et felis eleifend
-            luctus. Nam ac dui cursus, efficitur ante sed, tempor sapien.
-            Praesent nec mattis enim. Mauris a laoreet purus.
+            For a consultation and let us bring your concrete back to life with
+            professional precision and care.
           </p>
           <Link href={"/bookings"}>
             <button className="group relative px-6 py-4  text-white bg-[#FF8C00] lg:w-1/3  font-semibold transition-transform duration-300 hover:scale-105">
