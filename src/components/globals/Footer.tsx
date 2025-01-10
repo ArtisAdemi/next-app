@@ -1,5 +1,9 @@
 "use client";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
+import logo from "../../../public/logoo.svg";
+import Image from "next/image";
+import Link from "next/link";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 
 export const Footer = () => {
   const pathname = usePathname();
@@ -9,14 +13,16 @@ export const Footer = () => {
   if (pathname === "/login") {
     return null;
   }
-  
+
   return (
     <footer className="px-[4%] py-28 bg-[#333333] text-white">
       <div className=" mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo and Description */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold">YourLogo</h2>
-          <p className="text-gray-400">
+          <Link href="/" className="font-bold text-xl top-8 left-8 z-20">
+            <Image src={logo.src} width={100} height={100} alt="" />
+          </Link>
+          <p className="text-white w-3/4">
             Founded in 1998, our family-owned business has proudly served
             residential, commercial, and industrial clients for over two
             decades.
@@ -26,46 +32,62 @@ export const Footer = () => {
         {/* Links */}
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Quick Links</h3>
-          <ul className="space-y-2">
+          <ul className="space-y-4 text-lg">
             <li>
-              <a
-                href="#"
+              <Link
+                href={"/"}
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href={"/about"}
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href={"/services"}
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 Services
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
-                href="#"
+              <Link
+                href={"/bookings"}
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 Book Now
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
         {/* Social Media */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Follow Us</h3>
+        <div>
+          <div className="mb-5">
+            <h3 className="text-lg font-semibold">Follow Us</h3>
+          </div>
+          <div className="space-y-6">
+            <div className="flex gap-x-2 border rounded-lg px-4 py-2 w-1/3 lg:w-1/4 hover:translate-x-1 duration-300 cursor-pointer">
+              <FaFacebook size={24} />
+              <h1>Facebook</h1>
+            </div>
+            <div className="flex gap-x-2 border rounded-lg px-4 py-2 w-1/3 lg:w-1/4 hover:translate-x-1 duration-300 cursor-pointer">
+              <FaInstagram size={24} />
+              <h1>Instagram</h1>
+            </div>
+            <div className="flex gap-x-2 border rounded-lg px-4 py-2 w-1/3 lg:w-1/4 hover:translate-x-1 duration-300 cursor-pointer">
+              <FaTiktok size={24} />
+              <h1>TikTok</h1>
+            </div>
+          </div>
         </div>
       </div>
 
