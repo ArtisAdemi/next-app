@@ -16,7 +16,7 @@ export const Footer = () => {
 
   return (
     <footer className="px-[4%] py-28 bg-[#333333] text-white">
-      <div className=" mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Logo and Description */}
         <div className="space-y-4">
           <Link href="/" className="font-bold text-xl top-8 left-8 z-20">
@@ -74,25 +74,39 @@ export const Footer = () => {
           <div className="mb-5">
             <h3 className="text-lg font-semibold">Follow Us</h3>
           </div>
-          <div className="space-y-6">
-            <div className="flex gap-x-2 border rounded-lg px-4 py-2 w-1/3 lg:w-1/4 hover:translate-x-1 duration-300 cursor-pointer">
+          <div className="space-y-6 w-[40%] lg:w-[40%]">
+            <div className="flex gap-x-2 border rounded-lg px-4 py-4 lg:py-3 hover:translate-x-1 duration-300 cursor-pointer">
               <FaFacebook size={24} />
               <h1>Facebook</h1>
             </div>
-            <div className="flex gap-x-2 border rounded-lg px-4 py-2 w-1/3 lg:w-1/4 hover:translate-x-1 duration-300 cursor-pointer">
+            <div className="flex gap-x-2 border rounded-lg px-4 py-4 lg:py-3  hover:translate-x-1 duration-300 cursor-pointer">
               <FaInstagram size={24} />
               <h1>Instagram</h1>
             </div>
-            <div className="flex gap-x-2 border rounded-lg px-4 py-2 w-1/3 lg:w-1/4 hover:translate-x-1 duration-300 cursor-pointer">
+            <div className="flex gap-x-2 border rounded-lg px-4 py-4 lg:py-3  hover:translate-x-1 duration-300 cursor-pointer">
               <FaTiktok size={24} />
               <h1>TikTok</h1>
             </div>
           </div>
         </div>
+        <div className="">
+          <p className="text-lg font-semibold">Contact Us</p>
+          <div className="flex flex-col text-[#545454] space-y-4 mt-4">
+            <p className="text-gray-400 hover:text-white transition-colors">
+              Shelby Twp, MI
+            </p>
+            <p className="text-gray-400 hover:text-white transition-colors">
+              palushajepoxy@gmail.com
+            </p>
+            <p className="text-gray-400 hover:text-white transition-colors">
+              +1 586-453-3121
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-12 -mb-24 text-center text-white border-t border-gray-600 pt-6">
+      <div className="mt-12 -mb-24 text-center text-white border-t border-white pt-6">
         <p>© {new Date().getFullYear()} Influxo. All Rights Reserved.</p>
       </div>
     </footer>
