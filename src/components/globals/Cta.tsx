@@ -24,16 +24,16 @@ export const Cta = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-6  lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-6 lg:gap-8">
           <div className="bg-[#272727] transition-transform duration-500 hover:scale-105 ease-in-out p-6 rounded-lg text-center">
-            <p className="text-white text-2xl font-bold">23+</p>
+            <p className="text-white text-2xl font-bold">23</p>
             <p className="text-gray-100">Years of Experience</p>
           </div>
           <div className="bg-[#949494] p-6 rounded-lg text-center transition-transform duration-500 hover:scale-105 ease-in-out">
-            <p className="text-white text-2xl font-bold">183+</p>
+            <p className="text-white text-2xl font-bold">180+</p>
             <p className="text-gray-100">Happy Clients</p>
           </div>
-          <div className="bg-[#EEEEEE] p-6 w-[400px]  rounded-lg text-center transition-transform duration-500 hover:scale-105 ease-in-out">
+          <div className="bg-[#EEEEEE] p-6 rounded-lg text-center transition-transform duration-500 hover:scale-105 ease-in-out col-span-2 md:col-span-1">
             <p className="text-black text-2xl font-bold">315+</p>
             <p className="text-black">Completed Projects</p>
           </div>

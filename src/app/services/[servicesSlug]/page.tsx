@@ -133,8 +133,8 @@ const SingleService = () => {
         </div>
       )}
       {service.space && (
-        <div className="w-full bg-white px-[4%] gap-x-16  py-28">
-          <div className="mb-16 ">
+        <div className="w-full bg-white  gap-x-16  py-28">
+          <div className="mb-16 pl-[4%]">
             <h5 className="font-semibold text-xl text-[#FF8C00]">
               {service.space.split(" ", 1)[0]}
             </h5>
@@ -143,8 +143,8 @@ const SingleService = () => {
               {service.space.split(" ", 4)[3]}
             </h1>
           </div>
-          <div className="">
-            <div className="flex">
+          <div className="lg:pl-[12%] pl-[4%]">
+            <div className="flex flex-col lg:flex-row">
               {service.spaceTypes.map((spaceType, index) => (
                 <div
                   key={index}
