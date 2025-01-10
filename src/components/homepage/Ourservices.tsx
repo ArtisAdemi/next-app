@@ -6,7 +6,6 @@ import { Service } from "public/serviceTypes";
 import hero from "../../../public/images/hero.jpg";
 import Image from "next/image";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import Link from "next/link";
 
 export const OurServices: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
