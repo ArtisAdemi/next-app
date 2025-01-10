@@ -22,7 +22,7 @@ export const OurServices: React.FC = () => {
   };
 
   return (
-    <div className="pl-[4%] pr-[12%] py-28 bg-white">
+    <div className="px-[4%] lg:pl-[4%] lg:pr-[12%] py-28 bg-white">
       {/* Section Title */}
       <div className=" mb-12">
         <h5 className="font-semibold mb-4 text-xl text-[#FF8C00]">Services</h5>
@@ -31,27 +31,27 @@ export const OurServices: React.FC = () => {
         </h1>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex flex-col lg:flex-row justify-between">
         <div className="w-full">
           {/* <img className="w-[80%] h-[600px]" src={hero.src} alt="" /> */}
           <Image
             alt="blla"
             src={hero}
             quality={100}
-            className="w-[80%] h-[600px]"
+            className="lg:w-[80%] h-[500px] lg:h-[600px]"
           />
         </div>
         {/* Services List */}
-        <div className="w-[55%] flex flex-col justify-evenly">
+        <div className="lg:w-[55%] mt-12 lg:mt-0 flex flex-col justify-evenly">
           {services.map((service, index) => (
             <div
               key={service?.slug}
-              className="flex justify-between items-center bg-white border-b-2 hover:border-b-4 hover:border-[#FF8C00] pb-6 cursor-pointer hover:-translate-y-1 duration-300 mb-2"
+              className="flex justify-between items-center bg-white border-b-2 hover:border-b-4 hover:border-[#FF8C00] py-6 pb-6 cursor-pointer hover:-translate-y-1 duration-300 mb-2"
               onClick={() => handleServiceClick(service?.slug)}
             >
-              <span className="text-2xl font-semibold text-black">
-                {String(index + 1).padStart(2, "0")}{" "}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {service?.title}
+              <span className="text-2xl flex items-center space-x-8 font-semibold text-black">
+                <span>{String(index + 1).padStart(2, "0")} </span>
+                <span>{service?.title}</span>
               </span>
               <IoIosArrowRoundForward size={40} color="#FF8C00" />
             </div>
