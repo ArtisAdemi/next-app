@@ -14,8 +14,8 @@ interface HeroProps {
 const Hero = forwardRef<HTMLDivElement, HeroProps>(
   ({ title, description }, ref) => {
     return (
-      <div className="flex flex-col lg:flex-row lg:justify-between">
-        <div className="w-full lg:w-[45%] relative">
+      <div className="flex flex-col lg:flex-row lg:justify-between h-screen">
+        <div className="w-full lg:w-[45%] relative flex flex-col justify-between">
           <div className="w-full h-screen">
             <Image
               className="object-cover"
@@ -27,14 +27,14 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
           </div>
           <div className="absolute inset-0 flex flex-col">
             <Navbar />
-            <div className="px-4 lg:px-8 py-56 flex-1 flex flex-col justify-between">
-              <p className="font-md px-4 lg:px-32 lg:text-lg text-white  text-center lg:text-left">
+            <div className="px-4 lg:px-8 py-10 flex-1 flex flex-col justify-evenly">
+              <p className="text-lg px-4 lg:px-32 lg:text-lg text-white text-start lg:text-left">
                 {description}
               </p>
-              <h1 className="text-4xl lg:text-6xl font-bold text-white text-center">
+              <h1 className="text-4xl px-4 lg:text-6xl font-bold text-white lg:text-center">
                 {title}
               </h1>
-              <div className="lg:flex px-[4%] pl-[10%] space-y-8 lg:space-y-0 justify-between ">
+              <div className="lg:flex px-4 lg:pl-[10%] space-y-8 lg:space-y-0 justify-between ">
                 <div className="flex items-center space-x-2">
                   <div className="rounded-full p-4 bg-[#2B2B2B]">
                     <IoCheckmark color="#C0C0C0" size={40} />
@@ -63,12 +63,24 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
                 </div>
               </div>
             </div>
+            <div className="absolute lg:hidden text-center bottom-8 right-0 left-0 transform ">
+              <button
+                className="text-white text-lg px-6 py-3 font-medium hover:underline hover:duration-300"
+                onClick={() => {
+                  if (typeof ref === "object" && ref?.current) {
+                    ref.current.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                View Project Gallery
+              </button>
+            </div>
           </div>
         </div>
-        <div className="w-full lg:w-[55%] relative">
-          <div className="w-full h-screen">
+        <div className="w-full hidden lg:block lg:w-[55%] relative">
+          <div className="w-full h-full">
             <Image
-              className=" object-cover"
+              className="object-cover"
               fill
               src={hero.src}
               quality={100}
