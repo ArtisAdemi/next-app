@@ -1,10 +1,20 @@
 import React from "react";
+import simiron from "../../../public/images/simiron.jpg";
+import Image from "next/image";
 
 const Secondcta: React.FC = () => {
   return (
     <div className="relative w-full h-[500px] bg-cover bg-center">
       {/* Overlay for better readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div className="absolute inset-0 bg-black brightness-75">
+        <Image
+          src={simiron}
+          alt="Simiron"
+          layout="fill"
+          objectFit="cover"
+          priority={true}
+        />
+      </div>
 
       {/* Centered Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">

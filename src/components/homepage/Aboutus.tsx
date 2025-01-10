@@ -2,8 +2,8 @@ import hero from "../../../public/images/hero.jpg";
 
 export const About = () => {
   return (
-    <div className="px-[4%] py-28 flex flex-col lg:flex-row justify-between">
-      <div className="mt-20">
+    <div className="px-[4%] py-16 lg:py-28 flex flex-col lg:flex-row justify-between">
+      <div className="lg:mt-20">
         <h5 className="font-semibold mb-4 text-xl text-[#FF8C00]">About Us</h5>
         <h1 className="text-5xl font-bold text-black leading-tight">
           Building Your <br /> Dream Floors Together.

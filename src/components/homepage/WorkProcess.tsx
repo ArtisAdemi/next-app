@@ -28,7 +28,7 @@ export const WorkProcess = () => {
   ];
 
   return (
-    <div className="w-full gap-x-16  py-28">
+    <div className="w-full gap-x-16  py-16 lg:py-28">
       <div className="mb-16 pl-[4%]">
         <h5 className="font-semibold text-xl text-[#FF8C00]">Construction</h5>
         <h1 className="text-5xl font-bold text-black leading-tight">
