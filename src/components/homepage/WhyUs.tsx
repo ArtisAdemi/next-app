@@ -4,7 +4,7 @@ import hero from "../../../public/images/hero.jpg";
 
 const WhyUs: React.FC = () => {
   return (
-    <div className="py-28 px-[4%] lg:text-center bg-gray-100 w-full">
+    <div className="py-16 lg:py-28 px-[4%] lg:text-center bg-gray-100 w-full">
       <div>
         <h5 className="font-semibold mb-4 text-xl text-[#FF8C00]">
           Why Choose Us
