@@ -35,8 +35,8 @@ export const WorkProcess = () => {
           WE SERVE
         </h1>
       </div>
-      <div className="pl-[12%]">
-        <div className="flex">
+      <div className="lg:pl-[12%] pl-[4%]">
+        <div className="flex flex-col lg:flex-row">
           {steps.map((step) => (
             <div
               key={step.id}
