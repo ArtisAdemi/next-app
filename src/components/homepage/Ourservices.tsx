@@ -28,7 +28,7 @@ export const OurServices: React.FC = () => {
   return (
     <div className="px-[4%] lg:pl-[4%] lg:pr-[12%] py-16 lg:py-28 bg-gray-100">
       {/* Section Title */}
-      <div className="flex flex-col lg:flex-row justify-between lg:items-end mb-12">
+      <div className="flex flex-col xl:flex-row justify-between xl:items-end mb-12">
         <div>
           <h5 className="font-semibold mb-4 text-xl text-[#FF8C00]">
             Services
@@ -39,7 +39,7 @@ export const OurServices: React.FC = () => {
         </div>
         <button
           onClick={() => servicesClick("/services")}
-          className="group relative px-6 py-4 mt-4 text-[#FF8C00] border-2 border-[#FF8C00] w-1/2 lg:w-1/6  font-semibold transition-transform duration-300 hover:scale-105"
+          className="group relative px-6 py-4 mt-4 text-[#FF8C00] border-2 border-[#FF8C00] w-1/2 xl:w-1/6  font-semibold transition-transform duration-300 hover:scale-105"
         >
           View Services
           {/* Bottom line */}

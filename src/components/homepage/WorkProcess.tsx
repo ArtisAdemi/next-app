@@ -40,7 +40,7 @@ export const WorkProcess = () => {
           {steps.map((step) => (
             <div
               key={step.id}
-              className={`p-6 cursor-pointer flex-1 h-[350px]`}
+              className={`p-6 cursor-pointer flex-1 h-[350px] lg:h-[430px] xl:h-[350px]`}
               style={{
                 backgroundColor:
                   step.id === 1
