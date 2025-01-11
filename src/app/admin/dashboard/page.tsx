@@ -21,6 +21,8 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [updateLoading, setUpdateLoading] = useState<string | null>(null);
+  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -46,13 +48,20 @@ export default function AdminDashboard() {
     try {
       const response = await updateBookingStatusAction(bookingId, newStatus);
       if (response.success) {
-        setBookings(
-          bookings.map((booking) =>
-            booking._id === bookingId
-              ? { ...booking, status: newStatus }
-              : booking
-          )
+        const updatedBookings = bookings.map((booking) =>
+          booking._id === bookingId
+            ? { ...booking, status: newStatus }
+            : booking
         );
+        setBookings(updatedBookings);
+        
+        // Update the selected booking if it's the same as the updated booking
+        if (selectedBooking && selectedBooking._id === bookingId) {
+          setSelectedBooking({
+            ...selectedBooking,
+            status: newStatus
+          });
+        }
       } else {
         throw new Error(response.message || "Failed to update status");
       }
@@ -64,26 +73,48 @@ export default function AdminDashboard() {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  const openBookingModal = (booking: Booking) => {
+    setSelectedBooking(booking);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedBooking(null);
+  };
+
+  if (loading) return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-900">
+      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+    </div>
+  );
+
+  if (error) return (
+    <div className="min-h-screen bg-gray-900 flex justify-center items-center text-red-500 text-2xl">
+      Error: {error}
+    </div>
+  );
 
   return (
-    <div className="p-8 bg-[#333333] min-h-screen text-white">
-      <h1 className="text-3xl font-bold mb-8 text-[#4682B4] text-center">Booking Management</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="px-[4%] py-12 bg-gray-white min-h-screen text-white">
+      <h1 className="text-4xl font-bold mb-12 text-[#FF8C00] text-center">
+        Booking Management Dashboard
+      </h1>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {bookings.map((booking: Booking) => (
           <div 
             key={booking._id} 
-            className="bg-[#D3D3D3] text-[#333333] rounded-xl shadow-lg overflow-hidden 
-                      transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            className="bg-gray-100 rounded-2xl shadow-lg overflow-hidden 
+                      transform transition-all duration-300 hover:shadow-2xl"
           >
-            <div className="p-5">
+            <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-[#4682B4] font-semibold text-lg truncate">
+                <h2 className="text-[#FF8C00] font-semibold text-xl truncate">
                   {booking.name || 'Anonymous Booking'}
                 </h2>
                 <span 
-                  className={`px-2 py-1 rounded-full text-xs font-bold uppercase
+                  className={`px-3 py-1 rounded-full text-xs font-bold uppercase
                     ${
                       booking.status === 'pending' ? 'bg-yellow-200 text-yellow-800' :
                       booking.status === 'confirmed' ? 'bg-green-200 text-green-800' :
@@ -96,58 +127,138 @@ export default function AdminDashboard() {
               </div>
               
               <div className="space-y-2 mb-4">
-                <p className="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 text-[#4682B4]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <p className="flex items-center text-gray-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-[#FF8C00]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
+                  <p className="text-[#333333]">
                   {booking.email}
-                </p>
-                <p className="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 text-[#4682B4]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  {booking.phoneNumber}
-                </p>
-                <p className="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 text-[#4682B4]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  {booking.address}
+                  </p>
                 </p>
               </div>
 
-              <div className="flex justify-between items-center">
-                <select
-                  value={booking.status}
-                  onChange={(e) =>
-                    handleStatusChange(booking._id, e.target.value)
-                  }
-                  disabled={updateLoading === booking._id}
-                  className="border border-[#4682B4] rounded p-1 bg-white text-[#333333] 
-                             focus:outline-none focus:ring-2 focus:ring-[#FF8C00] w-full mr-2"
+              <div className="flex justify-between items-center space-x-2">
+                <button 
+                  onClick={() => openBookingModal(booking)}
+                  className="bg-transparent border border-[#FF8C00] text-[#FF8C00] px-4 py-2 rounded-lg 
+                             hover:bg-[#FF8C00] hover:text-white transition-colors flex-grow text-center"
                 >
-                  <option value="pending">Pending</option>
-                  <option value="confirmed">Confirmed</option>
-                  <option value="completed">Completed</option>
-                  <option value="cancelled">Cancelled</option>
-                </select>
-                {updateLoading === booking._id ? (
-                  <span className="text-[#FF8C00] text-sm">Updating...</span>
-                ) : (
-                  <button
-                    onClick={() => handleStatusChange(booking._id, booking.status)}
-                    className="bg-[#FF8C00] text-white px-3 py-1 rounded 
-                               hover:bg-opacity-90 transition-colors"
-                  >
-                    Update
-                  </button>
-                )}
+                  View Details
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Booking Details Modal */}
+      {isModalOpen && selectedBooking && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+          <div className="bg-[#333333] rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-gray-700 flex justify-between items-center">
+              <h2 className="text-2xl font-bold text-[#FF8C00]">
+                Booking Details
+              </h2>
+              <button 
+                onClick={closeModal}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="p-6 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">Name</label>
+                  <input 
+                    type="text" 
+                    value={selectedBooking.name || 'N/A'} 
+                    readOnly 
+                    className="w-full bg-gray-100 text-black rounded-lg p-2 border border-gray-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">Email</label>
+                  <input 
+                    type="text" 
+                    value={selectedBooking.email} 
+                    readOnly 
+                    className="w-full bg-gray-100 text-black rounded-lg p-2 border border-gray-600"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">Phone Number</label>
+                  <input 
+                    type="text" 
+                    value={selectedBooking.phoneNumber} 
+                    readOnly 
+                    className="w-full bg-gray-100 text-black rounded-lg p-2 border border-gray-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">Status</label>
+                  <select
+                    value={selectedBooking.status}
+                    onChange={(e) => handleStatusChange(selectedBooking._id, e.target.value)}
+                    disabled={updateLoading === selectedBooking._id}
+                    className="w-full bg-gray-100 text-black rounded-lg p-2 border border-gray-600"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Address</label>
+                <textarea 
+                  value={selectedBooking.address} 
+                  readOnly 
+                  className="w-full bg-gray-100 text-black rounded-lg p-2 border border-gray-600 min-h-[100px]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Message</label>
+                <textarea 
+                  value={selectedBooking.message || 'No additional message'} 
+                  readOnly 
+                  className="w-full bg-gray-100 text-black rounded-lg p-2 border border-gray-600 min-h-[100px]"
+                />
+              </div>
+
+              <div className="flex justify-end space-x-4 pt-4">
+                <button 
+                  onClick={closeModal}
+                  className="border border-[#FF8C00] hover:bg-[#FF8C00] hover:text-white text-[#FF8C00] px-4 py-2 rounded-lg transition-colors"
+                >
+                  Close
+                </button>
+                {updateLoading === selectedBooking._id ? (
+                  <div className="bg-blue-500 text-white px-4 py-2 rounded-lg opacity-50 cursor-not-allowed">
+                    Updating...
+                  </div>
+                ) : (
+                  <button 
+                    onClick={() => handleStatusChange(selectedBooking._id, selectedBooking.status)}
+                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                  >
+                    Update Status
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
