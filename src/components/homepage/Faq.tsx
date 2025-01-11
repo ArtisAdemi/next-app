@@ -31,7 +31,7 @@ const Faq: React.FC = () => {
   ];
 
   return (
-    <div className="bg-gray-100 flex flex-col items-center py-28 lg:py-0 w-full">
+    <div className="bg-gray-100 flex flex-col items-center py-16 lg:py-0 w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center justify-items-center pr-[4%] lg:pr-0 pl-[4%]">
         {/* Left Side: Title and FAQ */}
         <div className="">
@@ -72,11 +72,21 @@ const Faq: React.FC = () => {
                     +
                   </span>
                 </button>
-                {activeIndex === index && (
-                  <div className="px-6 pb-5  text-gray-700 text-md leading-relaxed">
+                <div
+                  className={`overflow-hidden transition-[max-height] duration-300`}
+                  style={{
+                    maxHeight: activeIndex === index ? "500px" : "0",
+                  }}
+                  ref={(el) => {
+                    if (activeIndex === index && el) {
+                      el.style.maxHeight = `${el.scrollHeight}px`;
+                    }
+                  }}
+                >
+                  <div className="px-6 pb-5 text-gray-700 text-md leading-relaxed">
                     {faq.answer}
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>

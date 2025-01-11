@@ -74,7 +74,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
   };
 
   return (
-    <div ref={ref} className="px-[4%] py-28">
+    <div ref={ref} className="px-[4%] py-16 lg:py-28">
       <div className="">
         <h5 className="font-semibold mb-4 text-xl text-[#FF8C00]">Projects</h5>
         <h1 className="text-5xl font-bold text-black leading-tight">
@@ -88,7 +88,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="project-comparison relative w-[80px] xl:w-[120px] h-[80px] xl:h-[120px] border rounded-lg border-black  cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-in-out"
+              className="project-comparison relative w-[80px] md:w-[110px] md:h-[110px] xl:w-[120px] h-[80px] xl:h-[100px] border rounded-lg border-black  cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-in-out"
               onClick={() => setSelectedProjectIndex(index)}
             >
               <Image
@@ -105,7 +105,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
         {selectedProjectIndex !== null && (
           <div className="w-full relative">
             <div
-              className="relative w-full  aspect-[70/60] lg:aspect-[20/9] overflow-hidden select-none rounded-xl shadow-lg"
+              className="relative w-full h-full aspect-[70/60] lg:aspect-[20/9] overflow-hidden select-none rounded-xl shadow-lg"
               onMouseMove={(e) => handleMouseMove(e, selectedProjectIndex)}
               onTouchMove={(e) => handleTouchMove(e, selectedProjectIndex)}
               onMouseDown={() => setIsDraggingIndex(selectedProjectIndex)}
@@ -120,9 +120,10 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                 priority
                 src={projects[selectedProjectIndex].heroImage}
                 className="object-cover rounded-xl"
+                //className="lg:w-[60%] h-[500px] lg:h-[400px]"
               />
               <div
-                className="absolute top-0 left-0 right-0 w-full aspect-[70/60] lg:aspect-[20/9] m-auto overflow-hidden select-none"
+                className="absolute top-0 left-0 right-0 w-full h-full aspect-[70/60] lg:aspect-[20/9] m-auto overflow-hidden select-none"
                 style={{
                   clipPath: `inset(0 ${
                     100 - sliderPositions[selectedProjectIndex]
@@ -138,6 +139,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                   quality={100}
                   src={projects[selectedProjectIndex].backgroundImage}
                   className="object-cover rounded-xl"
+                  //className="lg:w-[60%] h-[500px] lg:h-[400px]"
                 />
               </div>
               <div

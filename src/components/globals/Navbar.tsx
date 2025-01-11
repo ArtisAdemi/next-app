@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="text-white">
-        <div className=" px-[8%]">
+        <div className="px-[8%]">
           <div className="flex items-center justify-between py-4">
             <Link href="/" className="font-bold text-xl top-8 left-8 z-20">
               <Image src={logo.src} width={100} height={100} alt="" />
