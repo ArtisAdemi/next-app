@@ -105,7 +105,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
         {selectedProjectIndex !== null && (
           <div className="w-full relative">
             <div
-              className="relative w-full aspect-[70/60] lg:aspect-[20/9] overflow-hidden select-none rounded-xl shadow-lg"
+              className="relative w-full h-full aspect-[70/60] lg:aspect-[20/9] overflow-hidden select-none rounded-xl shadow-lg"
               onMouseMove={(e) => handleMouseMove(e, selectedProjectIndex)}
               onTouchMove={(e) => handleTouchMove(e, selectedProjectIndex)}
               onMouseDown={() => setIsDraggingIndex(selectedProjectIndex)}
@@ -120,9 +120,10 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                 priority
                 src={projects[selectedProjectIndex].heroImage}
                 className="object-cover rounded-xl"
+                //className="lg:w-[60%] h-[500px] lg:h-[400px]"
               />
               <div
-                className="absolute top-0 left-0 right-0 w-full aspect-[70/60] lg:aspect-[20/9] m-auto overflow-hidden select-none"
+                className="absolute top-0 left-0 right-0 w-full h-full aspect-[70/60] lg:aspect-[20/9] m-auto overflow-hidden select-none"
                 style={{
                   clipPath: `inset(0 ${
                     100 - sliderPositions[selectedProjectIndex]
@@ -138,6 +139,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                   quality={100}
                   src={projects[selectedProjectIndex].backgroundImage}
                   className="object-cover rounded-xl"
+                  //className="lg:w-[60%] h-[500px] lg:h-[400px]"
                 />
               </div>
               <div
