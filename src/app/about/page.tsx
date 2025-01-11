@@ -11,23 +11,23 @@ export default function About() {
         title="Palushi Epoxy Coatings"
         description="Your trusted partner for high-quality epoxy coatings and concrete polishing solutions."
       />
-      <div className="px-[4%] py-6 lg:py-28 flex flex-col lg:flex-row justify-between bg-gray-50">
-        <div className="mt-10 ">
+      <div className="px-[4%] py-16 xl:py-28 flex flex-col xl:flex-row justify-between bg-gray-50">
+        <div className="xl:mt-10 ">
           <h1 className="text-5xl mb-8 lg:mb-0 font-bold text-black leading-tight">
             About Us
           </h1>
 
           <div className="lg:hidden gap-6 flex">
-            <div className="flex flex-row gap-4 lg:justify-end">
+            <div className="flex flex-row gap-4 xl:justify-end">
               <img
                 src={hero.src}
                 alt="Image 1"
-                className="rounded-lg shadow-md object-cover lg:w-[70%] lg:rounded-tr-full "
+                className="rounded-lg shadow-md object-cover w-full xl:w-[70%] lg:rounded-tr-full "
               />
             </div>
           </div>
 
-          <p className="text-xl font-md text-black leading-7 lg:w-3/5 mt-4">
+          <p className="text-xl font-md text-black leading-7 xl:w-3/5 mt-4">
             {" "}
             Welcome to Palushaj Epoxy Coatings, where quality craftsmanship and
             dedication to excellence are the foundation of everything we do
@@ -51,7 +51,7 @@ export default function About() {
             expectations and delivering stunning results.
           </p>
 
-          <button className="group relative px-6 py-4 mt-4 text-white bg-[#FF8C00] w-1/2 lg:w-1/5  font-semibold transition-transform duration-300 hover:scale-105">
+          <button className="group relative px-6 py-4 mt-4 text-white bg-[#FF8C00] w-1/2 lg:w-1/3 xl:w-1/5 lg:mb-12 xl:mb-0  font-semibold transition-transform duration-300 hover:scale-105">
             Book Now
             {/* Bottom line */}
             <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
@@ -60,25 +60,25 @@ export default function About() {
           </button>
         </div>
         <div className="lg:flex gap-6 hidden">
-          <div className="flex flex-row gap-4 lg:justify-end">
+          <div className="flex flex-row gap-4 xl:justify-end">
             <img
               src={hero.src}
               alt="Image 1"
-              className="rounded-lg shadow-md object-cover w-[70%] rounded-tl-full hidden lg:block "
+              className="rounded-lg shadow-md object-cover w-[70%] rounded-tl-full hidden xl:block "
             />
             <img
               src={hero.src}
               alt="Image 1"
-              className="rounded-lg shadow-md object-cover w-[70%] lg:rounded-tr-full "
+              className="rounded-lg shadow-md object-cover xl:w-[70%] xl:rounded-tr-full "
             />
           </div>
         </div>
       </div>
-      <div className="py-12 lg:py-28 px-[4%] text-center ">
+      <div className="py-16 xl:py-28 px-[4%] text-center ">
         <h1 className="text-5xl font-bold text-black leading-tight ">
           Our team
         </h1>
-        <p className="text-xl font-md text-black leading-7 text-center lg:px-96 mt-4">
+        <p className="text-xl font-md text-black leading-7 text-center xl:px-96 mt-4">
           {" "}
           Our team is passionate about what we do and dedicated to bringing your
           vision to life with precision and care. We believe that no project is

@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export const Cta = () => {
   return (
-    <div className="px-[4%] py-16 lg:py-28 bg-white text-black">
-      <div className="flex px-[4%] lg:px-0 flex-col lg:flex-row justify-evenly items-center bg-gray-100 lg:items-start shadow-md rounded-lg py-20 gap-12">
+    <div className="px-[4%] py-16 xl:py-28 bg-white text-black">
+      <div className="flex px-[4%] xl:px-0 flex-col xl:flex-row justify-evenly items-center bg-gray-100 lg:items-start shadow-md rounded-lg py-20 gap-12">
         {/* Left Section: Title, Description, Button */}
-        <div className="lg:max-w-lg">
+        <div className="xl:max-w-lg">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
             Contact us today
           </h1>
@@ -24,7 +24,7 @@ export const Cta = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:w-full lg:w-1/4 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:w-full xl:w-1/4 md:grid-cols-2 gap-6 xl:gap-8">
           <div className="bg-[#272727] transition-transform duration-500 hover:scale-105 ease-in-out p-6 rounded-lg text-center">
             <p className="text-white text-2xl font-bold">23+</p>
             <p className="text-gray-100">Years of Experience</p>
