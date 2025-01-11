@@ -68,7 +68,10 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
                 className="text-white text-lg px-6 py-3 font-medium hover:underline hover:duration-300"
                 onClick={() => {
                   if (typeof ref === "object" && ref?.current) {
-                    ref.current.scrollIntoView({ behavior: "smooth" });
+                    const yOffset = 100;
+                    const element = ref.current;
+                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
                   }
                 }}
               >
@@ -93,7 +96,10 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
               className="text-white text-xl px-6 py-3 font-semibold hover:underline hover:duration-300"
               onClick={() => {
                 if (typeof ref === "object" && ref?.current) {
-                  ref.current.scrollIntoView({ behavior: "smooth" });
+                  const yOffset = 100;
+                  const element = ref.current;
+                  const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
                 }
               }}
             >
