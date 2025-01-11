@@ -72,11 +72,21 @@ const Faq: React.FC = () => {
                     +
                   </span>
                 </button>
-                {activeIndex === index && (
-                  <div className="px-6 pb-5  text-gray-700 text-md leading-relaxed">
+                <div
+                  className={`overflow-hidden transition-[max-height] duration-300`}
+                  style={{
+                    maxHeight: activeIndex === index ? "500px" : "0",
+                  }}
+                  ref={(el) => {
+                    if (activeIndex === index && el) {
+                      el.style.maxHeight = `${el.scrollHeight}px`;
+                    }
+                  }}
+                >
+                  <div className="px-6 pb-5 text-gray-700 text-md leading-relaxed">
                     {faq.answer}
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
