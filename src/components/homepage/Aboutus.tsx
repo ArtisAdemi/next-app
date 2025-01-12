@@ -1,10 +1,7 @@
 import Link from "next/link";
 import hero from "../../../public/images/hero.jpg";
-import { useRouter } from "next/navigation";
 
 export const About = () => {
-  const router = useRouter();
-
   return (
     <div className="px-[4%] py-16 xl:py-28 flex flex-col lg:gap-y-12 xl:flex-row justify-between">
       <div className="xl:mt-20 xl:w-[60%]">
