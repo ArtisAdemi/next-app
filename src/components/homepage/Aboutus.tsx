@@ -1,6 +1,13 @@
+import Link from "next/link";
 import hero from "../../../public/images/hero.jpg";
+import { useRouter } from "next/navigation";
 
 export const About = () => {
+  const router = useRouter();
+  const servicesClick = (url: string) => {
+    router.push(url);
+  };
+
   return (
     <div className="px-[4%] py-16 xl:py-28 flex flex-col lg:gap-y-12 xl:flex-row justify-between">
       <div className="xl:mt-20 xl:w-[60%]">
@@ -20,13 +27,15 @@ export const About = () => {
             ground up.
           </span>
         </p>
-        <button className="group relative px-6 py-4 mt-4 text-white bg-[#FF8C00] w-1/2 lg:w-1/3  font-semibold transition-transform duration-300 hover:scale-105">
-          Learn More
-          {/* Bottom line */}
-          <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
-          {/* Right line */}
-          <span className="absolute top-0 -right-2 w-0.5 h-full bg-orange-400 transition-transform duration-300 origin-top scale-y-0 group-hover:scale-y-100 group-hover:delay-150"></span>
-        </button>
+        <Link href={"/bookings"}>
+          <button className="group relative px-6 py-4 mt-4 text-white bg-[#FF8C00] w-1/2 md:w-1/3 lg:w-1/3  font-semibold transition-transform duration-300 hover:scale-105">
+            Book Now
+            {/* Bottom line */}
+            <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
+            {/* Right line */}
+            <span className="absolute top-0 -right-2 w-0.5 h-full bg-orange-400 transition-transform duration-300 origin-top scale-y-0 group-hover:scale-y-100 group-hover:delay-150"></span>
+          </button>
+        </Link>
       </div>
       <div className="flex gap-6 mt-12 lg:mt-0">
         <div className="flex flex-row gap-4 xl:justify-end">

@@ -26,7 +26,11 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
             />
           </div>
           <div className="absolute inset-0 flex flex-col">
-            <Navbar />
+            <div className="lg:px-8">
+              <div className="px-[8%] lg:px-[4%]">
+                <Navbar />
+              </div>
+            </div>
             <div className="px-4 lg:px-8 py-10 flex-1 flex flex-col justify-evenly">
               <p className="text-lg px-[4%] md:pl-[8%] lg:pl-[8%] md:text-2xl lg:text-4xl xl:text-2xl text-white text-start">
                 {description}
@@ -48,7 +52,7 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
                       Trusted
                     </h1>
                     <p className="text-white">
-                      Over 400 clients all over the U.S
+                      Over 4000 projects all over Michigan
                     </p>
                   </div>
                 </div>
