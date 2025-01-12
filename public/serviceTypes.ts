@@ -1,8 +1,11 @@
+import { StaticImageData } from "next/image";
+
 export interface Service {
   title: string;
   slug: string;
   description: string;
   content: string;
+  images: StaticImageData[];
   why: string;
   benefits: Array<{ title: string; text: string }>;
   typesIntro?: string;

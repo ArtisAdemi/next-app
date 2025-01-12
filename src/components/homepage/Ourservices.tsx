@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import servicesData from "../../../public/services.json"; // Adjust the import path as necessary
+import servicesData from "../../../public/services.ts"; // Adjust the import path as necessary
 import { useRouter } from "next/navigation"; // Import useRouter
 import { Service } from "public/serviceTypes";
 import hero from "../../../public/images/hero.jpg";
@@ -13,7 +13,7 @@ export const OurServices: React.FC = () => {
 
   useEffect(() => {
     // Fetch services from the JSON data
-    setServices(servicesData.services as Service[]);
+    setServices((servicesData.services as Service[]) || []);
   }, []);
 
   const handleServiceClick = (slug: string) => {
@@ -61,19 +61,23 @@ export const OurServices: React.FC = () => {
         </div>
         {/* Services List */}
         <div className="lg:w-[55%] mt-12 lg:mt-0 flex flex-col justify-evenly">
-          {services.map((service, index) => (
-            <div
-              key={service?.slug}
-              className="flex justify-between items-center bg-gray-100 border-b-2 hover:border-b-4 hover:border-[#FF8C00] py-6 pb-6 cursor-pointer hover:-translate-y-1 duration-300 mb-2"
-              onClick={() => handleServiceClick(service?.slug)}
-            >
-              <span className="text-2xl flex items-center space-x-8 font-semibold text-black">
-                <span>{String(index + 1).padStart(2, "0")} </span>
-                <span>{service?.title}</span>
-              </span>
-              <IoIosArrowRoundForward size={40} color="#FF8C00" />
-            </div>
-          ))}
+          {services.length > 0 ? (
+            services.map((service, index) => (
+              <div
+                key={service?.slug}
+                className="flex justify-between items-center bg-gray-100 border-b-2 hover:border-b-4 hover:border-[#FF8C00] py-6 pb-6 cursor-pointer hover:-translate-y-1 duration-300 mb-2"
+                onClick={() => handleServiceClick(service?.slug)}
+              >
+                <span className="text-2xl flex items-center space-x-8 font-semibold text-black">
+                  <span>{String(index + 1).padStart(2, "0")} </span>
+                  <span>{service?.title}</span>
+                </span>
+                <IoIosArrowRoundForward size={40} color="#FF8C00" />
+              </div>
+            ))
+          ) : (
+            <p>No services available.</p>
+          )}
         </div>
       </div>
     </div>

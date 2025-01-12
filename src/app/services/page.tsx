@@ -2,7 +2,7 @@
 import Navbar from "@/components/globals/Navbar";
 import React from "react";
 import Image from "next/image";
-import servicesData from "../../../public/services.json";
+import servicesData from "../../../public/services.ts";
 import hero from "../../../public/images/hero.jpg";
 import { Cta } from "@/components/globals/Cta";
 import Link from "next/link";
@@ -79,7 +79,11 @@ export default function Services() {
                 }`}
               >
                 <Image
-                  src={hero}
+                  src={
+                    service.images && service.images.length > 0
+                      ? service.images[0]
+                      : hero
+                  }
                   alt={service.title}
                   className="object-cover w-full max-h-[600px]"
                 />

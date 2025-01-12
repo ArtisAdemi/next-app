@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
-import servicesData from "../../../../public/services.json"; // Adjust the import path as necessary
+import servicesData from "../../../../public/services"; // Adjust the import path as necessary
 import { useParams } from "next/navigation";
 import EpoxyGallery from "@/components/EpoxyGallery";
 import Space from "@/components/globals/Space";
 import Navbar from "@/components/globals/Navbar";
+import Image from "next/image";
+import hero from "../../../../public/images/background-hero.jpg";
 
 const SingleService = () => {
   const { servicesSlug } = useParams();
@@ -22,14 +24,38 @@ const SingleService = () => {
       </div>
       <h1 className="text-4xl font-bold px-[4%]  ">{service.title}</h1>
 
-      <div className="flex flex-wrap  text-black py-28  bg-[#D3D3D3] px-[4%]">
+      <div className="flex flex-wrap  text-black py-28 bg-[#D3D3D3] px-[4%]">
         {/* Left Section */}
         <div className="w-full  sm:w-1/2 flex flex-wrap gap-4">
-          <div className="w-full sm:w-[48%] h-80 bg-gray-600"></div>
+          <div className="w-full sm:w-[48%] h-80 relative bg-gray-600">
+            <Image
+              src={
+                service.images && service.images.length > 0
+                  ? service.images[1]
+                  : hero
+              }
+              alt={service.title}
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+            />
+          </div>
           <div
-            className="w-full sm:w-[48%] h-80
+            className="w-full relative sm:w-[48%] h-80
            bg-gray-500"
-          ></div>
+          >
+            <Image
+              src={
+                service.images && service.images.length > 0
+                  ? service.images[2]
+                  : hero
+              }
+              alt={service.title}
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+            />
+          </div>
         </div>
 
         {/* Right Section */}
@@ -80,7 +106,19 @@ const SingleService = () => {
           </div>
 
           {/* Second column: Placeholder for Image (40% width) */}
-          <div className="md:w-2/5 max-h-screen bg-gray-700 rounded-lg"></div>
+          <div className="md:w-2/5 max-h-screen relative bg-gray-700 rounded-lg">
+            <Image
+              src={
+                service.images && service.images.length > 0
+                  ? service.images[0]
+                  : hero
+              }
+              alt={service.title}
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+            />
+          </div>
         </div>
       </div>
       {/* ///CHECK/// */}
