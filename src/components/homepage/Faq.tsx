@@ -12,21 +12,28 @@ const Faq: React.FC = () => {
 
   const faqs = [
     {
-      question: "Morbi fringilla metus ac lacus dapibus.",
-      answer: "This is the answer to the first question.",
-    },
-    {
-      question: "What we like to do & what we don’t like to do.",
+      question: "What areas do you serve?",
       answer:
-        "Nam sit amet neque auctor, dignissim augue eu, condimentum justo. Fusce fermentum tempus sapien, sagittis tellus mattis id. Cras et enim ex. Suspendisse potenti.",
+        "We proudly serve southeast Michigan for residential projects and offer statewide coverage for commercial and industrial work. If you’re located out of state, don’t hesitate to reach out! We’re more than willing to travel. If you’re unsure whether we cover your area, feel free to contact us—we’d be happy to assist you.",
     },
     {
-      question: "Aliquam fermentum odio nec gravida varius.",
-      answer: "This is the answer to the third question.",
+      question: "Are your services environmentally friendly?",
+      answer:
+        "Yes, we use eco-friendly materials and techniques whenever possible. Our epoxy coatings are low in volatile organic compounds (VOCs), ensuring a safer environment for you and your family.",
     },
     {
-      question: "Quisque quis ex eleifend dolor maximus lacinia.",
-      answer: "This is the answer to the fourth question.",
+      question: "Do you offer free consultations or quotes?",
+      answer:
+        "Yes, we provide free consultations and detailed quotes to help you decide on the best solution for your flooring needs.",
+    },
+    {
+      question: "What payment methods do you accept?",
+      answer: "We accept cash, checks, and digital payments.",
+    },
+    {
+      question: "How far in advance should I book your services?",
+      answer:
+        "We recommend booking at least 2-4 weeks in advance, especially during peak seasons, to secure your preferred dates.",
     },
   ];
 
@@ -39,9 +46,9 @@ const Faq: React.FC = () => {
             Relax, we’re always here for you!
           </h2>
           <p className="text-lg text-gray-600 mb-10">
-            Nam sit amet neque auctor, dignissim augue eu, condimentum justo.
-            Fusce fermentum tempus sapien, sagittis tellus mattis id. Cras et
-            enim ex. Suspendisse potenti.
+            Whether it’s flooring solutions, expert advice, or reliable
+            services, we’re dedicated to making your experience seamless and
+            stress-free. Let’s bring your vision to life!
           </p>
           <div className="space-y-6">
             {faqs.map((faq, index) => (

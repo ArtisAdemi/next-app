@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import bgImage from "../../../public/images/background-hero.jpg";
-import logo from "../../../public/logoo.svg";
+import logo from "../../../public/logotest.svg";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineCancel } from "react-icons/md";
 import Image from "next/image";
@@ -25,10 +25,31 @@ export default function Navbar() {
   return (
     <>
       <nav className="text-white">
-        <div className="px-[8%]">
+        <div className="">
           <div className="flex items-center justify-between py-4">
-            <Link href="/" className="font-bold text-xl top-8 left-8 z-20">
-              <Image src={logo.src} width={100} height={100} alt="" />
+            <Link
+              href="/"
+              className="hidden md:block font-bold text-xl top-8 left-8 z-20"
+            >
+              <Image
+                src={logo.src}
+                quality={100}
+                width={100}
+                height={100}
+                alt=""
+              />
+            </Link>
+            <Link
+              href="/"
+              className="block md:hidden font-bold text-xl top-8 left-8 z-20"
+            >
+              <Image
+                src={logo.src}
+                quality={100}
+                width={80}
+                height={80}
+                alt=""
+              />
             </Link>
             <div className="flex space-x-4">
               <button
@@ -63,9 +84,9 @@ export default function Navbar() {
         <div>
           <Link
             href="/"
-            className="font-bold text-xl absolute top-8 left-8 z-20"
+            className="font-bold text-xl absolute top-4 left-8 z-20 w-[90px] md:w-[120px] h-[90px] md:h-[120px]"
           >
-            <Image src={logo.src} width={50} height={50} alt="" />
+            <Image layout="fill" src={logo.src} quality={100} alt="" />
           </Link>
         </div>
         <div className="h-full flex flex-col items-center justify-center space-y-8 text-white text-2xl relative z-10">
@@ -98,7 +119,7 @@ export default function Navbar() {
             Book Now
           </Link>
         </div>
-        <div className="absolute z-10 bottom-12 right-8 md:right-32">
+        <div className="hidden md:block absolute z-10 bottom-12 right-8 md:right-32">
           <p className="font-bold text-2xl md:text-3xl text-white">
             Contact Us
           </p>

@@ -7,6 +7,9 @@ import Space from "@/components/globals/Space";
 import Navbar from "@/components/globals/Navbar";
 import Image from "next/image";
 import hero from "../../../../public/images/background-hero.jpg";
+import Link from "next/link";
+import EpoxyFaq from "@/components/EpoxyFaq";
+import { Cta } from "@/components/globals/Cta";
 
 const SingleService = () => {
   const { servicesSlug } = useParams();
@@ -19,61 +22,59 @@ const SingleService = () => {
 
   return (
     <div className=" bg-gray-100 rounded-lg shadow-lg">
-      <div className="bg-[#333333] mb-20">
+      <div className="bg-[#333333] px-[4%]">
         <Navbar />
       </div>
-      <h1 className="text-4xl font-bold px-[4%]  ">{service.title}</h1>
 
-      <div className="flex flex-wrap  text-black py-28 bg-[#D3D3D3] px-[4%]">
-        {/* Left Section */}
-        <div className="w-full  sm:w-1/2 flex flex-wrap gap-4">
-          <div className="w-full sm:w-[48%] h-80 relative bg-gray-600">
-            <Image
-              src={
-                service.images && service.images.length > 0
-                  ? service.images[1]
-                  : hero
-              }
-              alt={service.title}
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-            />
-          </div>
-          <div
-            className="w-full relative sm:w-[48%] h-80
-           bg-gray-500"
+      <div
+        className={`flex flex-col lg:flex-row justify-between lg:pt-28 items-center gap-y-4`}
+      >
+        <div
+          className={`w-full lg:w-1/2 lg:pr-12 py-12 lg:py-0 text-left px-[4%]`}
+        >
+          <h2
+            className={`text-2xl sm:text-4xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6`}
           >
-            <Image
-              src={
-                service.images && service.images.length > 0
-                  ? service.images[2]
-                  : hero
-              }
-              alt={service.title}
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-            />
+            {service.title}
+          </h2>
+          <h3 className="text-lg sm:text-xl font-semibold text-[#FF8C00] mb-3 sm:mb-4">
+            {service.description}
+          </h3>
+          <p className={`text-base sm:text-lg leading-relaxed mb-6`}>
+            {service.content}
+          </p>
+          <div className="flex justify-start">
+            <Link
+              href={`/bookings`}
+              className="group cursor-pointer w-1/2 lg:w-1/3 text-center relative px-4 sm:px-6 py-3 sm:py-4 text-white bg-[#FF8C00] font-semibold transition-transform duration-300 hover:scale-105"
+            >
+              Book Now
+              {/* Bottom line */}
+              <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
+              {/* Right line */}
+              <span className="absolute top-0 -right-2 w-0.5 h-full bg-orange-400 transition-transform duration-300 origin-top scale-y-0 group-hover:scale-y-100 group-hover:delay-150"></span>
+            </Link>
           </div>
         </div>
-
-        {/* Right Section */}
-        <div className="w-full sm:w-1/2 mt-20 space-y-6 sm:mt-0 sm:pl-10">
-          <div className="mb-6">
-            <p className="text-2xl font-bold ">{service.description}</p>
-          </div>
-          <div className="mb-6 text-black">{service.content}</div>
-
-          <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white px-6 py-3 rounded-lg shadow-lg w-full lg:w-1/4 transition-all duration-300">
-            Learn More
-          </button>
+        <div className={`w-full lg:w-1/2 mx-auto `}>
+          <Image
+            src={
+              service.images && service.images.length > 0
+                ? service.images[0]
+                : hero
+            }
+            alt={service.title}
+            className="object-cover w-full max-h-[600px]"
+          />
         </div>
       </div>
-      <div className="bg-[#333333] text-white py-28 px-6">
-        <div className="flex flex-col md:flex-row">
+
+      {/* benefits */}
+
+      <div className="bg-[#333333] text-white py-28 w-full">
+        <div className="flex flex-col md:justify-between md:flex-col xl:flex-row-reverse">
           {/* First column: Benefits and Title */}
-          <div className="md:w-3/5">
+          <div className="xl:max-w-[45%] xl:pr-[8%] pl-[4%] xl:pl-0">
             {service.why && (
               <h2 className="text-4xl font-semibold mb-4">{service.why}</h2>
             )}
@@ -91,7 +92,7 @@ const SingleService = () => {
                           {benefit.text}
                         </p>
                         {/* Static Progress Bar */}
-                        <div className="w-1/3  rounded-full h-2">
+                        <div className="w-1/2  rounded-full h-2">
                           <div
                             className="bg-[#FF8C00] h-1  rounded-full"
                             style={{ width: "100%" }}
@@ -106,7 +107,7 @@ const SingleService = () => {
           </div>
 
           {/* Second column: Placeholder for Image (40% width) */}
-          <div className="md:w-2/5 max-h-screen relative bg-gray-700 rounded-lg">
+          <div className="md:w-1/2 relative bg-gray-700 rounded-lg">
             <Image
               src={
                 service.images && service.images.length > 0
@@ -121,34 +122,19 @@ const SingleService = () => {
           </div>
         </div>
       </div>
-      {/* ///CHECK/// */}
-      {service.expertiseIntro && service.expertiseDescription && (
-        <div className="mb-4">
-          <h3 className="text-xl font-semibold text-red-900">
-            {service.finishesIntro}
-          </h3>
-          <p>{service.expertiseDescription}</p>
-          <ul className="list-disc pl-5">
-            {service.expertise.map((expertise, index) => (
-              <li key={index} className="text-red-900">
-                {expertise.title}: {expertise.text}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+
       {service.typesIntro && (
-        <div className="mt-4 py-28">
+        <div className="mt-4 py-28 px-[4%]">
           <h3 className="text-3xl font-bold  text-center">
             {service.typesIntro}
           </h3>
-          <div className="flex flex-col items-center gap-6 mt-6">
+          <div className="flex flex-col  lg:items-center gap-6 mt-6">
             {/* First row with 2 items */}
             <div className="flex flex-col lg:flex-row gap-6">
               {service.types.slice(0, 2).map((type, index) => (
                 <div
                   key={index}
-                  className="w-80 h-40 border rounded-lg p-4 shadow-sm  flex flex-col justify-center items-center text-gray-600"
+                  className="lg:w-[300px] lg:h-[220px] border rounded-2xl p-4 shadow-md bg-white flex flex-col justify-center items-center text-gray-600"
                 >
                   <h4 className="font-bold text-lg text-center text-black mb-2">
                     {type.title}
@@ -163,7 +149,7 @@ const SingleService = () => {
               {service.types.slice(2, 5).map((type, index) => (
                 <div
                   key={index}
-                  className="w-80 h-40 border rounded-lg p-4 shadow-sm  flex flex-col justify-center items-center text-gray-600"
+                  className="lg:w-[300px] lg:h-[220px] border rounded-2xl p-4 shadow-md bg-white flex flex-col justify-center items-center text-gray-600"
                 >
                   <h4 className="font-bold text-lg text-black text-center mb-2">
                     {type.title}
@@ -214,24 +200,25 @@ const SingleService = () => {
       {servicesSlug === "epoxy-flooring" && (
         <div>
           <EpoxyGallery />
+          <EpoxyFaq />
         </div>
       )}
       {service.installationIntro && (
-        <div className=" py-28 bg-black">
-          <h3 className="text-3xl font-bold text-center text-white mb-10">
+        <div className="border-b-2 bg-white py-28 px-[4%]">
+          <h3 className="text-3xl font-bold text-center text-black mb-10">
             {service.installationIntro}
           </h3>
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 ">
             {service.installationSteps.map((step, index) => (
               <React.Fragment key={index}>
                 <div className="text-center">
-                  <p className="text-white text-xl font-semibold">
+                  <p className="text-black text-xl font-semibold">
                     {step.step}
                   </p>
-                  <p className="text-gray-200 text-base mt-1">{step.text}</p>
+                  <p className="text-gray-600 text-base mt-1">{step.text}</p>
                 </div>
                 {index < service.installationSteps.length - 1 && (
-                  <div className="h-10 w-[1px] bg-gray-300"></div>
+                  <div className="lg:h-10 lg:w-[1px] w-20 h-[1px] bg-gray-600"></div>
                 )}
               </React.Fragment>
             ))}
@@ -239,7 +226,7 @@ const SingleService = () => {
         </div>
       )}
       {service.maintenance && service.maintenance.intro && (
-        <div className="mb-8 py-16 bg-gray-100">
+        <div className="mb-8 py-28 bg-gray-100 px-[4%]">
           <h3 className="text-3xl font-bold text-center text-gray-800 mb-10">
             {service.maintenance.intro}
           </h3>
@@ -282,15 +269,15 @@ const SingleService = () => {
       )}
 
       {service.finishesIntro && (
-        <div className="mb-4 py-28">
+        <div className="mb-4 py-28 bg-white px-[4%]">
           <h3 className="text-3xl font-bold text-center text-black mb-10">
             {service.finishesIntro}
           </h3>
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-between gap-6">
             {service.finishes.map((finish, index) => (
               <div
                 key={index}
-                className="bg-[#333333] border shadow-md rounded-lg p-6 text-white w-72"
+                className="bg-[#333333] border shadow-md rounded-lg p-6 text-white w-full lg:w-[23%]"
               >
                 <h4 className="font-semibold text-xl mb-2">{finish.title}</h4>
                 <p>{finish.text}</p>
@@ -324,7 +311,7 @@ const SingleService = () => {
       )}
 
       {service.whyUs && (
-        <div className="mt-4 py-28">
+        <div className="mt-4 px-[4%] py-28">
           <h3 className="text-3xl font-bold text-center">{service.whyUs}</h3>
           <div className="flex flex-col items-center gap-6 mt-6">
             {/* First row with 2 items */}
@@ -332,7 +319,7 @@ const SingleService = () => {
               {service.whyUsSteps.slice(0, 2).map((whyUsStep, index) => (
                 <div
                   key={index}
-                  className="w-80 h-40 border  p-4  flex flex-col justify-center items-center transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out text-gray-600"
+                  className="lg:w-80 lg:h-40 border  p-4  flex flex-col justify-center items-center transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out text-gray-600"
                 >
                   <h4 className="font-bold text-lg text-center text-black mb-2">
                     {whyUsStep.step}
@@ -347,7 +334,7 @@ const SingleService = () => {
               {service.whyUsSteps.slice(2, 5).map((whyUsStep, index) => (
                 <div
                   key={index}
-                  className="w-80 h-40 border  p-4  flex flex-col justify-center items-center transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out text-gray-600"
+                  className="lg:w-80 lg:h-40 border  p-4  flex flex-col justify-center items-center transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out text-gray-600"
                 >
                   <h4 className="font-bold text-lg text-center text-black mb-2">
                     {whyUsStep.step}
@@ -383,14 +370,14 @@ const SingleService = () => {
 
       {/* ///CHECK/// */}
       {service.expertiseIntro && service.expertiseDescription && (
-        <div className="mb-4 text-center py-28 bg-gradient-to-b from-gray-100 via-white to-gray-100">
+        <div className="mb-4 text-center py-28 bg-gradient-to-b px-[4%] from-gray-100 via-white to-gray-100">
           <h3 className="text-2xl font-bold text-black mb-6">
             {service.finishesIntro}
           </h3>
           <p className="mb-8 text-gray-700 text-lg max-w-2xl mx-auto">
             {service.expertiseDescription}
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {service.expertise.map((expertise, index) => (
               <div
                 key={index}
@@ -416,7 +403,7 @@ const SingleService = () => {
             {service.work.map((work, index) => (
               <div
                 key={index}
-                className="border p-6 h-full flex flex-col transition-transform duration-500 hover:scale-105 rounded-lg shadow-lg ease-in-out"
+                className="border p-6 h-full flex flex-col transition-transform duration-300 hover:scale-105 rounded-lg shadow-lg ease-in-out"
               >
                 <h4 className="text-lg text-white font-semibold">
                   {work.title}
@@ -427,19 +414,7 @@ const SingleService = () => {
           </div>
         </div>
       )}
-      {service.contactText && (
-        <div className="px-[4%] py-28 bg-[#D3D3D3] text-black flex gap-y-5 lg:gap-y-0 flex-col lg:flex-row lg:items-center justify-between">
-          {/* Title Section */}
-          <h3 className="text-2xl font-extrabold text-center lg:text-start lg:w-1/3">
-            {service.contactText}
-          </h3>
-
-          {/* Button Section */}
-          <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white text-base px-6 py-3 rounded-lg shadow-lg transition-all duration-300">
-            Contact Us
-          </button>
-        </div>
-      )}
+      <Cta />
     </div>
   );
 };

@@ -4,25 +4,25 @@ const EpoxyGallery: React.FC = () => {
   const guides = [
     {
       title: "1100 SL Color Guide",
-      link: "https://drive.google.com/file/d/1bpynfswCP3t2riIaa3R9gn6Zj3c9njgZ/view",
+      link: "/docs/1100SLColorGuide.pdf",
     },
     {
       title: "Metalic Color Guide",
-      link: "https://drive.google.com/file/d/176qkNz-_huZVbViFJVDu2UsrHMg7HckB/view",
+      link: "/docs/MetallicColorGuide.pdf",
     },
     {
       title: "Simiron Chips Color Guide",
-      link: "https://drive.google.com/file/d/1b7-zrAwjoCu7txH8GtqZVz_ZpNS9ZRjE/view",
+      link: "/docs/SimironChipsColorGuide.pdf",
     },
     {
-      title: "Torginal Chip Color Guide",
-      link: "https://drive.google.com/file/d/1OwszyT4X-z_wmGpvHdZdHyyJJBLfgMPR/view",
+      title: "Torginol Chip Color Guide",
+      link: "/docs/TorginolChipColorGuide.pdf",
     },
   ];
 
   return (
-    <div className="bg-slate-200 py-28">
-      <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-16">
+    <div className="py-28 px-[4%] bg-[#333333]">
+      <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-16 text-white">
         Epoxy Color Guide
       </h1>
       <div className="flex flex-col lg:flex-row flex-wrap justify-center gap-8">
@@ -32,9 +32,11 @@ const EpoxyGallery: React.FC = () => {
             href={guide.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full md:w-1/2 lg:w-1/4 border border-black p-8 rounded-lg bg-white shadow-lg hover:shadow-2xl hover:bg-orange-50 hover:text-[#ff8c00] hover:border-[#FF8C00] transition duration-300 transform hover:-translate-y-1"
+            className="block w-full md:w-1/2 lg:w-1/4 border border-black p-8 rounded-lg bg-white shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
           >
-            <h2 className="text-lg font-bold text-center">{guide.title}</h2>
+            <h2 className="text-lg font-bold text-black text-center">
+              {guide.title}
+            </h2>
           </a>
         ))}
       </div>
