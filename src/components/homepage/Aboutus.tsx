@@ -4,9 +4,6 @@ import { useRouter } from "next/navigation";
 
 export const About = () => {
   const router = useRouter();
-  const servicesClick = (url: string) => {
-    router.push(url);
-  };
 
   return (
     <div className="px-[4%] py-16 xl:py-28 flex flex-col lg:gap-y-12 xl:flex-row justify-between">
