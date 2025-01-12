@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import logo from "../../../public/Logo-black-bg.svg";
+import logo from "../../../public/logoo.svg";
 
 export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
