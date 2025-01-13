@@ -102,3 +102,19 @@ export async function updateBookingStatusAction(
     return { success: false, message: "Internal server error" };
   }
 }
+
+export const removeBooking = async (bookingId: string) => {
+    try {
+        const { db } = await connectToDatabase();
+        const result = await db.collection('bookings').deleteOne({ _id: new ObjectId(bookingId) });
+
+        if (result.deletedCount === 0) {
+            return { success: false, message: 'Booking not found' };
+        }
+
+        return { success: true, message: 'Booking removed successfully' };
+    } catch (error) {
+        console.error('Error removing booking:', error);
+        return { success: false, message: 'Internal server error' };
+    }
+};

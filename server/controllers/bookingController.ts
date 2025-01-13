@@ -131,4 +131,39 @@ export const bookingController = {
       });
     }
   },
+
+  async removeBooking(
+    req: {
+      params: { id: string };
+    },
+    res: {
+      status: (code: number) => {
+        json: (data: BookingResponse) => BookingResponse;
+      };
+    }
+  ): Promise<BookingResponse> {
+    try {
+      const { id } = req.params;
+      const { db } = await connectToDatabase();
+      const result = await db.collection("bookings").deleteOne({ _id: new ObjectId(id) });
+
+      if (result.deletedCount === 0) {
+        return res.status(404).json({
+          success: false,
+          message: "Booking not found",
+        });
+      }
+
+      return res.status(200).json({
+        success: true,
+        message: "Booking removed successfully",
+      });
+    } catch (error) {
+      console.error("Error removing booking:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Internal server error",
+      });
+    }
+  },
 };
