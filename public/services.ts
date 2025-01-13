@@ -430,4 +430,5 @@ const services = [
     },
   },
 ];
-export default { services }; // Export as default
+const data = { services };
+export default data;
