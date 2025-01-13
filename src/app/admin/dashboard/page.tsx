@@ -127,14 +127,14 @@ export default function AdminDashboard() {
               </div>
               
               <div className="space-y-2 mb-4">
-                <p className="flex items-center text-gray-300">
+                <div className="flex items-center text-gray-300">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-[#FF8C00]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   <p className="text-[#333333]">
                   {booking.email}
                   </p>
-                </p>
+                </div>
               </div>
 
               <div className="flex justify-between items-center space-x-2">
@@ -243,13 +243,13 @@ export default function AdminDashboard() {
                   Close
                 </button>
                 {updateLoading === selectedBooking._id ? (
-                  <div className="bg-blue-500 text-white px-4 py-2 rounded-lg opacity-50 cursor-not-allowed">
+                  <div className="border border-[#FF8C00] hover:bg-[#FF8C00] hover:text-white text-[#FF8C00]px-4 py-2 rounded-lg opacity-50 cursor-not-allowed">
                     Updating...
                   </div>
                 ) : (
                   <button 
                     onClick={() => handleStatusChange(selectedBooking._id, selectedBooking.status)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+                    className="border border-[#FF8C00] hover:bg-[#FF8C00] hover:text-white text-[#FF8C00] px-4 py-2 rounded-lg transition-colors"
                   >
                     Update Status
                   </button>
