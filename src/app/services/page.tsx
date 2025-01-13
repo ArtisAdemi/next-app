@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function Services() {
   return (
     <div>
-      <div className="bg-[#333333]">
+      <div className="bg-[#333333] px-[4%]">
         <Navbar />
       </div>
 
