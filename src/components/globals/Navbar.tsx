@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import bgImage from "../../../public/images/background-hero.jpg";
-import logo from "../../../public/logotest.svg";
+import logo from "../../../public/testtest.svg";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineCancel } from "react-icons/md";
 import Image from "next/image";
