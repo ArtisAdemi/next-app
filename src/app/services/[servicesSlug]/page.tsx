@@ -111,7 +111,7 @@ const SingleService = () => {
             <Image
               src={
                 service.images && service.images.length > 0
-                  ? service.images[0]
+                  ? service.images[1]
                   : hero
               }
               alt={service.title}
@@ -350,9 +350,9 @@ const SingleService = () => {
       {/* // tar glue // */}
       {service.upgrade && (
         <div
-          className=" bg-cover bg-center bg-gray-300 py-28 text-white relative flex items-center justify-center"
+          className=" bg-cover bg-center bg-gray-300 text-white py-28 relative flex items-center justify-center"
           style={{
-            backgroundImage: 'url("https://via.placeholder.com/1920x400")', // Placeholder image
+            backgroundImage: `url(${service.upgradeImage?.[0]?.src})`, // First image in the array of upgradeImage
           }}
         >
           <div className="text-center max-w-2xl ">

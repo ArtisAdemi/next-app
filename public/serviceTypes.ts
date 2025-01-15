@@ -6,6 +6,7 @@ export interface Service {
   description: string;
   content: string;
   images: StaticImageData[];
+  upgradeImage: StaticImageData[];
   why: string;
   benefits: Array<{ title: string; text: string }>;
   typesIntro?: string;

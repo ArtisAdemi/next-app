@@ -1,8 +1,22 @@
 import image1 from "../public/images/img1.jpg";
 import simiron from "../public/images/simiron.jpg";
+import epoxy1 from "../public/images/epoxy1.jpeg";
+import epoxy4 from "../public/images/epoxy4.jpeg";
+import epoxy10 from "../public/images/epoxy10.jpeg";
+import polishing1 from "../public/images/polishing1.jpeg";
+import polishing2 from "../public/images/polishing2.jpeg";
+import polishing3 from "../public/images/polishing3.jpeg";
+import painting4 from "../public/images/painting4.jpeg";
+import painting2 from "../public/images/painting2.jpeg";
+import painting5 from "../public/images/painting5.jpeg";
+import grout1 from "../public/images/grout1.jpeg";
+import grout2 from "../public/images/grout2.jpeg";
+
+
 const services = [
   {
-    images: [image1, simiron, image1],
+    images: [epoxy10, epoxy4, simiron],
+    upgradeImage: [epoxy1],
     title: "Epoxy Flooring",
     slug: "epoxy-flooring",
     contactText:
@@ -112,7 +126,8 @@ const services = [
     },
   },
   {
-    images: [image1, simiron, image1],
+    images: [polishing1, polishing2, polishing3],
+    upgradeImage: [polishing3],
     title: "Concrete Polishing",
     slug: "concrete-polishing",
     description: "Sleek, Durable, and Timeless",
@@ -223,7 +238,8 @@ const services = [
     },
   },
   {
-    images: [simiron, image1, image1],
+    images: [painting4, painting2],
+    upgradeImage: [painting5],
     title: "Commercial/Industrial Painting",
     slug: "commercial-industrial-painting",
     description: "Precision, Protection, and Professional Results",
@@ -240,10 +256,6 @@ const services = [
       {
         title: "Durability & Protection",
         text: "High-quality paints shield surfaces from wear, moisture, and environmental damage, ensuring longevity",
-      },
-      {
-        title: "Improved Safety",
-        text: " Brighten interiors with reflective coatings, or add safety markings and color-coded zones for improved functionality.",
       },
       {
         title: "Custom Solutions",
@@ -319,7 +331,8 @@ const services = [
     },
   },
   {
-    images: [image1, image1, image1],
+    images: [grout2, grout1],
+    upgradeImage: [grout1],
     title: "Tar, Glue, and Grout Removal",
     slug: "tar-glue-grout-removal",
     contactText:

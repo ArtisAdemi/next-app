@@ -1,5 +1,7 @@
 import Link from "next/link";
-import hero from "../../../public/images/hero.jpg";
+import hero from "../../../public/images/epoxy2.jpeg";
+import hero2 from "../../../public/images/epoxy8.jpeg";
+import hero3 from "../../../public/images/polishing2.jpeg";
 
 export const About = () => {
   return (
@@ -40,12 +42,12 @@ export const About = () => {
           />
           <div className=" flex flex-col gap-4">
             <img
-              src={hero.src}
+              src={hero2.src}
               alt="Image 2"
               className="rounded-lg shadow-md object-cover xl:w-96 "
             />
             <img
-              src={hero.src}
+              src={hero3.src}
               alt="Image 2"
               className="rounded-lg shadow-md object-cover w-[100%] h-56"
             />

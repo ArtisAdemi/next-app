@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import bgImage from "../../../public/images/background-hero.jpg";
-import hero from "../../../public/images/hero.jpg";
+import hero from "../../../public/images/home1.jpeg";
 import { IoCheckmark } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
 import Navbar from "../globals/Navbar";
