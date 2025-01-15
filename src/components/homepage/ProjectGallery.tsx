@@ -7,30 +7,24 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
   const projects = [
     {
       id: 1,
-      heroImage: "/images/hero.jpg",
-      backgroundImage: "/images/background-hero.jpg",
+      backgroundImage: "/images/before1.jpeg",
+      heroImage: "/images/after1.jpeg",
     },
     {
       id: 2,
-      heroImage: "/images/hero.jpg",
-      backgroundImage: "/images/hero.jpg",
+      backgroundImage: "/images/before2.jpeg",
+      heroImage: "/images/after2.jpeg",
     },
     {
       id: 3,
-      heroImage: "/images/hero.jpg",
-      backgroundImage: "/images/hero.jpg",
+      backgroundImage: "/images/before3.jpeg",
+      heroImage: "/images/after3.jpeg",
     },
     {
       id: 4,
-      heroImage: "/images/hero.jpg",
-      backgroundImage: "/images/hero.jpg",
+      backgroundImage: "/images/before4.jpeg",
+      heroImage: "/images/after4.jpeg",
     },
-    {
-      id: 5,
-      heroImage: "/images/hero.jpg",
-      backgroundImage: "/images/hero.jpg",
-    },
-
     // Add more projects as needed
   ];
 

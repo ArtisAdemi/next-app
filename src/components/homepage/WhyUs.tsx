@@ -1,6 +1,6 @@
 import React from "react";
 
-import hero from "../../../public/images/hero.jpg";
+import hero from "../../../public/images/epoxy1.jpeg";
 
 const WhyUs: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const WhyUs: React.FC = () => {
           Why Choose Us
         </h5>
         <h1 className="text-5xl font-bold text-black leading-tight">
-          Welcome to Palushaj Epoxy Coatings.
+          Welcome to Palushi Epoxy Coatings.
         </h1>
         <p className="text-xl font-md text-black leading-snug mt-4  ">
           {" "}
@@ -28,7 +28,7 @@ const WhyUs: React.FC = () => {
         <img
           src={hero.src}
           alt=""
-          className="w-full h-[600px] rounded-lg shadow-md object-cove"
+          className="w-full h-[600px] rounded-lg shadow-md object-cover"
         />
       </div>
     </div>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import servicesData from "../../../public/services.ts"; // Adjust the import path as necessary
 import { useRouter } from "next/navigation"; // Import useRouter
 import { Service } from "public/serviceTypes";
-import hero from "../../../public/images/hero.jpg";
+import hero from "../../../public/images/home2.jpeg";
 import Image from "next/image";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
