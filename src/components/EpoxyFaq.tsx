@@ -111,6 +111,7 @@ const EpoxyFaq: React.FC = () => {
               src={hero}
               quality={100}
               loading="lazy"
+              placeholder="blur"
               className="w-[100%] max-h-[800px] object-cover"
             />
           </div>

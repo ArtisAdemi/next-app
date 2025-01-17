@@ -115,6 +115,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                 src={projects[selectedProjectIndex].heroImage}
                 className="object-cover rounded-xl"
                 loading="lazy"
+                placeholder="blur"
                 //className="lg:w-[60%] h-[500px] lg:h-[400px]"
               />
               <div
@@ -132,6 +133,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                   fill
                   loading="lazy"
                   quality={100}
+                  placeholder="blur"
                   src={projects[selectedProjectIndex].backgroundImage}
                   className="object-cover rounded-xl"
                   //className="lg:w-[60%] h-[500px] lg:h-[400px]"

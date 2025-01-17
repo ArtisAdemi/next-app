@@ -64,6 +64,8 @@ const SingleService = () => {
                 : hero
             }
             alt={service.title}
+            placeholder="blur"
+            priority
             className="object-cover w-full max-h-[600px]"
           />
         </div>
@@ -117,6 +119,7 @@ const SingleService = () => {
               alt={service.title}
               layout="fill"
               objectFit="cover"
+              placeholder="blur"
               quality={100}
             />
           </div>

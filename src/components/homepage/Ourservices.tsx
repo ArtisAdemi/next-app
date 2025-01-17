@@ -57,7 +57,8 @@ export const OurServices: React.FC = () => {
             src={hero}
             quality={100}
             className="lg:w-[80%] h-[500px] lg:h-[600px]"
-            loading="lazy"
+            priority
+            placeholder="blur"
           />
         </div>
         {/* Services List */}
