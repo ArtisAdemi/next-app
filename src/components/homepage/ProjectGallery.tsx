@@ -116,6 +116,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                 className="object-cover rounded-xl"
                 loading="lazy"
                 placeholder="blur"
+                blurDataURL={projects[selectedProjectIndex].heroImage}
                 //className="lg:w-[60%] h-[500px] lg:h-[400px]"
               />
               <div
@@ -135,6 +136,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                   quality={100}
                   placeholder="blur"
                   src={projects[selectedProjectIndex].backgroundImage}
+                  blurDataURL={projects[selectedProjectIndex].backgroundImage}
                   className="object-cover rounded-xl"
                   //className="lg:w-[60%] h-[500px] lg:h-[400px]"
                 />
