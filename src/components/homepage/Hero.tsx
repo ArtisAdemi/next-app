@@ -102,7 +102,7 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
               className="object-cover"
               fill
               src={hero}
-              quality={80}
+              quality={100}
               alt=""
               priority
               placeholder="blur"
