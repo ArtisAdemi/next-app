@@ -15,7 +15,6 @@ const Secondcta: React.FC = () => {
           quality={75}
           sizes="100vw"
           className="object-cover"
-          priority={true}
         />
       </div>
 

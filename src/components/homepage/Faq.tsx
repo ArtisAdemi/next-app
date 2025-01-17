@@ -109,6 +109,7 @@ const Faq: React.FC = () => {
               alt="image"
               src={hero}
               quality={100}
+              placeholder="blur"
               className="w-[100%] max-h-[800px] object-cover"
             />
           </div>

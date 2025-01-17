@@ -85,6 +85,8 @@ export default function Services() {
                       : 'imagee' 
                   }
                   alt={service.title}
+                  placeholder="blur"
+                  priority
                   className="object-cover w-full max-h-[600px]"
                 />
               </div>
