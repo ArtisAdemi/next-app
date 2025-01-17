@@ -7,23 +7,23 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
   const projects = [
     {
       id: 1,
-      backgroundImage: "/images/before1.jpeg",
-      heroImage: "/images/after1.jpeg",
+      backgroundImage: "/images/before1.webp",
+      heroImage: "/images/after1.webp",
     },
     {
       id: 2,
-      backgroundImage: "/images/before2.jpeg",
-      heroImage: "/images/after2.jpeg",
+      backgroundImage: "/images/before2.webp",
+      heroImage: "/images/after2.webp",
     },
     {
       id: 3,
-      backgroundImage: "/images/before3.jpeg",
-      heroImage: "/images/after3.jpeg",
+      backgroundImage: "/images/before3.webp",
+      heroImage: "/images/after3.webp",
     },
     {
       id: 4,
-      backgroundImage: "/images/before4.jpeg",
-      heroImage: "/images/after4.jpeg",
+      backgroundImage: "/images/before4.webp",
+      heroImage: "/images/after4.webp",
     },
     // Add more projects as needed
   ];
@@ -91,6 +91,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                 src={project.heroImage}
                 quality={100}
                 fill
+                loading="lazy"
               />
             </div>
           ))}
@@ -111,9 +112,9 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                 alt={`Hero image of Project ${selectedProjectIndex + 1}`}
                 fill
                 quality={100}
-                priority
                 src={projects[selectedProjectIndex].heroImage}
                 className="object-cover rounded-xl"
+                loading="lazy"
                 //className="lg:w-[60%] h-[500px] lg:h-[400px]"
               />
               <div
@@ -129,7 +130,7 @@ const ProjectGallery = forwardRef<HTMLDivElement>((_, ref) => {
                     selectedProjectIndex + 1
                   }`}
                   fill
-                  priority
+                  loading="lazy"
                   quality={100}
                   src={projects[selectedProjectIndex].backgroundImage}
                   className="object-cover rounded-xl"

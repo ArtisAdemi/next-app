@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import bgImage from "../../../public/images/background-hero.jpg";
-import hero from "../../../public/images/home1.jpeg";
+import hero from "../../../public/images/home1.webp";
 import { IoCheckmark } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
 import Navbar from "../globals/Navbar";
@@ -23,6 +23,7 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
               quality={100}
               src={bgImage.src}
               alt=""
+              loading="lazy"
             />
           </div>
           <div className="absolute inset-0 flex flex-col">
@@ -103,6 +104,7 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
               src={hero.src}
               quality={100}
               alt=""
+              priority
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>

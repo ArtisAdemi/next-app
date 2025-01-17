@@ -1,21 +1,19 @@
-import image1 from "../public/images/img1.jpg";
-import simiron from "../public/images/simiron.jpg";
-import epoxy1 from "../public/images/epoxy1.jpeg";
-import epoxy4 from "../public/images/epoxy4.jpeg";
-import epoxy10 from "../public/images/epoxy10.jpeg";
-import polishing1 from "../public/images/polishing1.jpeg";
-import polishing2 from "../public/images/polishing2.jpeg";
-import polishing3 from "../public/images/polishing3.jpeg";
-import painting4 from "../public/images/painting4.jpeg";
-import painting2 from "../public/images/painting2.jpeg";
-import painting5 from "../public/images/painting5.jpeg";
-import grout1 from "../public/images/grout1.jpeg";
-import grout2 from "../public/images/grout2.jpeg";
+import epoxy1 from "../public/images/epoxy1.webp";
+import epoxy4 from "../public/images/epoxy4.webp";
+import epoxy10 from "../public/images/epoxy10.webp";
+import polishing1 from "../public/images/polishing1.webp";
+import polishing2 from "../public/images/polishing2.webp";
+import polishing3 from "../public/images/polishing3.webp";
+import painting4 from "../public/images/painting4.webp";
+import painting2 from "../public/images/painting2.webp";
+import painting5 from "../public/images/painting5.webp";
+import grout1 from "../public/images/grout1.webp";
+import grout2 from "../public/images/grout2.webp";
 
 
 const services = [
   {
-    images: [epoxy10, epoxy4, simiron],
+    images: [epoxy10, epoxy4],
     upgradeImage: [epoxy1],
     title: "Epoxy Flooring",
     slug: "epoxy-flooring",

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import hero from "../../../public/images/epoxy2.jpeg";
-import hero2 from "../../../public/images/epoxy8.jpeg";
-import hero3 from "../../../public/images/polishing2.jpeg";
+import hero from "../../../public/images/epoxy2.webp";
+import hero2 from "../../../public/images/epoxy8.webp";
+import hero3 from "../../../public/images/polishing2.webp";
 
 export const About = () => {
   return (

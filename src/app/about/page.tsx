@@ -1,6 +1,6 @@
 "use client";
 import { Cta } from "@/components/globals/Cta";
-import hero from "../../../public/images/hero.jpg";
+import hero from "../../../public/images/epoxy1.webp";
 import Hero from "@/components/homepage/Hero";
 import Faq from "@/components/homepage/Faq";
 
@@ -27,7 +27,7 @@ export default function About() {
             </div>
           </div>
 
-          <p className="text-xl font-md text-black leading-7 xl:w-3/5 mt-4">
+          <p className="text-xl font-md text-black leading-7 xl:w-full mt-4">
             {" "}
             Welcome to Palushaj Epoxy Coatings, where quality craftsmanship and
             dedication to excellence are the foundation of everything we do
@@ -64,12 +64,12 @@ export default function About() {
             <img
               src={hero.src}
               alt="Image 1"
-              className="rounded-lg shadow-md object-cover w-[70%] rounded-tl-full hidden xl:block "
+              className="rounded-lg shadow-md object-cover w-[30%] xl:h-[70%] rounded-tl-full hidden xl:block "
             />
             <img
               src={hero.src}
               alt="Image 1"
-              className="rounded-lg shadow-md object-cover xl:w-[70%] xl:rounded-tr-full "
+              className="rounded-lg shadow-md object-cover xl:w-[30%] xl:h-[70%]  xl:rounded-tr-full "
             />
           </div>
         </div>
