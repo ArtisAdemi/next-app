@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import logo from "../../../public/logotest.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export const Footer = () => {
   const pathname = usePathname();
