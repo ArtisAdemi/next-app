@@ -21,9 +21,10 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
               className="object-cover"
               fill
               quality={90}
-              src={bgImage.src}
+              src={bgImage}
               alt=""
-              loading="lazy"
+              priority
+              placeholder="blur"
             />
           </div>
           <div className="absolute inset-0 flex flex-col">
