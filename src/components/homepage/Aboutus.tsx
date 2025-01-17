@@ -2,11 +2,12 @@ import Link from "next/link";
 import hero from "../../../public/images/epoxy2.webp";
 import hero2 from "../../../public/images/epoxy8.webp";
 import hero3 from "../../../public/images/polishing2.webp";
+import Image from "next/image";
 
 export const About = () => {
   return (
     <div className="px-[4%] py-16 xl:py-28 flex flex-col lg:gap-y-12 xl:flex-row justify-between">
-      <div className="xl:mt-20 xl:w-[60%]">
+      <div className="xl:mt-20 xl:w-[100%]">
         <h5 className="font-semibold mb-4 text-xl text-[#FF8C00]">About Us</h5>
         <h1 className="text-5xl font-bold text-black leading-tight">
           Building Your <br /> Dream Floors Together.
@@ -34,21 +35,27 @@ export const About = () => {
         </Link>
       </div>
       <div className="flex gap-6 mt-12 lg:mt-0">
-        <div className="flex flex-row gap-4 xl:justify-end">
-          <img
-            src={hero.src}
+        <div className="flex flex-row gap-4 max-h-[750px] xl:justify-end">
+          <Image
+            src={hero}
             alt="Image 1"
+            loading="lazy"
+            placeholder="blur"
             className="rounded-lg shadow-md object-cover w-[50%]"
           />
           <div className=" flex flex-col gap-4">
-            <img
-              src={hero2.src}
+            <Image
+              src={hero2}
               alt="Image 2"
+              loading="lazy"
+              placeholder="blur"
               className="rounded-lg shadow-md object-cover xl:w-96 "
             />
-            <img
-              src={hero3.src}
+            <Image
+              src={hero3}
               alt="Image 2"
+              loading="lazy"
+              placeholder="blur"
               className="rounded-lg shadow-md object-cover w-[100%] h-56"
             />
           </div>

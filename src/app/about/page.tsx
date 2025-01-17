@@ -1,8 +1,11 @@
 "use client";
 import { Cta } from "@/components/globals/Cta";
-import hero from "../../../public/images/epoxy1.webp";
+import hero from "../../../public/images/epoxy2.webp";
+import hero2 from "../../../public/images/epoxy5.webp";
+import hero3 from "../../../public/images/epoxy10.webp";
 import Hero from "@/components/homepage/Hero";
 import Faq from "@/components/homepage/Faq";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -19,9 +22,11 @@ export default function About() {
 
           <div className="lg:hidden gap-6 flex">
             <div className="flex flex-row gap-4 xl:justify-end">
-              <img
-                src={hero.src}
+              <Image
+                src={hero}
                 alt="Image 1"
+                loading="lazy"
+                placeholder="blur"
                 className="rounded-lg shadow-md object-cover w-full xl:w-[70%] lg:rounded-tr-full "
               />
             </div>
@@ -60,16 +65,20 @@ export default function About() {
           </button>
         </div>
         <div className="lg:flex gap-6 hidden">
-          <div className="flex flex-row gap-4 xl:justify-end">
-            <img
-              src={hero.src}
+          <div className="flex flex-row relative lg:max-h-[700px] gap-4 xl:justify-end">
+            <Image
+              src={hero}
               alt="Image 1"
-              className="rounded-lg shadow-md object-cover w-[30%] xl:h-[70%] rounded-tl-full hidden xl:block "
+              loading="lazy"
+              placeholder="blur"
+              className="rounded-lg shadow-md object-cover w-[40%] xl:h-full rounded-tl-full hidden xl:block "
             />
-            <img
-              src={hero.src}
+            <Image
+              src={hero2}
               alt="Image 1"
-              className="rounded-lg shadow-md object-cover xl:w-[30%] xl:h-[70%]  xl:rounded-tr-full "
+              loading="lazy"
+              placeholder="blur"
+              className="rounded-lg shadow-md object-cover xl:w-[40%] xl:h-full  xl:rounded-tr-full "
             />
           </div>
         </div>
@@ -90,10 +99,12 @@ export default function About() {
           experience of the past with innovative ideas for the future to grow
           and serve our community even better.
         </p>
-        <img
-          src={hero.src}
+        <Image
+          src={hero3}
           alt=""
-          className="w-full h-[600px] mt-20 rounded-lg shadow-md object-cove"
+          loading="lazy"
+          placeholder="blur"
+          className="w-full h-[600px] mt-20 rounded-lg shadow-md object-cover"
         />
       </div>
       <Faq />

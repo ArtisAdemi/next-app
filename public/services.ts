@@ -10,7 +10,6 @@ import painting5 from "../public/images/painting5.webp";
 import grout1 from "../public/images/grout1.webp";
 import grout2 from "../public/images/grout2.webp";
 
-
 const services = [
   {
     images: [epoxy10, epoxy4],

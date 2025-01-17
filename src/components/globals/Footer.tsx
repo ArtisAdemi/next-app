@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import logo from "../../../public/logotest.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export const Footer = () => {
   const pathname = usePathname();
@@ -75,18 +75,30 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold">Follow Us</h3>
           </div>
           <div className="space-y-6 w-[40%] lg:w-[40%]">
-            <div className="flex gap-x-2 border rounded-lg px-4 py-4 lg:py-3 hover:translate-x-1 duration-300 cursor-pointer">
+            <a
+              target="_blank"
+              href="https://www.facebook.com/profile.php?id=61569789103538&mibextid=wwXIfr&rdid=Fzt40pmlW2uSMyQ2&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15nPDwRk7E%2F%3Fmibextid%3DwwXIfr#"
+              className="flex gap-x-2 border rounded-lg px-4 py-4 lg:py-3 hover:translate-x-1 duration-300 cursor-pointer"
+            >
               <FaFacebook size={24} />
               <h1>Facebook</h1>
-            </div>
-            <div className="flex gap-x-2 border rounded-lg px-4 py-4 lg:py-3  hover:translate-x-1 duration-300 cursor-pointer">
+            </a>
+            <a
+              href="https://www.instagram.com/palushiepoxy"
+              target="_blank"
+              className="flex gap-x-2 border rounded-lg px-4 py-4 lg:py-3  hover:translate-x-1 duration-300 cursor-pointer"
+            >
               <FaInstagram size={24} />
               <h1>Instagram</h1>
-            </div>
-            <div className="flex gap-x-2 border rounded-lg px-4 py-4 lg:py-3  hover:translate-x-1 duration-300 cursor-pointer">
-              <FaTiktok size={24} />
-              <h1>TikTok</h1>
-            </div>
+            </a>
+            <a
+              target="_blank"
+              href="https://www.youtube.com/@PalushiEpoxy"
+              className="flex gap-x-2 border rounded-lg px-4 py-4 lg:py-3  hover:translate-x-1 duration-300 cursor-pointer"
+            >
+              <FaYoutube size={24} />
+              <h1>Youtube</h1>
+            </a>
           </div>
         </div>
         <div className="">
@@ -107,7 +119,16 @@ export const Footer = () => {
 
       {/* Bottom Section */}
       <div className="mt-12 -mb-24 text-center text-white border-t border-white pt-6">
-        <p>© {new Date().getFullYear()} Influxo. All Rights Reserved.</p>
+        <p>
+          © {new Date().getFullYear()} Palushi Epoxy Inc. All Rights Reserved.
+        </p>
+        <a
+          className="hover:underline"
+          target="_blank"
+          href="https://www.influxo.dev"
+        >
+          Made by Influxo
+        </a>
       </div>
     </footer>
   );
