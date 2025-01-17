@@ -20,7 +20,7 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
             <Image
               className="object-cover"
               fill
-              quality={100}
+              quality={90}
               src={bgImage.src}
               alt=""
               loading="lazy"
@@ -101,10 +101,11 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
             <Image
               className="object-cover"
               fill
-              src={hero.src}
-              quality={100}
+              src={hero}
+              quality={80}
               alt=""
               priority
+              placeholder="blur"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
