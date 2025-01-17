@@ -1,6 +1,6 @@
 import React from "react";
 
-import hero from "../../../public/images/epoxy1.jpeg";
+import hero from "../../../public/images/epoxy1.webp";
 
 const WhyUs: React.FC = () => {
   return (

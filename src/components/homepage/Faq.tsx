@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import hero from "../../../public/images/epoxy4.jpeg";
+import hero from "../../../public/images/epoxy4.webp";
 import Image from "next/image";
 const Faq: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

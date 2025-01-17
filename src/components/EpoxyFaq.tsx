@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import hero from "../../public/images/epoxy5.jpeg";
+import hero from "../../public/images/epoxy5.webp";
 import Image from "next/image";
 const EpoxyFaq: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -110,6 +110,7 @@ const EpoxyFaq: React.FC = () => {
               alt="image"
               src={hero}
               quality={100}
+              loading="lazy"
               className="w-[100%] max-h-[800px] object-cover"
             />
           </div>
