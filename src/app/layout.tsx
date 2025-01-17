@@ -3,6 +3,7 @@ import { Roboto_Flex } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/globals/ClientLayout";
 import { Footer } from "@/components/globals/Footer";
+import Head from "next/head";
 
 const inter = Roboto_Flex({ subsets: ["latin"] });
 
@@ -18,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="preload" as="image" href="/images/simiron.jpg" />
+      </Head>
       <body className={inter.className}>
         <ClientLayout>{children}</ClientLayout>
         <Footer />
