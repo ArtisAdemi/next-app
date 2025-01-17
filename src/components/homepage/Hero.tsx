@@ -1,3 +1,4 @@
+"use client";
 import React, { forwardRef } from "react";
 import bgImage from "../../../public/images/background-hero.jpg";
 import hero from "../../../public/images/home1.webp";
@@ -5,6 +6,7 @@ import { IoCheckmark } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
 import Navbar from "../globals/Navbar";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 interface HeroProps {
   title: string;
@@ -13,6 +15,10 @@ interface HeroProps {
 
 const Hero = forwardRef<HTMLDivElement, HeroProps>(
   ({ title, description }, ref) => {
+    const pathname = usePathname();
+
+    const isHomeRoute = pathname === "/";
+
     return (
       <div className="flex flex-col lg:flex-row lg:justify-between h-screen">
         <div className="w-full xl:w-[45%] relative flex flex-col justify-between">
@@ -77,24 +83,26 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
                 </div>
               </div>
             </div>
-            <div className="absolute xl:hidden text-end px-[4%] bottom-8 right-0 left-0 transform ">
-              <button
-                className="text-white text-lg px-6 py-3 font-medium hover:underline hover:duration-300"
-                onClick={() => {
-                  if (typeof ref === "object" && ref?.current) {
-                    const yOffset = 100;
-                    const element = ref.current;
-                    const y =
-                      element.getBoundingClientRect().top +
-                      window.pageYOffset +
-                      yOffset;
-                    window.scrollTo({ top: y, behavior: "smooth" });
-                  }
-                }}
-              >
-                View Project Gallery
-              </button>
-            </div>
+            {isHomeRoute && (
+              <div className="absolute xl:hidden text-end px-[4%] bottom-8 right-0 left-0 transform ">
+                <button
+                  className="text-white text-lg px-6 py-3 font-medium hover:underline hover:duration-300"
+                  onClick={() => {
+                    if (typeof ref === "object" && ref?.current) {
+                      const yOffset = 100;
+                      const element = ref.current;
+                      const y =
+                        element.getBoundingClientRect().top +
+                        window.pageYOffset +
+                        yOffset;
+                      window.scrollTo({ top: y, behavior: "smooth" });
+                    }
+                  }}
+                >
+                  View Project Gallery
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="w-full hidden xl:block xl:w-[55%] relative">
@@ -110,24 +118,26 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
-          <div className="absolute bottom-8 right-8">
-            <button
-              className="text-white text-xl px-6 py-3 font-semibold hover:underline hover:duration-300"
-              onClick={() => {
-                if (typeof ref === "object" && ref?.current) {
-                  const yOffset = 100;
-                  const element = ref.current;
-                  const y =
-                    element.getBoundingClientRect().top +
-                    window.pageYOffset +
-                    yOffset;
-                  window.scrollTo({ top: y, behavior: "smooth" });
-                }
-              }}
-            >
-              View Project Gallery
-            </button>
-          </div>
+          {isHomeRoute && (
+            <div className="absolute bottom-8 right-8">
+              <button
+                className="text-white text-xl px-6 py-3 font-semibold hover:underline hover:duration-300"
+                onClick={() => {
+                  if (typeof ref === "object" && ref?.current) {
+                    const yOffset = 100;
+                    const element = ref.current;
+                    const y =
+                      element.getBoundingClientRect().top +
+                      window.pageYOffset +
+                      yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
+                }}
+              >
+                View Project Gallery
+              </button>
+            </div>
+          )}
         </div>
       </div>
     );

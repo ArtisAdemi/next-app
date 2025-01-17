@@ -10,6 +10,27 @@ import hero from "../../../../public/images/background-hero.jpg";
 import Link from "next/link";
 import EpoxyFaq from "@/components/EpoxyFaq";
 import { Cta } from "@/components/globals/Cta";
+import { GiFactory, GiFamilyHouse } from "react-icons/gi";
+import { MdApartment } from "react-icons/md";
+
+const iconsData = [
+  {
+    type: "Residential",
+    icon: <GiFamilyHouse />,
+    description: "Transform your home with our expert epoxy coatings.",
+  },
+  {
+    type: "Commercial",
+    icon: <MdApartment />,
+    description:
+      "Enhance your business space with high-quality epoxy flooring.",
+  },
+  {
+    type: "Industrial",
+    icon: <GiFactory />,
+    description: "Rely on our heavy-duty epoxy coatings.",
+  },
+];
 
 const SingleService = () => {
   const { servicesSlug } = useParams();
@@ -192,7 +213,12 @@ const SingleService = () => {
                       index === 0 ? "white" : index === 1 ? "white" : "black",
                   }}
                 >
-                  {/* <span className="text-6xl">{spaceType.icon}</span> */}
+                  <div className="text-6xl">
+                    {
+                      iconsData.find((icon) => icon.type === spaceType.type)
+                        ?.icon
+                    }
+                  </div>
                   <Space title={spaceType.type} description={spaceType.text} />
                 </div>
               ))}

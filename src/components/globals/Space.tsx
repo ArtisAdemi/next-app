@@ -3,6 +3,7 @@ import React from "react";
 interface SpaceProps {
   title: string;
   description: string;
+  icon?: React.ReactNode;
 }
 
 const Space: React.FC<SpaceProps> = ({ title, description }) => {

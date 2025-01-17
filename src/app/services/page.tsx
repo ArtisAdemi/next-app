@@ -82,12 +82,12 @@ export default function Services() {
                   src={
                     service.images && service.images.length > 0
                       ? service.images[0]
-                      : 'imagee' 
+                      : "imagee"
                   }
                   alt={service.title}
                   placeholder="blur"
                   priority
-                  className="object-cover w-full max-h-[600px]"
+                  className="object-cover w-full h-[600px]"
                 />
               </div>
             </div>

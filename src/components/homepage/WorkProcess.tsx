@@ -1,27 +1,30 @@
 "use client";
 import React from "react";
 import Space from "../globals/Space";
+import { GiFactory } from "react-icons/gi";
+import { MdApartment } from "react-icons/md";
+import { GiFamilyHouse } from "react-icons/gi";
 
 export const WorkProcess = () => {
   const steps = [
     {
       id: 1, // Make sure this is the first tab
       title: "Residential",
-      icon: "💵",
+      icon: <GiFamilyHouse />,
       description:
         "Transform your home with our expert epoxy coatings, and concrete polishing (indoors only). Whether its garage floors, basements, or patios, we create beautiful durable surfaces tailored to your lifestyle.",
     },
     {
       id: 2,
       title: "Commercial",
-      icon: "📦",
+      icon: <MdApartment />,
       description:
         "Enhance your business space with high-quality epoxy flooring, polished concrete, and custom finishes. We provide durable, low-maintenance solutions ideal for offices, retail environments, and more",
     },
     {
       id: 3,
       title: "Industrial",
-      icon: "🎨",
+      icon: <GiFactory />,
       description:
         "Rely on our heavy-duty epoxy coatings, concrete polishing, and surface preparation solutions designed for industrial demands. We focus on safety and durability, ensuring your floors withstand high traffic and heavy equipment, keeping your facility compliant and professional",
     },
@@ -52,7 +55,7 @@ export const WorkProcess = () => {
                   step.id === 1 ? "white" : step.id === 2 ? "white" : "black",
               }}
             >
-              <span className="text-6xl">{step.icon}</span>
+              <div className="text-6xl">{step.icon}</div>
               <Space title={step.title} description={step.description} />
             </div>
           ))}

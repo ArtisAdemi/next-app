@@ -46,43 +46,48 @@ export default function Bookings() {
   };
 
   return (
-    <div className="bg-[#333333] min-h-screen border border-t-0 border-l-0 border-r-0 border-b-[#FFF]">
+    <div className="bg-[#333333] min-h-screen border border-t-0 border-l-0 border-r-0 border-b-[#FFF] px-[4%]">
       <div className="border border-t-0 border-l-0 border-r-0 border-b-[#FFF]">
-      <Navbar />
+        <Navbar />
       </div>
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto bg-[#2B2B2B] rounded-lg shadow-lg overflow-hidden">
           <div className="p-8">
             <div className="text-center mb-12">
-              <h5 className="font-semibold mb-2 text-xl text-[#FF8C00]">Book Your Service</h5>
-              <h1 className="text-4xl font-bold text-white">Schedule a Consultation</h1>
+              <h5 className="font-semibold mb-2 text-xl text-[#FF8C00]">
+                Book Your Service
+              </h5>
+              <h1 className="text-4xl font-bold text-white">
+                Schedule a Consultation
+              </h1>
             </div>
 
             <form action={handleSubmit} className="space-y-6">
-              {[{
-                name: "name",
-                label: "Full Name",
-                type: "text",
-                placeholder: "Your Full Name"
-              },
-              {
-                name: "email",
-                label: "Email Address",
-                type: "email",
-                placeholder: "your@email.com"
-              },
-              {
-                name: "phoneNumber",
-                label: "Phone Number",
-                type: "tel",
-                placeholder: "(555) 123-4567"
-              },
-              {
-                name: "address",
-                label: "Service Location",
-                type: "text",
-                placeholder: "Your Address"
-              }
+              {[
+                {
+                  name: "name",
+                  label: "Full Name",
+                  type: "text",
+                  placeholder: "Your Full Name",
+                },
+                {
+                  name: "email",
+                  label: "Email Address",
+                  type: "email",
+                  placeholder: "your@email.com",
+                },
+                {
+                  name: "phoneNumber",
+                  label: "Phone Number",
+                  type: "tel",
+                  placeholder: "(555) 123-4567",
+                },
+                {
+                  name: "address",
+                  label: "Service Location",
+                  type: "text",
+                  placeholder: "Your Address",
+                },
               ].map((field) => (
                 <div key={field.name}>
                   <label
@@ -174,7 +179,11 @@ export default function Bookings() {
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                  clipRule="evenodd"
+                />
               </svg>
               <p>Shelby Twp, MI</p>
             </div>
