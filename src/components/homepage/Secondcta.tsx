@@ -10,8 +10,11 @@ const Secondcta: React.FC = () => {
         <Image
           src={simiron}
           alt="Simiron"
-          layout="fill"
-          objectFit="cover"
+          fill
+          placeholder="blur"
+          quality={75}
+          sizes="100vw"
+          className="object-cover"
           priority={true}
         />
       </div>
