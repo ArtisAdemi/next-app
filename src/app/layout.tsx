@@ -8,7 +8,7 @@ import Head from "next/head";
 const inter = Roboto_Flex({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Palushaj Epoxy Flooring",
+  title: "Palushi Epoxy Flooring",
   description: "Created with Next.js",
 };
 
