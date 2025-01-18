@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import logo from "../../../public/logotest.svg";
+import logo from "../../../public/testtest.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
@@ -74,7 +74,7 @@ export const Footer = () => {
           <div className="mb-5">
             <h3 className="text-lg font-semibold">Follow Us</h3>
           </div>
-          <div className="space-y-6 w-[40%] lg:w-[40%]">
+          <div className="space-y-6 w-[40%] lg:w-[70%] xl:w-[40%]">
             <a
               target="_blank"
               href="https://www.facebook.com/profile.php?id=61569789103538&mibextid=wwXIfr&rdid=Fzt40pmlW2uSMyQ2&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15nPDwRk7E%2F%3Fmibextid%3DwwXIfr#"
@@ -123,7 +123,7 @@ export const Footer = () => {
           © {new Date().getFullYear()} Palushi Epoxy Inc. All Rights Reserved.
         </p>
         <a
-          className="hover:underline"
+          className="hover:underline hover:text-[#0B63E5]  duration-300"
           target="_blank"
           href="https://www.influxo.dev"
         >

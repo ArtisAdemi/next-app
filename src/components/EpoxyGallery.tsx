@@ -11,11 +11,11 @@ const EpoxyGallery: React.FC = () => {
       link: "/docs/MetallicColorGuide.pdf",
     },
     {
-      title: "Simiron Chips Color Guide",
+      title: "Simiron Flakes Color Guide",
       link: "/docs/SimironChipsColorGuide.pdf",
     },
     {
-      title: "Torginol Chip Color Guide",
+      title: "Torginol Flakes Color Guide",
       link: "/docs/TorginolChipColorGuide.pdf",
     },
   ];
