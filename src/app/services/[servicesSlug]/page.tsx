@@ -378,22 +378,27 @@ const SingleService = () => {
 
       {/* // tar glue // */}
       {service.upgrade && (
-        <div
-          className=" bg-cover bg-center bg-gray-300 text-white py-28 relative flex items-center justify-center"
-          style={{
-            backgroundImage: `url(${service.upgradeImage?.[0]?.src})`, // First image in the array of upgradeImage
-          }}
-        >
-          <div className="text-center max-w-2xl ">
+        <div className="relative bg-cover bg-center text-white py-28 flex items-center justify-center">
+          {/* Image overlay */}
+          <div
+            className="absolute inset-0 bg-cover bg-center brightness-[0.65]"
+            style={{
+              backgroundImage: `url(${service.upgradeImage?.[0]?.src})`,
+            }}
+          ></div>
+
+          {/* Text content */}
+          <div className="relative text-center max-w-2xl">
             <h3 className="text-4xl font-bold mb-4">{service.upgrade.intro}</h3>
             <p className="text-lg">{service.upgrade.text}</p>
           </div>
 
+          {/* Optional button */}
           {/* <div>
-            <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white text-base px-6 py-3 rounded-lg shadow-lg transition-all duration-300">
-              Contact Us
-            </button>
-          </div> */}
+      <button className="bg-[#FF8C00] hover:bg-[#FF8C00] text-white text-base px-6 py-3 rounded-lg shadow-lg transition-all duration-300">
+        Contact Us
+      </button>
+    </div> */}
         </div>
       )}
 

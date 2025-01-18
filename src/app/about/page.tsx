@@ -34,7 +34,7 @@ export default function About() {
 
           <p className="text-xl font-md text-black leading-7 xl:w-full mt-4">
             {" "}
-            Welcome to Palushaj Epoxy Coatings, where quality craftsmanship and
+            Welcome to Palushi Epoxy Coatings, where quality craftsmanship and
             dedication to excellence are the foundation of everything we do
             <br />
             <br />
