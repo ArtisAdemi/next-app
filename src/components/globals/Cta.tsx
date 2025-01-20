@@ -30,7 +30,7 @@ export const Cta = () => {
             <p className="text-gray-100">Years of Experience</p>
           </div>
           <div className="bg-[#EEEEEE] p-6 rounded-lg text-center transition-transform w-full duration-300 hover:scale-105 ease-in-out">
-            <p className="text-black text-2xl font-bold">4000+</p>
+            <p className="text-black text-2xl font-bold">7000+</p>
             <p className="text-black">Completed Projects</p>
           </div>
         </div>

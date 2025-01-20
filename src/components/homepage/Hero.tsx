@@ -60,7 +60,7 @@ const Hero = forwardRef<HTMLDivElement, HeroProps>(
                       Trusted
                     </h1>
                     <p className="text-white">
-                      Over 4000 projects all over Michigan
+                      Over 7000 projects all over Michigan
                     </p>
                   </div>
                 </div>
