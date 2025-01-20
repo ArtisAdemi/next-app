@@ -54,7 +54,7 @@ export default function LoadingScreen() {
 
       <div className="text-white text-2xl sm:text-4xl font-bold mb-8 tracking-widest text-center">
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
-          Palushi Epoxy Flooring
+          Palushi Epoxy Coatings
         </span>
       </div>
 
