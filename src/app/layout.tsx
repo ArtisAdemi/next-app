@@ -8,8 +8,9 @@ import Head from "next/head";
 const inter = Roboto_Flex({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Palushi Epoxy Flooring",
-  description: "Created with Next.js",
+  title: "Palushi Epoxy Coatings",
+  description:
+    "Your trusted partner for high-quality epoxy coatings, concrete polishing solutions, and more.",
 };
 
 export default function RootLayout({
