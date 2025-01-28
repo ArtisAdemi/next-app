@@ -6,6 +6,7 @@ export interface IBooking extends Document {
   address: string;
   name: string;
   message: string;
+  info: string;
   status: "pending" | "confirmed" | "completed" | "cancelled";
   createdAt: Date;
 }
@@ -16,6 +17,7 @@ const bookingSchema = new Schema<IBooking>({
   address: { type: String, required: true },
   name: { type: String, required: true },
   message: { type: String, required: true },
+  info: { type: String, required: true },
   status: {
     type: String,
     enum: ["pending", "confirmed", "completed", "cancelled"],

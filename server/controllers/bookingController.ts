@@ -8,6 +8,7 @@ export type CreateBookingRequest = {
     phoneNumber: string;
     address: string;
     message: string;
+    info: string;
   };
 };
 
@@ -29,9 +30,9 @@ export const bookingController = {
     }
   ): Promise<BookingResponse> {
     try {
-      const { email, phoneNumber, address, message, name } = req.body;
+      const { email, phoneNumber, address, message, name, info } = req.body;
 
-      if (!email || !phoneNumber || !address || !message || !name) {
+      if (!email || !phoneNumber || !address || !message || !name || !info) {
         return res.status(400).json({
           success: false,
           message: "All fields are required",
@@ -46,6 +47,7 @@ export const bookingController = {
         address,
         message,
         name,
+        info,
         status: "pending",
         createdAt: new Date(),
       });
@@ -145,7 +147,9 @@ export const bookingController = {
     try {
       const { id } = req.params;
       const { db } = await connectToDatabase();
-      const result = await db.collection("bookings").deleteOne({ _id: new ObjectId(id) });
+      const result = await db
+        .collection("bookings")
+        .deleteOne({ _id: new ObjectId(id) });
 
       if (result.deletedCount === 0) {
         return res.status(404).json({

@@ -49,6 +49,7 @@ export async function createBookingAction(formData: {
   address: string;
   name: string;
   message: string;
+  info: string;
 }) {
   try {
     const { db } = await connectToDatabase();
@@ -58,9 +59,9 @@ export async function createBookingAction(formData: {
       createdAt: new Date(),
     });
 
-    return { 
-      success: true, 
-      data: { bookingId: result.insertedId.toString() } 
+    return {
+      success: true,
+      data: { bookingId: result.insertedId.toString() },
     };
   } catch (error) {
     console.error("Create booking error:", error);
@@ -104,17 +105,19 @@ export async function updateBookingStatusAction(
 }
 
 export const removeBooking = async (bookingId: string) => {
-    try {
-        const { db } = await connectToDatabase();
-        const result = await db.collection('bookings').deleteOne({ _id: new ObjectId(bookingId) });
+  try {
+    const { db } = await connectToDatabase();
+    const result = await db
+      .collection("bookings")
+      .deleteOne({ _id: new ObjectId(bookingId) });
 
-        if (result.deletedCount === 0) {
-            return { success: false, message: 'Booking not found' };
-        }
-
-        return { success: true, message: 'Booking removed successfully' };
-    } catch (error) {
-        console.error('Error removing booking:', error);
-        return { success: false, message: 'Internal server error' };
+    if (result.deletedCount === 0) {
+      return { success: false, message: "Booking not found" };
     }
+
+    return { success: true, message: "Booking removed successfully" };
+  } catch (error) {
+    console.error("Error removing booking:", error);
+    return { success: false, message: "Internal server error" };
+  }
 };
