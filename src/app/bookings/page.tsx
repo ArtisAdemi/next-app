@@ -14,6 +14,7 @@ export default function Bookings() {
     address?: string;
     phoneNumber?: string;
     message?: string;
+    info?: string;
   }>({});
 
   const handleSubmit = async (formData: FormData) => {
@@ -25,6 +26,7 @@ export default function Bookings() {
           address: formData.get("address") as string,
           name: formData.get("name") as string,
           message: formData.get("message") as string,
+          info: formData.get("info") as string,
         });
         if (response?.success) {
           Swal.fire("Success", "Booking created successfully", "success");
@@ -36,6 +38,7 @@ export default function Bookings() {
             address: response?.message || "Address is required",
             phoneNumber: response?.message || "Phone number is required",
             message: response?.message || "Message is required",
+            info: response?.message || "This field is required",
           });
         }
       } catch (error) {
@@ -87,6 +90,12 @@ export default function Bookings() {
                   label: "Service Location",
                   type: "text",
                   placeholder: "Your Address",
+                },
+                {
+                  name: "info",
+                  label: "How did you hear about us?",
+                  type: "text",
+                  placeholder: "e.g Instagram, Google, Referral",
                 },
               ].map((field) => (
                 <div key={field.name}>
