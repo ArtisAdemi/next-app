@@ -7,7 +7,7 @@ const EpoxyGallery: React.FC = () => {
       link: "/docs/1100SLColorGuide.pdf",
     },
     {
-      title: "Metalic Color Guide",
+      title: "Metallic Color Guide",
       link: "/docs/MetallicColorGuide.pdf",
     },
     {
