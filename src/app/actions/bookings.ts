@@ -6,6 +6,19 @@ import jwt from "jsonwebtoken";
 import { ObjectId } from "mongodb";
 import nodemailer from "nodemailer";
 
+// Define booking interface
+interface IBooking {
+  _id: ObjectId;
+  email: string;
+  phoneNumber: string;
+  address: string;
+  name: string;
+  message: string;
+  info: string;
+  status: string;
+  createdAt: Date;
+}
+
 const JWT_SECRET = process.env.JWT_SECRET || "your-default-secret-key";
 
 export async function getBookingsAction() {
@@ -60,16 +73,16 @@ export async function createBookingAction(formData: {
       status: "pending",
       createdAt: new Date(),
     };
-    
+
     const result = await db.collection("bookings").insertOne(newBooking);
     console.log("Booking created with ID:", result.insertedId.toString());
-    
+
     // Send email notification
     await sendBookingEmail({
       ...newBooking,
-      _id: result.insertedId
+      _id: result.insertedId,
     });
-    
+
     return {
       success: true,
       data: { bookingId: result.insertedId.toString() },
@@ -81,22 +94,26 @@ export async function createBookingAction(formData: {
 }
 
 // Email notification function
-async function sendBookingEmail(booking: any): Promise<boolean> {
+async function sendBookingEmail(booking: IBooking): Promise<boolean> {
   console.log("Starting email notification process...");
-  
+
   try {
     // Log environment variables (without exposing sensitive data)
-    console.log('Email configuration:', {
+    console.log("Email configuration:", {
       userConfigured: !!process.env.EMAIL_USER,
       passConfigured: !!process.env.EMAIL_PASS,
-      userValue: process.env.EMAIL_USER ? `${process.env.EMAIL_USER.substring(0, 3)}...` : 'not set'
+      userValue: process.env.EMAIL_USER
+        ? `${process.env.EMAIL_USER.substring(0, 3)}...`
+        : "not set",
     });
-    
+
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error('Email environment variables (EMAIL_USER, EMAIL_PASS) are not properly configured');
+      console.error(
+        "Email environment variables (EMAIL_USER, EMAIL_PASS) are not properly configured"
+      );
       return false;
     }
-    
+
     // Create transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -105,7 +122,7 @@ async function sendBookingEmail(booking: any): Promise<boolean> {
         pass: process.env.EMAIL_PASS,
       },
     });
-    
+
     // Format the date
     const formattedDate = new Date(booking.createdAt).toLocaleString("en-US", {
       year: "numeric",
@@ -114,7 +131,7 @@ async function sendBookingEmail(booking: any): Promise<boolean> {
       hour: "2-digit",
       minute: "2-digit",
     });
-    
+
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
@@ -134,13 +151,15 @@ async function sendBookingEmail(booking: any): Promise<boolean> {
         <p>Please log in to your admin dashboard to manage this booking.</p>
       `,
     };
-    
+
     // Send email
-    console.log(`Attempting to send email from ${mailOptions.from} to ${mailOptions.to}`);
+    console.log(
+      `Attempting to send email from ${mailOptions.from} to ${mailOptions.to}`
+    );
     const info = await transporter.sendMail(mailOptions);
     console.log("Booking notification email sent successfully:", {
       messageId: info.messageId,
-      response: info.response
+      response: info.response,
     });
     return true;
   } catch (error) {
