@@ -1,5 +1,6 @@
 import { connectToDatabase } from "../db";
 import { ObjectId } from "mongodb";
+import { sendBookingNotification } from "../utils/emailService";
 
 export type CreateBookingRequest = {
   body: {
@@ -41,7 +42,7 @@ export const bookingController = {
 
       const { db } = await connectToDatabase();
 
-      const result = await db.collection("bookings").insertOne({
+      const newBooking = {
         email,
         phoneNumber,
         address,
@@ -50,7 +51,30 @@ export const bookingController = {
         info,
         status: "pending",
         createdAt: new Date(),
-      });
+      };
+      
+      const result = await db.collection("bookings").insertOne(newBooking);
+      
+      // Send email notification with booking details
+      try {
+        const emailSent = await sendBookingNotification({
+          ...newBooking,
+          _id: result.insertedId,
+          // Add required Document methods to satisfy IBooking interface
+          toObject: () => newBooking,
+          $isDeleted: () => false,
+          $isNew: () => true,
+          $isValid: () => true
+        } as any);
+        
+        if (!emailSent) {
+          console.warn('Failed to send booking notification email, but booking was created successfully');
+        }
+      } catch (emailError) {
+        console.error('Error in email notification process:', emailError);
+        // We don't want to fail the booking creation if email fails
+        // So we just log the error and continue
+      }
 
       return res.status(201).json({
         success: true,

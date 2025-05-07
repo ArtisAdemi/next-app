@@ -304,6 +304,8 @@ export default function AdminDashboard() {
                 />
               </div>
 
+              <div>{new Date(selectedBooking.createdAt).toLocaleString()}</div>
+
               <div className="flex justify-between space-x-4 pt-4">
                 <div>
                   <button
