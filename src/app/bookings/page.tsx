@@ -57,11 +57,11 @@ export default function Bookings() {
         <div className="max-w-2xl mx-auto bg-[#2B2B2B] rounded-lg shadow-lg overflow-hidden">
           <div className="p-8">
             <div className="text-center mb-12">
-              <h5 className="font-semibold mb-2 text-xl text-[#FF8C00]">
-                Book Your Service
+              <h5 className="font-semibold mb-2 text-4xl text-[#FF8C00]">
+                Get a free floor quote
               </h5>
-              <h1 className="text-4xl font-bold text-white">
-                Schedule a Consultation
+              <h1 className="text-xl font-bold text-white">
+                Takes less than 60 seconds. We&apos;ll contact you within a day!
               </h1>
             </div>
 
@@ -75,7 +75,7 @@ export default function Bookings() {
                 },
                 {
                   name: "email",
-                  label: "Email Address",
+                  label: "Email Address (optional)",
                   type: "email",
                   placeholder: "your@email.com",
                 },
@@ -154,8 +154,9 @@ export default function Bookings() {
         </div>
 
         <div className="max-w-2xl mx-auto mt-8 bg-[#2B2B2B] rounded-lg shadow-lg p-6">
-          <h2 className="text-xl font-semibold text-[#FF8C00] mb-4">
-            Alternative Contact Methods
+          <h2 className="text-xl text-center font-semibold text-[#FF8C00] mb-4">
+            Don&apos;t want to fill this out? Just text or call us - we&apos;ll
+            get you a quote fast!
           </h2>
           <div className="space-y-2 text-[#C0C0C0]">
             <div className="flex items-center space-x-2">
