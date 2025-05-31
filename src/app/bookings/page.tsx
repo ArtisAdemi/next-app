@@ -61,7 +61,7 @@ export default function Bookings() {
                 Get a free floor quote
               </h5>
               <h1 className="text-xl font-bold text-white">
-                Takes less than 60 seconds. We'll contact you within a day!
+                Takes less than 60 seconds. We&apos;ll contact you within a day!
               </h1>
             </div>
 
@@ -155,8 +155,8 @@ export default function Bookings() {
 
         <div className="max-w-2xl mx-auto mt-8 bg-[#2B2B2B] rounded-lg shadow-lg p-6">
           <h2 className="text-xl text-center font-semibold text-[#FF8C00] mb-4">
-            Don't want to fill this out? Just text or call us - we'll get you a
-            quote fast!
+            Don&apos;t want to fill this out? Just text or call us - we&apos;ll
+            get you a quote fast!
           </h2>
           <div className="space-y-2 text-[#C0C0C0]">
             <div className="flex items-center space-x-2">
