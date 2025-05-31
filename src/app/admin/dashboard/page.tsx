@@ -5,7 +5,7 @@ import {
   updateBookingStatusAction,
   removeBooking,
 } from "@/app/actions/bookings";
-
+import { useRouter } from "next/navigation";
 interface Booking {
   _id: string;
   email: string;
@@ -29,6 +29,8 @@ export default function AdminDashboard() {
   const [bookingIdToRemove, setBookingIdToRemove] = useState<string | null>(
     null
   );
+
+  const router = useRouter();
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -120,6 +122,23 @@ export default function AdminDashboard() {
       <h1 className="text-4xl font-bold mb-12 text-[#FF8C00] text-center">
         Booking Management Dashboard
       </h1>
+
+      <div className="flex gap-6">
+        <button
+          style={{ width: "200px" }}
+          className="mb-6  bg-transparent border border-[#FF8C00] text-[#FF8C00] px-4 py-2 rounded-sm hover:bg-[#FF8C00] hover:text-white transition-colors"
+          onClick={() => router.push("/")}
+        >
+          Back to Homepage
+        </button>
+        <button
+          style={{ width: "200px" }}
+          className="mb-6  bg-transparent border border-[#FF8C00] text-[#FF8C00] px-4 py-2 rounded-sm hover:bg-[#FF8C00] hover:text-white transition-colors"
+          onClick={() => router.push("/admin/calculator")}
+        >
+          Go to Calculator
+        </button>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {bookings.map((booking: Booking) => (

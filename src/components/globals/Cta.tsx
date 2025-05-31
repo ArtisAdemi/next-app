@@ -26,7 +26,7 @@ export const Cta = () => {
 
         <div className="flex flex-col md:flex-row xl:flex-col w-full xl:w-1/4 gap-6 xl:gap-8">
           <div className="bg-[#272727] transition-transform duration-300 w-full hover:scale-105 ease-in-out p-6 rounded-lg text-center">
-            <p className="text-white text-2xl font-bold">26+</p>
+            <p className="text-white text-2xl font-bold">27+</p>
             <p className="text-gray-100">Years of Experience</p>
           </div>
           <div className="bg-[#EEEEEE] p-6 rounded-lg text-center transition-transform w-full duration-300 hover:scale-105 ease-in-out">
