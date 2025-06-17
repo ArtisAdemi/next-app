@@ -6,23 +6,40 @@ import { useState, useEffect } from "react";
 
 // Define service types and their options with pricing
 const serviceOptions = {
-  "Metal Coating": [
-    { name: "Standard Metal Coating", pricePerSqFt: 4.5 },
-    { name: "Premium Metal Coating", pricePerSqFt: 5.0 },
-    { name: "Deluxe Metal Coating", pricePerSqFt: 6.0 },
-  ],
   Flakes: [
-    { name: "Small Flakes", pricePerSqFt: 3.5 },
-    { name: "Medium Flakes", pricePerSqFt: 4.0 },
-    { name: "Large Flakes", pricePerSqFt: 4.5 },
+    { name: "Basic Flake - Base Topcoat", pricePerSqFt: 4 },
+    { name: "Basic Flake - Polyaspartic Topcoat", pricePerSqFt: 4.5 },
+    { name: "Full Broadcast Flake - Base Topcoat", pricePerSqFt: 4.5 },
+    { name: "Full Broadcast Flake - Polyaspartic Topcoat", pricePerSqFt: 5.5 },
+    { name: "Full Broadcast Designer Flake - Base Topcoat", pricePerSqFt: 5 },
+    { name: "Full Broadcast Designer - Polyaspartic Topcoat", pricePerSqFt: 6 },
+  ],
+  "Quartz Sand": [
+    { name: "Quartz Sand - Base Topcoat", pricePerSqFt: 8 },
+    { name: "Quartz Sand - Polyaspartic Topcoat", pricePerSqFt: 9 },
   ],
   "Solid Color": [
-    { name: "Basic Solid Color", pricePerSqFt: 3.0 },
-    { name: "Premium Solid Color", pricePerSqFt: 3.75 },
+    { name: "Solid Color - No Topcoat", pricePerSqFt: 4 },
+    { name: "Solid color - Base Topcoat", pricePerSqFt: 4.5 },
+    { name: "Solid Color - Polyaspartic Topcoat", pricePerSqFt: 5 },
   ],
   Metallic: [
-    { name: "Standard Metallic", pricePerSqFt: 5.0 },
-    { name: "Premium Metallic", pricePerSqFt: 6.5 },
+    { name: "Single Tone", pricePerSqFt: 8 },
+    { name: "Two Tone", pricePerSqFt: 12 },
+    { name: "Three Tone", pricePerSqFt: 16 },
+    { name: "Four Tone +", pricePerSqFt: 20 },
+  ],
+  "Concrete Polishing": [
+    { name: "Cream Polish", pricePerSqFt: 8 },
+    { name: "Standard Polish", pricePerSqFt: 7 },
+    { name: "Full Aggregate", pricePerSqFt: 6 },
+  ],
+  Removal: [
+    { name: "Glue, Grout, Tile, Tar, Thinset Removal", pricePerSqFt: 2 },
+  ],
+  "COMMERCIAL/INDUSTRIAL PAINTING": [
+    { name: "Block/Drywall", pricePerSqFt: 3.5 },
+    { name: "Steel Ceilings", pricePerSqFt: 4 },
   ],
 };
 

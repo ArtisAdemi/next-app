@@ -15,6 +15,10 @@ interface IBooking {
   name: string;
   message: string;
   info: string;
+  location: string;
+  garageSize: number;
+  selectedService: string;
+  selectedOption: string;
   status: string;
   createdAt: Date;
 }
@@ -64,6 +68,10 @@ export async function createBookingAction(formData: {
   name: string;
   message: string;
   info: string;
+  location: string;
+  garageSize: number;
+  selectedService: string;
+  selectedOption: string;
 }) {
   try {
     // Create booking in database
@@ -147,6 +155,10 @@ async function sendBookingEmail(booking: IBooking): Promise<boolean> {
         <p><strong>Service Info:</strong> ${booking.info}</p>
         <p><strong>Message:</strong> ${booking.message}</p>
         <p><strong>Status:</strong> ${booking.status}</p>
+        <p><strong>Location:</strong> ${booking.location}</p>
+        <p><strong>Garage Size:</strong> ${booking.garageSize}</p>
+        <p><strong>Selected Service:</strong> ${booking.selectedService}</p>
+        <p><strong>Selected Option:</strong> ${booking.selectedOption}</p>
         <hr>
         <p>Please log in to your admin dashboard to manage this booking.</p>
       `,

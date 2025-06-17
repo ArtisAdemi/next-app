@@ -1,33 +1,238 @@
 "use client";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { createBookingAction } from "../actions/bookings";
 import Navbar from "@/components/globals/Navbar";
+
+// Define error interface
+interface FormErrors {
+  location?: string;
+  garageSize?: string;
+  selectedService?: string;
+  selectedOption?: string;
+  name?: string;
+  email?: string;
+  phoneNumber?: string;
+  address?: string;
+  message?: string;
+  info?: string;
+  [key: string]: string | undefined;
+}
+
+// Define service types and their options with pricing (copied from calculator)
+const serviceOptions = {
+  Flakes: [
+    { name: "Basic Flake - Base Topcoat", minPrice: 4, maxPrice: 5.5 },
+    { name: "Basic Flake - Polyaspartic Topcoat", minPrice: 4.5, maxPrice: 6 },
+    { name: "Full Broadcast Flake - Base Topcoat", minPrice: 4.5, maxPrice: 6 },
+    {
+      name: "Full Broadcast Flake - Polyaspartic Topcoat",
+      minPrice: 5.5,
+      maxPrice: 7,
+    },
+    {
+      name: "Full Broadcast Designer Flake - Base Topcoat",
+      minPrice: 5,
+      maxPrice: 7,
+    },
+    {
+      name: "Full Broadcast Designer - Polyaspartic Topcoat",
+      minPrice: 6,
+      maxPrice: 8,
+    },
+  ],
+  "Quartz Sand": [
+    { name: "Quartz Sand - Base Topcoat", minPrice: 8, maxPrice: 9 },
+    { name: "Quartz Sand - Polyaspartic Topcoat", minPrice: 9, maxPrice: 10 },
+  ],
+  "Solid Color": [
+    { name: "Solid Color - No Topcoat", minPrice: 4, maxPrice: 6 },
+    { name: "Solid color - Base Topcoat", minPrice: 4.5, maxPrice: 6.5 },
+    { name: "Solid Color - Polyaspartic Topcoat", minPrice: 5, maxPrice: 7 },
+  ],
+  Metallic: [
+    { name: "Single Tone", minPrice: 8, maxPrice: 11 },
+    { name: "Two Tone", minPrice: 12, maxPrice: 15 },
+    { name: "Three Tone", minPrice: 16, maxPrice: 19 },
+    { name: "Four Tone +", minPrice: 20, maxPrice: 27 },
+  ],
+  "Concrete Polishing": [
+    { name: "Cream Polish", minPrice: 8, maxPrice: 9 },
+    { name: "Standard Polish", minPrice: 7, maxPrice: 8 },
+    { name: "Full Aggregate", minPrice: 6, maxPrice: 7 },
+  ],
+  Removal: [
+    {
+      name: "Glue, Grout, Tile, Tar, Thinset Removal",
+      minPrice: 2,
+      maxPrice: 4,
+    },
+  ],
+  "COMMERCIAL/INDUSTRIAL PAINTING": [
+    { name: "Block/Drywall", minPrice: 3.5, maxPrice: 5.5 },
+    { name: "Steel Ceilings", minPrice: 4, maxPrice: 5 },
+  ],
+};
 
 export default function Bookings() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-  const [errors, setErrors] = useState<{
-    email?: string;
-    name?: string;
-    address?: string;
-    phoneNumber?: string;
-    message?: string;
-    info?: string;
-  }>({});
+  const [currentStep, setCurrentStep] = useState(1);
 
-  const handleSubmit = async (formData: FormData) => {
+  // Form data state
+  const [formData, setFormData] = useState({
+    email: "",
+    name: "",
+    phoneNumber: "",
+    address: "",
+    message: "",
+    info: "",
+    location: "",
+    garageSize: 0,
+    selectedService: "Flakes",
+    selectedOption: "",
+  });
+
+  // Service calculation state
+  const [selectedService, setSelectedService] = useState<string>("Flakes");
+  const [garageSize, setGarageSize] = useState<number>(0);
+  const [calculations, setCalculations] = useState<
+    Array<{ name: string; minPrice: number; maxPrice: number }>
+  >([]);
+  const [selectedOptionDetails, setSelectedOptionDetails] = useState<{
+    name: string;
+    minPrice: number;
+    maxPrice: number;
+  } | null>(null);
+
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  // Calculate costs when service or square feet changes
+  useEffect(() => {
+    if (selectedService && garageSize > 0) {
+      const options =
+        serviceOptions[selectedService as keyof typeof serviceOptions] || [];
+      const results = options.map((option) => ({
+        name: option.name,
+        minPrice: option.minPrice * garageSize,
+        maxPrice: option.maxPrice * garageSize,
+      }));
+      setCalculations(results);
+    } else {
+      setCalculations([]);
+    }
+  }, [selectedService, garageSize]);
+
+  const handleServiceSelection = (service: string) => {
+    setSelectedService(service);
+    setFormData((prev) => ({
+      ...prev,
+      selectedService: service,
+    }));
+  };
+
+  const handleOptionSelection = (option: {
+    name: string;
+    minPrice: number;
+    maxPrice: number;
+  }) => {
+    setSelectedOptionDetails(option);
+    setFormData((prev) => ({
+      ...prev,
+      selectedOption: option.name,
+    }));
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    if (name === "garageSize") {
+      const numValue = parseInt(value) || 0;
+      setGarageSize(numValue);
+      setFormData((prev) => ({
+        ...prev,
+        garageSize: numValue,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  const nextStep = () => {
+    // Validate first step
+    if (currentStep === 1) {
+      const stepErrors: FormErrors = {};
+
+      if (!formData.location.trim()) {
+        stepErrors.location = "Location is required";
+      }
+
+      if (!formData.garageSize || formData.garageSize <= 0) {
+        stepErrors.garageSize = "Garage size must be greater than 0";
+      }
+
+      if (!formData.selectedService) {
+        stepErrors.selectedService = "Please select a service";
+      }
+
+      if (!formData.selectedOption) {
+        stepErrors.selectedOption = "Please select a service option";
+      }
+
+      if (Object.keys(stepErrors).length > 0) {
+        setErrors(stepErrors);
+        return;
+      }
+    }
+
+    setCurrentStep(2);
+    setErrors({});
+  };
+
+  const prevStep = () => {
+    setCurrentStep(1);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate second step
+    const stepErrors: FormErrors = {};
+
+    if (!formData.name.trim()) {
+      stepErrors.name = "Name is required";
+    }
+
+    if (!formData.phoneNumber.trim()) {
+      stepErrors.phoneNumber = "Phone number is required";
+    }
+
+    if (Object.keys(stepErrors).length > 0) {
+      setErrors(stepErrors);
+      return;
+    }
+
     startTransition(async () => {
       try {
         const response = await createBookingAction({
-          email: formData.get("email") as string,
-          phoneNumber: formData.get("phoneNumber") as string,
-          address: formData.get("address") as string,
-          name: formData.get("name") as string,
-          message: formData.get("message") as string,
-          info: formData.get("info") as string,
+          email: formData.email,
+          phoneNumber: formData.phoneNumber,
+          address: formData.address,
+          name: formData.name,
+          message: formData.message,
+          info: formData.info,
+          location: formData.location,
+          garageSize: formData.garageSize,
+          selectedService: formData.selectedService,
+          selectedOption: formData.selectedOption,
         });
+
         if (response?.success) {
           Swal.fire("Success", "Booking created successfully", "success");
           router.push("/");
@@ -65,91 +270,289 @@ export default function Bookings() {
               </h1>
             </div>
 
-            <form action={handleSubmit} className="space-y-6">
-              {[
-                {
-                  name: "name",
-                  label: "Full Name",
-                  type: "text",
-                  placeholder: "Your Full Name",
-                },
-                {
-                  name: "email",
-                  label: "Email Address (optional)",
-                  type: "email",
-                  placeholder: "your@email.com",
-                },
-                {
-                  name: "phoneNumber",
-                  label: "Phone Number",
-                  type: "tel",
-                  placeholder: "(555) 123-4567",
-                },
-                {
-                  name: "address",
-                  label: "Service Location",
-                  type: "text",
-                  placeholder: "Your Address",
-                },
-                {
-                  name: "info",
-                  label: "How did you hear about us?",
-                  type: "text",
-                  placeholder: "e.g Instagram, Google, Referral",
-                },
-              ].map((field) => (
-                <div key={field.name}>
+            {currentStep === 1 && (
+              <form className="space-y-6">
+                <div>
                   <label
-                    htmlFor={field.name}
+                    htmlFor="location"
                     className="block text-sm font-medium text-[#C0C0C0] mb-2"
                   >
-                    {field.label}
+                    Where are you located?
                   </label>
                   <input
-                    type={field.type}
-                    id={field.name}
-                    name={field.name}
-                    placeholder={field.placeholder}
+                    type="text"
+                    id="location"
+                    name="location"
+                    placeholder="Your Location"
+                    value={formData.location}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-[#444] text-white placeholder-[#888] focus:outline-none focus:ring-2 focus:ring-[#FF8C00]"
                   />
-                  {errors[field.name as keyof typeof errors] && (
+                  {errors.location && (
                     <p className="text-red-500 text-sm mt-1">
-                      {errors[field.name as keyof typeof errors]}
+                      {errors.location}
                     </p>
                   )}
                 </div>
-              ))}
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-[#C0C0C0] mb-2"
-                >
-                  Project Details
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  placeholder="Tell us about your project..."
-                  className="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-[#444] text-white placeholder-[#888] focus:outline-none focus:ring-2 focus:ring-[#FF8C00]"
-                ></textarea>
-                {errors.message && (
-                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                <div>
+                  <label
+                    htmlFor="garageSize"
+                    className="block text-sm font-medium text-[#C0C0C0] mb-2"
+                  >
+                    How big is your garage? (sq ft)
+                  </label>
+                  <input
+                    type="number"
+                    id="garageSize"
+                    name="garageSize"
+                    placeholder="Size in square feet"
+                    value={formData.garageSize || ""}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-[#444] text-white placeholder-[#888] focus:outline-none focus:ring-2 focus:ring-[#FF8C00]"
+                  />
+                  {errors.garageSize && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.garageSize}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <h1 className="w-full text-center rounded-lg text-2xl font-bold text-white mt-8 mb-4">
+                    Get My Estimate
+                  </h1>
+
+                  <label
+                    htmlFor="selectedService"
+                    className="block text-sm font-medium text-[#C0C0C0] mb-2"
+                  >
+                    Select a Service
+                  </label>
+                  <select
+                    id="selectedService"
+                    name="selectedService"
+                    value={selectedService}
+                    className="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-[#444] text-white placeholder-[#888] focus:outline-none focus:ring-2 focus:ring-[#FF8C00]"
+                    onChange={(e) => handleServiceSelection(e.target.value)}
+                  >
+                    <option value="">Select a Service</option>
+                    {Object.keys(serviceOptions).map((service) => (
+                      <option key={service} value={service}>
+                        {service}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.selectedService && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.selectedService}
+                    </p>
+                  )}
+                </div>
+
+                {calculations.length > 0 && (
+                  <div className="mt-6">
+                    <h3 className="text-lg font-semibold mb-4 text-white">
+                      Service Options
+                    </h3>
+                    <div className="space-y-3">
+                      {calculations.map((option) => (
+                        <div
+                          key={option.name}
+                          className={`p-4 border rounded-lg cursor-pointer transition-all ${
+                            formData.selectedOption === option.name
+                              ? "border-[#FF8C00] bg-[#2A2A2A]"
+                              : "border-gray-700 bg-[#1E1E1E] hover:border-gray-500"
+                          }`}
+                          onClick={() => handleOptionSelection(option)}
+                        >
+                          <div className="flex justify-between">
+                            <div>
+                              <h4 className="font-medium text-sm text-white">
+                                {option.name}
+                              </h4>
+                              <p className="text-lg text-gray-400">
+                                ${option.minPrice.toFixed(2)} - $
+                                {option.maxPrice.toFixed(2)} estimated
+                              </p>
+                            </div>
+                            <div className="flex items-center">
+                              <div
+                                className={`w-5 h-5 rounded-full border flex items-center justify-center ${
+                                  formData.selectedOption === option.name
+                                    ? "border-[#FF8C00]"
+                                    : "border-gray-600"
+                                }`}
+                              >
+                                {formData.selectedOption === option.name && (
+                                  <div className="w-3 h-3 rounded-full bg-[#FF8C00]"></div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 )}
-              </div>
 
-              <button
-                type="submit"
-                className="group w-full rounded-lg bg-[#FF8C00] text-white font-semibold py-3 px-6 transition-transform duration-300 hover:scale-105 relative overflow-hidden"
-              >
-                {isPending ? "Submitting..." : "Book Consultation"}
-                {/* Bottom line */}
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
-                {/* Right line */}
-                <span className="absolute top-0 -right-1 w-0.5 h-full bg-orange-400 transition-transform duration-300 origin-top scale-y-0 group-hover:scale-y-100 group-hover:delay-150"></span>
-              </button>
-            </form>
+                <button
+                  type="button"
+                  className="group w-full rounded-lg bg-[#FF8C00] text-white font-semibold py-3 px-6 transition-transform duration-300 hover:scale-105 relative overflow-hidden"
+                  onClick={nextStep}
+                >
+                  Continue
+                  {/* Bottom line */}
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
+                  {/* Right line */}
+                  <span className="absolute top-0 -right-1 w-0.5 h-full bg-orange-400 transition-transform duration-300 origin-top scale-y-0 group-hover:scale-y-100 group-hover:delay-150"></span>
+                </button>
+              </form>
+            )}
+
+            {currentStep === 2 && (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {[
+                  {
+                    name: "name",
+                    label: "Full Name",
+                    type: "text",
+                    placeholder: "Your Full Name",
+                  },
+                  {
+                    name: "email",
+                    label: "Email Address (optional)",
+                    type: "email",
+                    placeholder: "your@email.com",
+                  },
+                  {
+                    name: "phoneNumber",
+                    label: "Phone Number",
+                    type: "tel",
+                    placeholder: "(555) 123-4567",
+                  },
+                  {
+                    name: "address",
+                    label: "Address",
+                    type: "text",
+                    placeholder: "Your Address",
+                  },
+                  {
+                    name: "info",
+                    label: "How did you hear about us?",
+                    type: "text",
+                    placeholder: "e.g Instagram, Google, Referral",
+                  },
+                ].map((field) => (
+                  <div key={field.name}>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm font-medium text-[#C0C0C0] mb-2"
+                    >
+                      {field.label}
+                    </label>
+                    <input
+                      type={field.type}
+                      id={field.name}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      value={
+                        formData[field.name as keyof typeof formData] as string
+                      }
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-[#444] text-white placeholder-[#888] focus:outline-none focus:ring-2 focus:ring-[#FF8C00]"
+                    />
+                    {errors[field.name as keyof typeof errors] && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors[field.name as keyof typeof errors]}
+                      </p>
+                    )}
+                  </div>
+                ))}
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-[#C0C0C0] mb-2"
+                  >
+                    Project Details
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="Tell us about your project..."
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-[#444] text-white placeholder-[#888] focus:outline-none focus:ring-2 focus:ring-[#FF8C00]"
+                  ></textarea>
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.message}
+                    </p>
+                  )}
+                </div>
+
+                {/* Order summary */}
+
+                {/* Order summary */}
+                <div className="p-4 border border-[#444] rounded-lg mt-6 bg-[#1E1E1E]">
+                  <h3 className="font-semibold text-lg text-[#FF8C00] mb-4">
+                    Order Summary
+                  </h3>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-[#C0C0C0]">Service:</span>
+                    <span className="text-white">
+                      {formData.selectedService}
+                    </span>
+                  </div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-[#C0C0C0]">Option:</span>
+                    <span className="text-white">
+                      {formData.selectedOption}
+                    </span>
+                  </div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-[#C0C0C0]">Size:</span>
+                    <span className="text-white">
+                      {formData.garageSize} sq ft
+                    </span>
+                  </div>
+                  {selectedOptionDetails && (
+                    <div className="flex justify-between pt-2 border-t border-[#444] mt-2">
+                      <span className="text-[#C0C0C0]">
+                        Estimated Price Range:
+                      </span>
+                      <span className="text-xl font-bold text-[#FF8C00]">
+                        ${selectedOptionDetails.minPrice.toFixed(2)} - $
+                        {selectedOptionDetails.maxPrice.toFixed(2)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    type="button"
+                    className="group flex-1 rounded-lg bg-[#333] text-white font-semibold py-3 px-6 transition-transform duration-300 hover:scale-105 relative overflow-hidden"
+                    onClick={prevStep}
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="submit"
+                    className="group flex-1 rounded-lg bg-[#FF8C00] text-white font-semibold py-3 px-6 transition-transform duration-300 hover:scale-105 relative overflow-hidden"
+                    disabled={isPending}
+                  >
+                    {isPending ? "Submitting..." : "Book Consultation"}
+                    {/* Bottom line */}
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
+                    {/* Right line */}
+                    <span className="absolute top-0 -right-1 w-0.5 h-full bg-orange-400 transition-transform duration-300 origin-top scale-y-0 group-hover:scale-y-100 group-hover:delay-150"></span>
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
 
