@@ -5,6 +5,21 @@ import { useState, useTransition, useEffect } from "react";
 import { createBookingAction } from "../actions/bookings";
 import Navbar from "@/components/globals/Navbar";
 
+// Define error interface
+interface FormErrors {
+  location?: string;
+  garageSize?: string;
+  selectedService?: string;
+  selectedOption?: string;
+  name?: string;
+  email?: string;
+  phoneNumber?: string;
+  address?: string;
+  message?: string;
+  info?: string;
+  [key: string]: string | undefined;
+}
+
 // Define service types and their options with pricing (copied from calculator)
 const serviceOptions = {
   Flakes: [
@@ -75,7 +90,7 @@ export default function Bookings() {
     info: "",
     location: "",
     garageSize: 0,
-    selectedService: "",
+    selectedService: "Flakes",
     selectedOption: "",
   });
 
@@ -91,17 +106,7 @@ export default function Bookings() {
     maxPrice: number;
   } | null>(null);
 
-  const [errors, setErrors] = useState<{
-    email?: string;
-    name?: string;
-    address?: string;
-    phoneNumber?: string;
-    message?: string;
-    info?: string;
-    location?: string;
-    garageSize?: string;
-    selectedService?: string;
-  }>({});
+  const [errors, setErrors] = useState<FormErrors>({});
 
   // Calculate costs when service or square feet changes
   useEffect(() => {
@@ -162,7 +167,7 @@ export default function Bookings() {
   const nextStep = () => {
     // Validate first step
     if (currentStep === 1) {
-      const stepErrors: any = {};
+      const stepErrors: FormErrors = {};
 
       if (!formData.location.trim()) {
         stepErrors.location = "Location is required";
@@ -198,7 +203,7 @@ export default function Bookings() {
     e.preventDefault();
 
     // Validate second step
-    const stepErrors: any = {};
+    const stepErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
       stepErrors.name = "Name is required";
