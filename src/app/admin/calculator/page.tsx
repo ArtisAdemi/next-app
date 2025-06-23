@@ -234,12 +234,21 @@ export default function Calculator() {
                               {calc.name}
                             </h4>
                             <p className="text-gray-500 text-sm">
-                              ${(calc.price / squareFeet).toFixed(2)} per sq ft
+                              $
+                              {calc.price.toLocaleString("en-US", {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                              })}{" "}
+                              per sq ft
                             </p>
                           </div>
                           <div className="text-right">
                             <div className="text-2xl font-bold text-amber-600">
-                              ${calc.price.toFixed(2)}
+                              $
+                              {calc.price.toLocaleString("en-US", {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                              })}
                             </div>
                             <div className="text-xs text-gray-500">
                               Total Cost
