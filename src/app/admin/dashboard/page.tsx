@@ -13,6 +13,9 @@ interface Booking {
   address: string;
   message: string;
   status: string;
+  garageSize: number;
+  selectedService: string;
+  selectedOption: string;
   name: string;
   info: string;
   createdAt: string;
@@ -299,6 +302,26 @@ export default function AdminDashboard() {
                   readOnly
                   className="w-full bg-gray-100 text-black rounded-lg p-2 border border-gray-600 min-h-[100px]"
                 />
+              </div>
+              <div className="flex justify-between">
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Floor Size
+                  </label>
+                  <div>{selectedBooking.garageSize}</div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Service
+                  </label>
+                  <div>{selectedBooking.selectedService}</div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Selected Option
+                  </label>
+                  <div>{selectedBooking.selectedOption}</div>
+                </div>
               </div>
 
               <div>

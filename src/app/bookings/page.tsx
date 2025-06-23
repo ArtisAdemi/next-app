@@ -300,7 +300,7 @@ export default function Bookings() {
                     htmlFor="garageSize"
                     className="block text-sm font-medium text-[#C0C0C0] mb-2"
                   >
-                    How big is your garage? (sq ft)
+                    How big is your floor? (sq ft)
                   </label>
                   <input
                     type="number"
@@ -372,8 +372,17 @@ export default function Bookings() {
                                 {option.name}
                               </h4>
                               <p className="text-lg text-gray-400">
-                                ${option.minPrice.toFixed(2)} - $
-                                {option.maxPrice.toFixed(2)} estimated
+                                $
+                                {option.minPrice.toLocaleString("en-US", {
+                                  minimumFractionDigits: 2,
+                                  maximumFractionDigits: 2,
+                                })}{" "}
+                                - $
+                                {option.maxPrice.toLocaleString("en-US", {
+                                  minimumFractionDigits: 2,
+                                  maximumFractionDigits: 2,
+                                })}{" "}
+                                estimated
                               </p>
                             </div>
                             <div className="flex items-center">
@@ -481,7 +490,7 @@ export default function Bookings() {
                     id="message"
                     name="message"
                     rows={4}
-                    placeholder="Tell us about your project..."
+                    placeholder="Tell us about your project... Cracks? Peeling? Moisture? Salt Damag? New build or renovation? DIY job gone wrong? Tell us what you're seeing."
                     value={formData.message}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-[#444] text-white placeholder-[#888] focus:outline-none focus:ring-2 focus:ring-[#FF8C00]"
@@ -498,7 +507,7 @@ export default function Bookings() {
                 {/* Order summary */}
                 <div className="p-4 border border-[#444] rounded-lg mt-6 bg-[#1E1E1E]">
                   <h3 className="font-semibold text-lg text-[#FF8C00] mb-4">
-                    Order Summary
+                    Your Custom Estimate
                   </h3>
                   <div className="flex justify-between mb-2">
                     <span className="text-[#C0C0C0]">Service:</span>
@@ -544,7 +553,7 @@ export default function Bookings() {
                     className="group flex-1 rounded-lg bg-[#FF8C00] text-white font-semibold py-3 px-6 transition-transform duration-300 hover:scale-105 relative overflow-hidden"
                     disabled={isPending}
                   >
-                    {isPending ? "Submitting..." : "Book Consultation"}
+                    {isPending ? "Submitting..." : "Get my Quote"}
                     {/* Bottom line */}
                     <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-400 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100 group-hover:delay-0"></span>
                     {/* Right line */}
