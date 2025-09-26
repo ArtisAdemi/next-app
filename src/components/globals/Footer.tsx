@@ -111,7 +111,7 @@ export const Footer = () => {
               palushajepoxy@gmail.com
             </p>
             <p className="text-gray-400 hover:text-white transition-colors">
-              +1 586-453-3121
+              +1 586-302-2220
             </p>
           </div>
         </div>

@@ -131,7 +131,7 @@ export default function Navbar() {
               palushajepoxy@gmail.com
             </p>
             <p className="hover:text-white duration-300 cursor-pointer">
-              +1 586-453-3121
+              +1 586-302-2220
             </p>
           </div>
         </div>
